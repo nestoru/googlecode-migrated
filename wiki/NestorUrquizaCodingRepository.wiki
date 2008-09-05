@@ -7,3 +7,14 @@ After several years of programming for the Web I am still looking for the ideal 
 To check in Grails projects into svn read this article http://docs.codehaus.org/display/GRAILS/Checking+Projects+into+SVN
 
  * collab-todo: I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
+ Here is how I have checked in:
+ {{{
+ cd collab-todo
+ svn checkout https://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ .
+ svn add *
+ svn propset svn:ignore "bin-groovy" .
+ svn propset svn:ignore "classes" web-app/WEB-INF
+ svn rm --force bin-groovy
+ svn rm --force web-app/WEB-INF/classes
+ svn commit -m "First commit"
+ }}}
