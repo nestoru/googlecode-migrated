@@ -15,9 +15,6 @@ To check in Grails projects into svn read this article http://docs.codehaus.org/
  svn propset svn:ignore "bin-groovy" .
  svn propset svn:ignore "stacktrace.log" .
  svn propset svn:ignore "classes" web-app/WEB-INF
- svn rm --force bin-groovy
- svn rm --force stacktrace.log
- svn rm --force web-app/WEB-INF/classes
  svn commit -m "First commit"
  }}}
  Since I am using 'junction' in Windows to create symlinks and 'bin-groovy' points to WEB-INF/classes I had to repeat some of the commands:
