@@ -20,3 +20,8 @@ To check in Grails projects into svn read this article http://docs.codehaus.org/
  svn rm --force web-app/WEB-INF/classes
  svn commit -m "First commit"
  }}}
+ Since I am using 'junction' in Windows to create symlinks and 'bin-groovy' points to WEB-INF/classes I had to repeat some of the commands:
+ {{{
+ svn add web-app/WEB-INF/*
+ svn commit -m "First commit"
+ }}}
