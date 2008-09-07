@@ -6,7 +6,10 @@ After several years of programming for the Web I am still looking for the ideal 
 = Grails =
 To check in Grails projects into svn read this article http://docs.codehaus.org/display/GRAILS/Checking+Projects+into+SVN
 
- * collab-todo (http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/): I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
+== collab-todo ==
+Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
+
+=== SVN ===
  Here is how I have checked in:
  {{{
  cd collab-todo
@@ -22,3 +25,7 @@ To check in Grails projects into svn read this article http://docs.codehaus.org/
  svn add web-app/WEB-INF/*
  svn commit -m "First commit"
  }}}
+
+=== MYSQL ===
+I have worked for development using MySQL instead of HSQLDB:
+ 1. Download the driver from http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.6.tar.gz/from/pick#mirrors and put it in the Grails lib folder.
