@@ -28,4 +28,4 @@ Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have 
 
 === MYSQL ===
 I have worked for development using MySQL instead of HSQLDB:
- 1. Download the driver from http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.6.tar.gz/from/pick#mirrors and put it in the Grails lib folder.
+ 1. Download the driver from http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.6.tar.gz/from/pick#mirrors and put the jar file (mysql-connector-java-5.1.6-bin.jar) it in the Grails lib folder.
