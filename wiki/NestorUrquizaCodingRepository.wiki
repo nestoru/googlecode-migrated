@@ -29,3 +29,21 @@ Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have 
 === MYSQL ===
 I have worked for development using MySQL instead of HSQLDB:
  1. Download the driver from http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.6.tar.gz/from/pick#mirrors and put the jar file (mysql-connector-java-5.1.6-bin.jar) it in the Grails lib folder.
+ 1. Edit DataSource.groovy:
+ {{{
+ development {
+	dataSource {			
+		driverClassName = "com.mysql.jdbc.Driver"
+	        username = "root"
+	        password = ""
+	        dbCreate = "create-drop"
+	        url = "jdbc:mysql://localhost:3306/collab_todo_dev"
+	}
+ }
+ }}}
+ Note we use "create-drop" and so if you started coding with HSQLDB you will end up with all your domain changes in place in MySQL after a "grails run-app"
+ 1. Create the dev db
+ {{{
+ create database collab_todo_dev 
+ }}}
+ 
