@@ -7,7 +7,7 @@ After several years of programming for the Web I am still looking for the ideal 
 To check in Grails projects into svn read this article http://docs.codehaus.org/display/GRAILS/Checking+Projects+into+SVN
 
 == collab-todo ==
-Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
+Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208) and after chapter 5 it was imposible for me to continue adding more code. I found explanations incomplete basically.
 
 Disclaimer: I am not hosting the source code that comes with the book but instead I am just reading the book and while making changes to the code I keep updating it on SVN so I can check out in different machines. If this action is illegal by any means please send me an email and I will remove the project.
 
