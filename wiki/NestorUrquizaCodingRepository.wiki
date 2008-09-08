@@ -9,7 +9,7 @@ To check in Grails projects into svn read this article http://docs.codehaus.org/
 == collab-todo ==
 Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
 
-For the Authentication chapter (7) I found explanations incomplete basically. It allowed me to learn about Spring Security (former Acegi). I recommend to go directly to http://docs.codehaus.org/display/GRAILS/AcegiSecurity+Plugin+-+Basic+Tutorial
+For the Authentication chapter (7) I found explanations incomplete basically. It allowed me to learn about Spring Security (former Acegi). I recommend to backup User and UserController classes, follow directions from http://docs.codehaus.org/display/GRAILS/AcegiSecurity+Plugin+-+Basic+Tutorial and finally adjust back whatever code is needed from the backed-up classes.
 
 Disclaimer: I am not hosting the source code that comes with the book but instead I am just reading the book and while making changes to the code I keep updating it on SVN so I can check out in different machines. If this action is illegal by any means please send me an email and I will remove the project.
 
