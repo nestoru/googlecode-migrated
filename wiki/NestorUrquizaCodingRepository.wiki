@@ -38,7 +38,7 @@ I have worked for development using MySQL instead of HSQLDB:
 		driverClassName = "com.mysql.jdbc.Driver"
 	        username = "root"
 	        password = ""
-	        dbCreate = "create-drop"
+	        dbCreate = "update"
 	        url = "jdbc:mysql://localhost:3306/collab_todo_dev"
 	}
  }
