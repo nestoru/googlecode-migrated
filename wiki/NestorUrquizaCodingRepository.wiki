@@ -25,6 +25,8 @@ requestMapString = """
 }}}
 I added firstName and lastName intead of userRealName and for that I had to update all gsp files below User View.
 
+I also use <g:loggedInUserInfo> to ouput first and last name in the topbar.
+
 Disclaimer: I am not hosting the source code that comes with the book but instead I am just reading the book and while making changes to the code I keep updating it on SVN so I can check out in different machines. If this action is illegal by any means please send me an email and I will remove the project.
 
 === SVN ===
