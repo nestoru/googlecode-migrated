@@ -15,12 +15,17 @@ requestMapString = """
 		CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
 		PATTERN_TYPE_APACHE_ANT
 
-		/todo/**=ROLE_USER
-		/category/**=ROLE_USER
-		/register/**=ROLE_USER
+
+		
+		/todo/**=IS_AUTHENTICATED_FULLY
+		/category/**=IS_AUTHENTICATED_FULLY
+		/register/**=IS_AUTHENTICATED_FULLY
 		/user/**=ROLE_ADMIN
         /role/**=ROLE_ADMIN
+        /login/**=IS_AUTHENTICATED_ANONYMOUSLY
+		/logout/**=IS_AUTHENTICATED_ANONYMOUSLY
 		/**=IS_AUTHENTICATED_ANONYMOUSLY
+		
 	"""
 }}}
 I added firstName and lastName intead of userRealName and for that I had to update all gsp files below User View.
