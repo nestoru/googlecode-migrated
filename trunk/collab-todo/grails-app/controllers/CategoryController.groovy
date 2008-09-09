@@ -1,5 +1,6 @@
+import org.grails.plugins.springsecurity.service.AuthenticateService
 class CategoryController {
-    
+    AuthenticateService authenticateService
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
@@ -8,7 +9,8 @@ class CategoryController {
     def list = {
         if(!params.max) params.max = 10
         //[ categoryList: Category.list( params ) ]
-        def user = User.get(session.user.id)
+        //def user = User.get(session.user.id)
+        def user = authenticateService.userDomain() 
         [ categoryList: Category.findAllByUser(user, params) ]
     }
 
@@ -51,7 +53,9 @@ class CategoryController {
         def category = Category.get( params.id )
         if(category) {
             category.properties = params
-            category.user = session.user
+            //category.user = session.user
+            def user = authenticateService.userDomain()
+            category.user = user
             if(!category.hasErrors() && category.save()) {
                 flash.message = "Category ${params.id} updated"
                 redirect(action:show,id:category.id)
@@ -74,7 +78,9 @@ class CategoryController {
 
     def save = {
         def category = new Category(params)
-        category.user = session.user
+        //category.user = session.user
+        def user = authenticateService.userDomain()
+        category.user = user
         if(!category.hasErrors() && category.save()) {
             flash.message = "Category ${category.id} created"
             redirect(action:show,id:category.id)

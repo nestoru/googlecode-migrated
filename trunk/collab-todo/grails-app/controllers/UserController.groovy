@@ -1,117 +1,124 @@
+import org.grails.plugins.springsecurity.service.AuthenticateService
+
+/**
+ * User Controller.
+ */
 class UserController {
-    
-    def index = { redirect(action:list,params:params) }
 
-    // the delete, save and update actions only accept POST requests
-    def allowedMethods = [delete:'POST', save:'POST', update:'POST']
+	AuthenticateService authenticateService
 
-    def list = {
-        if(!params.max) params.max = 10
-        [ userList: User.list( params ) ]
-    }
+	// the delete, save and update actions only accept POST requests
+	def allowedMethods = [delete: 'POST', save: 'POST', update: 'POST']
 
-    def show = {
-        def user = User.get( params.id )
-
-        if(!user) {
-            flash.message = "User not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else { return [ user : user ] }
-    }
-
-    def delete = {
-        def user = User.get( params.id )
-        if(user) {
-            user.delete()
-            flash.message = "User ${params.id} deleted"
-            redirect(action:list)
-        }
-        else {
-            flash.message = "User not found with id ${params.id}"
-            redirect(action:list)
-        }
-    }
-
-        def edit = {
-        
-        //ERRATA:
-        //if (session.user.id != params.id) {
-        if (session.user.id != params.id.toInteger()) {
-            flash.message = "You can only edit yourself"
-            redirect(action:list)
-            return
-        }
-        
-        def user = User.get( params.id )
-
-        if(!user) {
-            flash.message = "User not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else {
-            return [ user : user ]
-        }
-    }
-
-    def update = {
-        def user = User.get( params.id )
-        if(user) {
-            user.properties = params
-            if(!user.hasErrors() && user.save()) {
-                flash.message = "User ${params.id} updated"
-                redirect(action:show,id:user.id)
-            }
-            else {
-                render(view:'edit',model:[user:user])
-            }
-        }
-        else {
-            flash.message = "User not found with id ${params.id}"
-            redirect(action:edit,id:params.id)
-        }
-    }
-
-    def create = {
-        def user = new User()
-        user.properties = params
-        return ['user':user]
-    }
-
-    def save = {
-        def user = new User(params)
-        if(!user.hasErrors() && user.save()) {
-            //flash.message = "User ${user.id} created"
-            flash.message = "user.saved.message"
-			flash.args = [user.firstName, user.lastName]
-			flash.defaultMsg = "User Saved"
-            redirect(action:show,id:user.id)
-        }
-        else {
-            render(view:'create',model:[user:user])
-        }
-    }
-    
-    def login = {}
-    
-    def handleLogin = {
-        
-	    def user = User.findByUserName(params.userName)
-        
-		if (!user) {
-			flash.message = "User not found for userName: ${params.userName}"
-			redirect(action:'login')
-		}else{
-		    session.user = user
-			redirect(controller:'todo')
-		}		
+	def index = {
+		redirect(action: list, params: params)
 	}
-	def logout = {
-		if(session.user) {
-			session.user = null
-			redirect(action:'login')
+
+	def list = {
+		if (!params.max) {
+			params.max = 10
+		}
+		[personList: User.list(params)]
+	}
+
+	def show = {
+		[person: User.get(params.id)]
+	}
+
+	/**
+	 * Person delete action. Before removing an existing person,
+	 * he should be removed from those authorities which he is involved.
+	 */
+	def delete = {
+
+		def person = User.get(params.id)
+		if (person) {
+			def authPrincipal = authenticateService.principal()
+			//avoid self-delete if the logged-in user is an admin
+			if (!(authPrincipal instanceof String) && authPrincipal.username == person.username) {
+				flash.message = "You can not delete yourself, please login as another admin and try again"
+			}
+			else {
+				//first, delete this person from People_Authorities table.
+				Role.findAll().each { it.removeFromPeople(person) }
+				person.delete()
+				flash.message = "User ${params.id} deleted."
+			}
+		}
+		else {
+			flash.message = "User not found with id ${params.id}"
+		}
+
+		redirect(action: list)
+	}
+
+	def edit = {
+
+		def person = User.get(params.id)
+		if (!person) {
+			flash.message = "User not found with id ${params.id}"
+			redirect(action: list)
+			return
+		}
+
+		[person: person, authorityList: Role.list(params)]
+	}
+
+	/**
+	 * Person update action.
+	 */
+	def update = {
+
+		def person = User.get(params.id)
+		if (!person) {
+			flash.message = "User not found with id ${params.id}"
+			redirect(action: edit, id: params.id)
+			return
+		}
+
+		def oldPassword = person.passwd
+		person.properties = params
+		if (!params.passwd.equals(oldPassword)) {
+			person.passwd = authenticateService.passwordEncoder(params.passwd)
+		}
+		if (person.save()) {
+			Role.findAll().each { it.removeFromPeople(person) }
+			addRoles(person)
+			redirect(action: show, id: person.id)
+		}
+		else {
+			render(view: 'edit', model: [person: person])
 		}
 	}
-    
-    
+
+	def create = {
+		def person = new User()
+		person.properties = params
+		[person: person, authorityList: Role.list(params)]
+	}
+
+	/**
+	 * Person save action.
+	 */
+	def save = {
+
+		def person = new User()
+		person.properties = params
+		person.passwd = authenticateService.passwordEncoder(params.passwd)
+		if (person.save()) {
+			addRoles(person)
+			redirect(action: show, id: person.id)
+		}
+		else {
+			render(view: 'create', model: [authorityList: Role.list(params), person: person])
+		}
+	}
+
+	private void addRoles(person) {
+		for (String key in params.keySet()) {
+			if (key.contains('ROLE') && 'on' == params.get(key)) {
+				Role.findByAuthority(key).addToPeople(person)
+			}
+		}
+	}
 }

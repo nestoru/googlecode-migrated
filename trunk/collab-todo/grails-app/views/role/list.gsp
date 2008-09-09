@@ -2,17 +2,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta name="layout" content="main" />
-		<title>User List</title>
+		<title>Role List</title>
 	</head>
 	<body>
-
 		<div class="nav">
 			<span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
-			<span class="menuButton"><g:link class="create" action="create">New User</g:link></span>
+			<span class="menuButton"><g:link class="create" action="create">New Role</g:link></span>
 		</div>
-
 		<div class="body">
-			<h1>User List</h1>
+			<h1>Role List</h1>
 			<g:if test="${flash.message}">
 			<div class="message">${flash.message}</div>
 			</g:if>
@@ -21,26 +19,20 @@
 				<thead>
 					<tr>
 						<g:sortableColumn property="id" title="Id" />
-						<g:sortableColumn property="username" title="Login Name" />
-						<g:sortableColumn property="firstName" title="First Name" />
-						<g:sortableColumn property="firstName" title="Last Name" />
-						<g:sortableColumn property="enabled" title="Enabled" />
+						<g:sortableColumn property="authority" title="Role Name" />
 						<g:sortableColumn property="description" title="Description" />
 						<th>&nbsp;</th>
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${personList}" status="i" var="person">
+				<g:each in="${authorityList}" status="i" var="authority">
 					<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-						<td>${person.id}</td>
-						<td>${person.username?.encodeAsHTML()}</td>
-						<td>${person.firstName?.encodeAsHTML()}</td>
-						<td>${person.lastName?.encodeAsHTML()}</td>
-						<td>${person.enabled?.encodeAsHTML()}</td>
-						<td>${person.description?.encodeAsHTML()}</td>
+						<td>${authority.id}</td>
+						<td>${authority.authority?.substring(5)?.toLowerCase()?.encodeAsHTML()}</td>
+						<td>${authority.description?.encodeAsHTML()}</td>
 						<td class="actionButtons">
 							<span class="actionButton">
-								<g:link action="show" id="${person.id}">Show</g:link>
+								<g:link action="show" id="${authority.id}">Show</g:link>
 							</span>
 						</td>
 					</tr>
@@ -50,9 +42,8 @@
 			</div>
 
 			<div class="paginateButtons">
-				<g:paginate total="${User.count()}" />
+				<g:paginate total="${Role.count()}" />
 			</div>
-
 		</div>
 	</body>
 </html>

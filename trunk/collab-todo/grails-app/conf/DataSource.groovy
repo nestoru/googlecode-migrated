@@ -13,8 +13,13 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
+			//dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+			//url = "jdbc:hsqldb:mem:devDB"
+		    driverClassName = "com.mysql.jdbc.Driver"
+	        username = "root"
+	        password = ""
+	        dbCreate = "update"
+	        url = "jdbc:mysql://localhost:3306/collab_todo_dev"
 		}
 	}
 	test {
