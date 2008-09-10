@@ -4,6 +4,8 @@ After several years of programming for the Web I am still looking for the ideal 
 
 
 = Grails =
+No much to be said. The WEB is plenty of information and Google is your friend but I feel like http://jonasfagundes.com/blog/2008/01/grails-the-good-the-ugly-and-the-bad can give you a good starting point at least to know the origins (I have found history is sometimes the best starting point when you want to learn something new)
+
 To check in Grails projects into svn read this article http://docs.codehaus.org/display/GRAILS/Checking+Projects+into+SVN
 
 == collab-todo ==
