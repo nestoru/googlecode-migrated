@@ -35,6 +35,8 @@ I also use <g:loggedInUserInfo> to ouput first and last name in the topbar.
 
 The book assumes in chapter 7 and 8 that you work by yourself analyzing existing code that you download. I understand this is done to present a full featured application for which details could take way more than a book, but at the same time I would rather pick as a beginner a book that push me to do everything without downloading code. I find that approach better for learning. The downloadable code is good to have it as well though.
 
+Chapters 12 and 13 I enjoyed reading but felt like I better go back to them when needed rather than considering them important to be included in the code I use to learn Grails basics.
+
 There are some erratas I have reported which I am including here anyway:
 
   1. Mixing pure HTML and GSP in a form like below:
