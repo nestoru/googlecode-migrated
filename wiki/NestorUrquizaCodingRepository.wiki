@@ -37,7 +37,7 @@ The book assumes in chapter 7 and 8 that you work by yourself analyzing existing
 
 There are some erratas I have reported which I am including here anyway:
 
-  #. Mixing pure HTML and GSP in a form like below:
+  1. Mixing pure HTML and GSP in a form like below:
   {{{
   <form action="handleLogin">
   <g:actionSubmit	value="Login" />
@@ -60,7 +60,7 @@ There are some erratas I have reported which I am including here anyway:
   <g:form>
   <g:actionSubmit	action="handleLogin" value="Login" />
   }}}
-  #. When running tests you get:
+  2. When running tests you get:
   {{{
   testHandleLoginInvalidUser	Error	Cannot send redirect - response is already committed
   }}}
@@ -74,7 +74,7 @@ There are some erratas I have reported which I am including here anyway:
     redirect(controller:'todo')
   }	
   }}}
-  #. The below code:
+  3. The below code:
   {{{
   if (session.user.id != params.id) {
   }}}
@@ -82,7 +82,7 @@ There are some erratas I have reported which I am including here anyway:
   {{{
   if (session.user.id != params.id.toInteger()) {
   }}}
-  #. The recommended entry in UrlMappings.groovy for REST is:
+  4. The recommended entry in UrlMappings.groovy for REST is:
   {{{
   "/$rest/$controller/$id?"{
   }}}
