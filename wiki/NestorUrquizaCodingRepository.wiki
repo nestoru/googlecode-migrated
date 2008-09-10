@@ -37,7 +37,7 @@ The book assumes in chapter 7 and 8 that you work by yourself analyzing existing
 
 There are some erratas I have reported which I am including here anyway:
 
-1. Mixing pure HTML and GSP in a form like below:
+ 1. Mixing pure HTML and GSP in a form like below:
 {{{
 <form action="handleLogin">
 <g:actionSubmit	value="Login" />
@@ -50,9 +50,7 @@ because the second line is translated to:
 {{{
 <input type="submit" name="_action_Login" value="Login" />
 }}}
-UserController will have to decide from two actions
-
-Use either:
+UserController will have to decide from two actions. Use either:
 {{{
 <form action="handleLogin">
 <input type="submit" value="Login"/>
@@ -62,7 +60,7 @@ or:
 <g:form>
 <g:actionSubmit	action="handleLogin" value="Login" />
 }}}
-1. When running tests you get:
+ 1. When running tests you get:
 {{{
 testHandleLoginInvalidUser	Error	Cannot send redirect - response is already committed
 }}}
@@ -76,7 +74,7 @@ if (!user) {
   redirect(controller:'todo')
 }	
 }}}
-1. The below code:
+ 1. The below code:
 {{{
 if (session.user.id != params.id) {
 }}}
@@ -84,7 +82,7 @@ should be:
 {{{
 if (session.user.id != params.id.toInteger()) {
 }}}
-1. The recommended entry in UrlMappings.groovy for REST is:
+ 1. The recommended entry in UrlMappings.groovy for REST is:
 {{{
 "/$rest/$controller/$id?"{
 }}}
