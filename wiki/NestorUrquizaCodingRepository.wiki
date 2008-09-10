@@ -98,7 +98,7 @@ There are some erratas I have reported which I am including here anyway:
   
 I did not play with Jasper Reports from Chapter 10 neither Quartz Batch processing from Chapter 11. So far there is no code reflecting that chapter in this repository.
 
-Finally the book does not mention Maven and instead guides the developer through the use of GANT. Using ANT or for groovy GANT has several disadvantages in comparison to Maven but the one that worries me the most is the dependency management. By the time of the book writting and even as of today (09/10/2008) Maven faces some challenges to support Grails project. The most important part for me is that developers shouldn't be forced to commit jar files (dependencies) into SVN and Maven provides a clean solution for it.
+Finally the book does not mention Maven and instead guides the developer through the use of GANT. Using ANT or for groovy GANT has several disadvantages in comparison to Maven http://graemerocher.blogspot.com/2008/01/why-grails-doesnt-use-maven.html but the one that worries me the most is the dependency management. By the time of the book writting and even as of today (09/10/2008) Maven faces some challenges to support Grails project. The most important part for me is that developers shouldn't be forced to commit jar files (dependencies) into SVN and Maven provides a clean solution for it.
 
 Disclaimer: I am not hosting the source code that comes with the book but instead I am just reading the book and while making changes to the code I keep updating it on SVN so I can check out in different machines. If this action is illegal by any means please send me an email and I will remove the project.
 
