@@ -1,0 +1,3 @@
+appserver.home=C:\\jboss-4.0.4.GA\\server\\default
+appserver.lib=${appserver.home}\\lib
+application.war=himustutorial
