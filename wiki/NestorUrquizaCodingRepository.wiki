@@ -150,6 +150,18 @@ This is a quick, straight and very useful beginner tutorial that can be found at
 
 I have posted in the original URL my suggestions and the code presented in this repository (http://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/) have been built from the instructions and the posts there. It is not a copy of the archived code version posted in the original website.
 
+=== svn ===
+Here is what I did to commit files to svn:
+{{{
+cd mhimustutorial
+svn co "https://nestorurquiza.googlecode.com/svn/trunk/mhimustutorial/"
+svn propset svn:ignore "classes" webapp/WEB-INF
+svn propset svn:ignore -R *.bak .
+svn propset svn:ignore *.war .
+svn add *
+svn commit -m "First commit"
+}}}
+ 
 == himustutorial ==
 Again, another useful tutorial for beginners that can be found at http://mhimu.wordpress.com/2007/11/27/spring-mvc-tutorial/
 
