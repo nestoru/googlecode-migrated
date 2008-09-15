@@ -10,6 +10,7 @@ public class LoanCalcController extends SimpleFormController
    protected void doSubmitAction(Object o) throws Exception  
    {  
        LoanInfo li = (LoanInfo) o;  
+       
  
        double P = li.getPrincipal();  
        double i = li.getApr() / (li.getPeriodPerYear() * 100.0);  
