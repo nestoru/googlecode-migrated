@@ -140,3 +140,17 @@ I have worked for development using MySQL instead of HSQLDB:
  create database collab_todo_dev 
  }}}
  
+= SpringMVC =
+ While Grails does a wonderful job trying to vreate a DSL for WEB development on top of Spring Framework by the time of this writting it is tough to get all the pieces (edition, syntax highlighting, autocompletion, debugging) in just one IDE. On top of that for existing projects where someone wants to create a migration path to existing applications and the whole rearchitecture of them is prohibited Spring comes to your rescue.
+
+ I have followed some tutorials and I am including here the code for the only purpose of keeping track of what I have done and be able to recreate the projects in any of my three development environments (Mac, Windows and Ubuntu)
+
+== fasttutorial ==
+This is a quick, straight and very useful beginner tutorial that can be found at http://maestric.com/en/doc/java/spring
+
+I have posted in the original URL my suggestions and the code presented in this repository (http://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/) have been built from the instructions and the posts there. It is not a copy of the archived code version posted in the original website.
+
+== himustutorial ==
+Again, another useful tutorial for beginners that can be found at http://mhimu.wordpress.com/2007/11/27/spring-mvc-tutorial/
+
+I have posted in the original URL my suggestions and the code presented in this repository (http://nestorurquiza.googlecode.com/svn/trunk/mhimustutorial) have been built from the instructions and the posts there. It is not a copy of the archived code version posted in the original website.
