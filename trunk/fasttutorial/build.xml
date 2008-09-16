@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." default="build">
- 
+<project basedir="." default="build"> 
   <property file="build.properties"/>
   <property name="src.dir" value="src"/>
   <property name="build.dir" value="WEB-INF/classes"/>
