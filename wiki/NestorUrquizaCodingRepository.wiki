@@ -156,15 +156,15 @@ Here is what I did to commit files to svn:
 svn mkdir -m "creating project" "https://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/"
 svn co "https://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/"
 cd fasttutorial
+rm WEB-INF/classes
+find . -name "*.bak"|xargs rm
+rm *.war
 svn add *
-svn --force rm WEB-INF/classes
-find . -name "*.bak"|xargs svn --force rm
-svn --force rm *.war
+svn commit -m "First commit"
 svn propset svn:ignore "classes" WEB-INF
 svn propset svn:ignore -R *.bak .
 svn propset svn:ignore *.war .
-
-svn commit -m "First commit"
+svn commit -m "svn:ignore commit"
 }}}
  
 == mhimustutorial ==
