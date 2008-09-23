@@ -14,7 +14,7 @@ The last is available starting from Spring 2.5 and is about Configuration by ann
 
 This is my attempt to use third one as I am looking for Connection over Configuration. However as I have posted ( http://forum.springframework.org/showthread.php?t=60718 ) there is IMO a pitfall with the current implementation of ControllerClassNameHandlerMapping. Basically even though the routing can be configured to be done following conventions, controllers must be still annotated.
 
-If you already went through the previously mentioned tutorials you are ready to understand the attached source code. 
+If you already went through the previously mentioned tutorials you are ready to understand the code you can find at http://nestorurquiza.googlecode.com/svn/trunk/coctutorial/. 
 
 Assumming you have been using some other framework or basic Servlet + JSP you will love to be able to introduce Spring MVC without affecting your current application. In order to do so we use the below in web.xml:
 {{{
