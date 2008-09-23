@@ -66,6 +66,8 @@ http://localhost:8080/coctutorial/spring/greeting/hi
 
 The first one is a simple JSP file that is rendered without using SpringMVC. The last two URLs show Spring MVC "Convention Over Configuration" using a combination of Annotations (there is no way to get rid of it as for the time of this writing) and ControllerClassNameHandlerMapping.
 
+Note that in my case I deployed a WAR file and the requests are contextualized to 'coctutorial'.
+
 
 
  
