@@ -60,7 +60,7 @@ Take a look at coctutorial-servlet.xml. As you see below the above class will be
     </bean>
 }}}
 
-After running Ant in the root directpry a war file will result which you can drop in a Servlet Container like Tomcat. Once you do so you should be able to request the below URLs:
+After running Ant in the root directory a war file will result which you can drop in a Servlet Container like Tomcat. Once you do so you should be able to request the below URLs:
 {{{
 http://localhost:8080/coctutorial/
 http://localhost:8080/coctutorial/spring/greeting/hello
