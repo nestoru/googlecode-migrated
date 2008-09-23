@@ -1,4 +1,0 @@
-class SecureController {
-
-    def index = { }
-}
