@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd"> 
+    
+    <!-- 
+      Define Annotation-based mapping. 
+      This is still needed when using ControllerClassNameHandlerMapping 
+      if you want to omit declaring a bean per controller. Remember to annotate your controller
+      using @Controller
+    -->    
+    <context:component-scan base-package="com.nestorurquiza.spring.mvc.web"/>
+    
+    <!-- Define Convention Over Configuration Mapping -->
+    <bean id="urlMapping"  class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+      <property name="caseSensitive" value="true"/>  
+      <property name="order" value="0" />
+      <property name="pathPrefix" value="/"/>
+      <property name="basePackage" value="com.nestorurquiza.spring.mvc.web"/>
+    </bean>
+    
+    <!-- The below is needed if you do not define Annotation-based mapping -->
+    <!-- bean id="greetingController"   class="com.nestorurquiza.spring.mvc.web.GreetingController"/ -->
+    
+    <!-- Resolves view names for views returned by controllers -->
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans> 
