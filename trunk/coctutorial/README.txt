@@ -1,0 +1,73 @@
+= CoC or Convention over Configuration in Spring MVC Framework =
+There are currently four URL-to-controller mapping mechanisms supported in SpringMVC:
+{{{
+org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping
+org.springframework.web.servlet.handler.SimpleUrlHandlerMapping
+org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping
+Annotation-based mapping
+}}}
+
+The first one is the default mapping and it is explained in other beginner tutorials like http://maestric.com/en/doc/java/spring. In the official Spring distribution there is another useful tutorial using this mapping approach (file://${spring-root}/docs/MVC-step-by-step)
+The second one allows for mapping of specific URls to controllers independent of the existence or not of specific beans. It has been covered in tutorials like http://mhimu.wordpress.com/2007/11/27/spring-mvc-tutorial/. In the official Spring distribution there is a sample application that uses this mapping technique (file://${spring-root}/samples/jpetstore)
+The third one (only available in Spring 2.0 and up) while explained in several places is I think lacking still of a do-it-yourself example. 
+The last is available starting from Spring 2.5 and is about Configuration by annotations. In the official Spring distribution there is a sample application that uses this mapping technique (file://${spring-root}/samples/petclinic)
+
+This is my attempt to use third one as I am looking for Connection over Configuration. However as I have posted ( http://forum.springframework.org/showthread.php?t=60718 ) there is IMO a pitfall with the current implementation of ControllerClassNameHandlerMapping. Basically even though the routing can be configured to be done following conventions, controllers must be still annotated.
+
+If you already went through the previously mentioned tutorials you are ready to understand the attached source code. 
+
+Assumming you have been using some other framework or basic Servlet + JSP you will love to be able to introduce Spring MVC without affecting your current application. In order to do so we use the below in web.xml:
+{{{
+  <servlet>  
+    <description>Spring MVC Dispatcher Servlet</description>  
+    <servlet-name>coctutorial</servlet-name>  
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>coctutorial</servlet-name>  
+    <url-pattern>/spring/*</url-pattern>  
+  </servlet-mapping>
+}}}
+
+The important part is 'url-pattern' which specifies urls starting with "/spring" will be managed by Spring.
+
+Below is the annotation needed in com.nestorurquiza.spring.mvc.web.GreetingController controller. That will make the class automatically recognized as a valid Controller:
+{{{
+@Controller
+public class GreetingController extends MultiActionController{
+}}}
+
+Take a look at coctutorial-servlet.xml. As you see below the above class will be found if it is in the base-package defined below.
+{{{
+    <!-- 
+      Define Annotation-based mapping. 
+      This is still needed when using ControllerClassNameHandlerMapping 
+      if you want to omit declaring a bean per controller. Remember to annotate your controller
+      using @Controller
+    -->    
+    <context:component-scan base-package="com.nestorurquiza.spring.mvc.controller"/>
+    
+    <!-- Define Convention Over Configuration Mapping -->
+    <bean id="urlMapping"  class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+      <property name="caseSensitive" value="true"/>  
+      <property name="order" value="0" />
+      <property name="pathPrefix" value="/"/>
+      <property name="basePackage" value="com.nestorurquiza.spring.mvc.web"/>
+    </bean>
+}}}
+
+After running Ant in the root directpry a war file will result which you can drop in a Servlet Container like Tomcat. Once you do so you should be able to request the below URLs:
+{{{
+http://localhost:8080/coctutorial/
+http://localhost:8080/coctutorial/spring/greeting/hello
+http://localhost:8080/coctutorial/spring/greeting/hi
+}}}
+
+The first one is a simple JSP file that is rendered without using SpringMVC. The last two URLs show Spring MVC "Convention Over Configuration" using a combination of Annotations (there is no way to get rid of it as for the time of this writing) and ControllerClassNameHandlerMapping.
+
+
+
+ 
+
+
