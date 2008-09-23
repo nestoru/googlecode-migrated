@@ -1,6 +1,6 @@
 = Web Development =
 
-After several years of programming for the Web I am still looking for the ideal WEB framework ;-) I even built my own one (http://thinkinginsoftware.blogspot.com/). Currently I am testing Rails and Grails.
+After several years of programming for the Web I am still looking for the ideal WEB framework ;-) I even built my own one (http://thinkinginsoftware.blogspot.com/). Currently I am testing Spring Framework, Rails and Grails.
 
 
 = Grails =
@@ -9,7 +9,7 @@ No much to be said. The WEB is plenty of information and Google is your friend b
 To check in Grails projects into svn read this article http://docs.codehaus.org/display/GRAILS/Checking+Projects+into+SVN
 
 == collab-todo ==
-Maintained in http://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
+I have started with "Beginning Groovy and Grails: From Novice to Professional" which you can buy in http://www.amazon.com/gp/product/1430210451/ref=cm_rdp_product. While learning from this book I have been playing with vim, cream and groovy Eclipse plugin so far. Debugging has been a challenge BTW (http://jira.codehaus.org/browse/GROOVY-2208)
 
 === Application code ===
 For the Authentication chapter (7) I found explanations incomplete basically but thanks to that I was forced to play and learn about Spring Security (aka Acegi). I recommend to  follow directions from http://docs.codehaus.org/display/GRAILS/AcegiSecurity+Plugin+-+Basic+Tutorial configuring request maps from SecurityConfig.groovy
@@ -102,23 +102,6 @@ Finally the book does not mention Maven and instead guides the developer through
 
 Disclaimer: I am not hosting the source code that comes with the book but instead I am just reading the book and while making changes to the code I keep updating it on SVN so I can check out in different machines. If this action is illegal by any means please send me an email and I will remove the project.
 
-=== svn ===
- Here is how I have checked in:
- {{{
- cd collab-todo
- svn checkout https://nestorurquiza.googlecode.com/svn/trunk/collab-todo/ .
- svn add *
- svn propset svn:ignore "bin-groovy" .
- svn propset svn:ignore "stacktrace.log" .
- svn propset svn:ignore "classes" web-app/WEB-INF
- svn commit -m "First commit"
- }}}
- Since I am using 'junction' in Windows to create symlinks and 'bin-groovy' points to WEB-INF/classes I had to repeat some of the commands:
- {{{
- svn add web-app/WEB-INF/*
- svn commit -m "First commit"
- }}}
-
 === mysql ===
 I have worked for development using MySQL instead of HSQLDB:
  1. Download the driver from http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.6.tar.gz/from/pick#mirrors and put the jar file (mysql-connector-java-5.1.6-bin.jar) it in the Grails lib folder.
@@ -147,40 +130,9 @@ I have worked for development using MySQL instead of HSQLDB:
 
 == fasttutorial ==
 This is a quick, straight and very useful beginner tutorial that can be found at http://maestric.com/en/doc/java/spring
-
-I have posted in the original URL my suggestions and the code presented in this repository (http://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/) have been built from the instructions and the posts there. It is not a copy of the archived code version posted in the original website.
-
-=== svn ===
-Here is what I did to commit files to svn:
-{{{
-svn mkdir -m "creating project" "https://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/"
-svn co "https://nestorurquiza.googlecode.com/svn/trunk/fasttutorial/"
-cd fasttutorial
-rm WEB-INF/classes
-find . -name "*.bak"|xargs rm
-rm *.war
-svn add *
-svn commit -m "First commit"
-svn propset svn:ignore "classes" WEB-INF
-svn propset svn:ignore -R *.bak .
-svn propset svn:ignore *.war .
-svn commit -m "svn:ignore commit"
-}}}
  
 == mhimustutorial ==
 Again, another useful tutorial for beginners that can be found at http://mhimu.wordpress.com/2007/11/27/spring-mvc-tutorial/
 
-I have posted in the original URL my suggestions and the code presented in this repository (http://nestorurquiza.googlecode.com/svn/trunk/mhimustutorial) have been built from the instructions and the posts there. It is not a copy of the archived code version posted in the original website.
-
-=== svn ===
-Here is what I did to commit files to svn:
-{{{
-svn mkdir -m "creating project" "https://nestorurquiza.googlecode.com/svn/trunk/mhimustutorial/"
-svn co "https://nestorurquiza.googlecode.com/svn/trunk/mhimustutorial/"
-cd mhimustutorial
-svn add *
-svn propset svn:ignore "classes" webapp/WEB-INF
-svn propset svn:ignore -R *.bak .
-svn propset svn:ignore *.war .
-svn commit -m "First commit"
-}}}
+== coctutorial ==
+I have decided to document the Convention Over Configuartion (CoC) solution SpringMVC currently provides. The post can be found at () and as pointed out there the source code is available from http://nestorurquiza.googlecode.com/svn/trunk/coctutorial/
