@@ -8,8 +8,11 @@ Annotation-based mapping
 }}}
 
 The first one is the default mapping and it is explained in other beginner tutorials like http://maestric.com/en/doc/java/spring. In the official Spring distribution there is another useful tutorial using this mapping approach (file://${spring-root}/docs/MVC-step-by-step)
+
 The second one allows for mapping of specific URls to controllers independent of the existence or not of specific beans. It has been covered in tutorials like http://mhimu.wordpress.com/2007/11/27/spring-mvc-tutorial/. In the official Spring distribution there is a sample application that uses this mapping technique (file://${spring-root}/samples/jpetstore)
+
 The third one (only available in Spring 2.0 and up) while explained in several places is I think lacking still of a do-it-yourself example. 
+
 The last is available starting from Spring 2.5 and is about Configuration by annotations. In the official Spring distribution there is a sample application that uses this mapping technique (file://${spring-root}/samples/petclinic)
 
 This is my attempt to use third one as I am looking for Convention over Configuration (CoC). However as I have posted ( http://forum.springframework.org/showthread.php?t=60718 ) there is IMO a pitfall with the current implementation of ControllerClassNameHandlerMapping. Basically even though the routing can be configured to be done following conventions, controllers must be still annotated.
