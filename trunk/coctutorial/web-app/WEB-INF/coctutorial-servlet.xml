@@ -34,4 +34,10 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+      <property name="basename">
+        <value>messages</value>
+      </property>
+    </bean>
 </beans> 
