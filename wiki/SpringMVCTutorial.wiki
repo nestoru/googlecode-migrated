@@ -70,3 +70,52 @@ http://localhost:8080/coctutorial/spring/greeting/hi
 The first one is a simple JSP file that is rendered without using SpringMVC. The last two URLs show Spring MVC "Convention Over Configuration" using a combination of Annotations (there is no way to get rid of it as for the time of this writing) and ControllerClassNameHandlerMapping.
 
 Note that in my case I deployed a WAR file and the requests are contextualized to 'coctutorial'.
+
+= Internationalization (i18n) =
+Basic and advanced Internationalization support can be accomplished several ways. Below is an example of basic one based on Browser sent HTTP Header "Accept-Language". Read the documentation to add for example Cookie support so a user can change her locale and that way ignore the supplied by the Browser locale.
+
+First add the below bean definition in the application context xml file:
+{{{
+<!-- Resolves i18n messages from files of the form messages_<lowerCaseLanguageAbbreviation>_<upperCaseCountryAbbreviation -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+      <property name="basename">
+        <value>messages</value>
+      </property>
+    </bean>
+}}}
+Then proceed including all files you will need per locale (language+country). Be sure they end up in the application root. The first file below has the lowest priority and will be parsed if no specific locale is found.
+{{{
+messages.properties        
+messages_en_US.properties
+messages_en_GB.properties  
+messages_es_ES.properties
+....
+}}}
+Edit the above files like in:
+{{{
+greeting.hello=Hello Pal
+greeting.hi=Hi Pal
+}}}
+And use the internationalized messages in your Controller code like:
+{{{
+  private String findLocaleGreeting(HttpServletRequest request, String greetingI18n){
+    ApplicationContext applicationContext = this.getApplicationContext();  
+    RequestContext requestContext = new RequestContext(request);
+    Locale myLocale = requestContext.getLocale();
+    if(myLocale == null)
+      myLocale = Locale.US;
+    String greeting = applicationContext.getMessage(greetingI18n, null, myLocale); 
+    return greeting;
+  }
+}}}
+I have included in this tutorial a controller called LocaleGreetingController. You can test it using "curl" simulating that way different browser "Accept-Language" headers:
+{{{
+curl --header "Accept-Language: en-gb" "http://localhost:8080/coctutorial/spring/localeGreeting/hello"
+Hello Mate !!!
+curl --header "Accept-Language: en-us" "http://localhost:8080/coctutorial/spring/localeGreeting/hello"
+Hello Pal !!!
+curl --header "Accept-Language: es-es" "http://localhost:8080/coctutorial/spring/localeGreeting/hello"
+Hola !!!
+curl --header "Accept-Language: en-gb" "http://localhost:8080/coctutorial/spring/localeGreeting/hi
+Hi Mate !!!
+}}}
