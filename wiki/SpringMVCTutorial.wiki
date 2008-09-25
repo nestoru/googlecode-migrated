@@ -116,6 +116,6 @@ curl --header "Accept-Language: en-us" "http://localhost:8080/coctutorial/spring
 Hello Pal !!!
 curl --header "Accept-Language: es-es" "http://localhost:8080/coctutorial/spring/localeGreeting/hello"
 Hola !!!
-curl --header "Accept-Language: en-gb" "http://localhost:8080/coctutorial/spring/localeGreeting/hi
+curl --header "Accept-Language: en-gb" "http://localhost:8080/coctutorial/spring/localeGreeting/hi"
 Hi Mate !!!
 }}}
