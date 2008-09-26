@@ -119,3 +119,14 @@ Hola !!!
 curl --header "Accept-Language: en-gb" "http://localhost:8080/coctutorial/spring/localeGreeting/hi"
 Hi Mate !!!
 }}}
+= Serving static pages =
+Static pages should be served out of the Spring concern. In fact it is a good practice to have a Web Server like Apache serving static content instead of your application server or servlet container.
+I have included an example of a page that is served directly without Spring intervention:
+{{{
+http://localhost:8080/coctutorial/static.html
+}}}
+= Serving plain old JSP/Servlets =
+As long as the mapping does not apply your Servlet/JSP will work as expected. Spring is not invasive. i have included a JSP page to show this:
+{{{
+http://localhost:8080/coctutorial/index.jsp
+}}}
