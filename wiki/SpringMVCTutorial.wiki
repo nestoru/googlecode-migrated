@@ -130,3 +130,25 @@ As long as the mapping does not apply your Servlet/JSP will work as expected. Sp
 {{{
 http://localhost:8080/coctutorial/index.jsp
 }}}
+= XSS vulnerability protection =
+If you do not escape the HTTP request parameters you are taking a risk of XSS attack. You can find several XSS vulnerabilities examples at http://ha.ckers.org/xss.html.
+
+How can we use a general method to protect a Spring application against XSS attacks?
+Either using JSTL's <c:out> or plain scriptlets you will need to deal with this problem. Unfortunately XSS protection is not provided out of the box in Spring MVC. Once could think about using Aspects for this but I do think this task is better for a filter. I came across the Stripes project http://mc4j.org/confluence/pages/viewpage.action?pageId=2593 and the HTMLInputFilter http://josephoconnell.com/java/xss-html-filter/ which is actually  a port from PHP (http://code.iamcal.com/php/lib_filter/). Combining them I have added XSS protection.
+
+Try commenting out the below snippet from web.xml:
+{{{
+<filter>
+  <filter-name>XSSFilter</filter-name>
+  <filter-class>XSSFilter</filter-class>
+</filter>   
+<filter-mapping>
+  <filter-name>XSSFilter</filter-name>
+  <url-pattern>/*</url-pattern>		
+</filter-mapping>
+}}}
+And then you will see how the below URL shows and vulnerability.
+{{{
+http://localhost:8080/coctutorial/spring/params/write?par=XssAttack%3CSCRIPT%3Ealert(String.fromCharCode(88,83,83))%3C/SCRIPT%3E
+}}}
+Uncomment back the web.xml vulnerability and the whole site is now protected.
