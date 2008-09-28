@@ -138,17 +138,18 @@ Either using JSTL's <c:out> or plain scriptlets you will need to deal with this 
 
 Try commenting out the below snippet from web.xml:
 {{{
-<filter>
-  <filter-name>XSSFilter</filter-name>
-  <filter-class>XSSFilter</filter-class>
-</filter>   
-<filter-mapping>
-  <filter-name>XSSFilter</filter-name>
-  <url-pattern>/*</url-pattern>		
-</filter-mapping>
+<!-- Avoiding XSS -->
+  <filter>
+    <filter-name>XssFilter</filter-name>
+    <filter-class>com.nestorurquiza.filters.XssFilter</filter-class>
+  </filter>   
+  <filter-mapping>
+    <filter-name>XssFilter</filter-name>
+    <url-pattern>/*</url-pattern>		
+  </filter-mapping>
 }}}
-And then you will see how the below URL shows and vulnerability.
+And then you will see how the below URL shows XSS vulnerability.
 {{{
 http://localhost:8080/coctutorial/spring/params/write?par=XssAttack%3CSCRIPT%3Ealert(String.fromCharCode(88,83,83))%3C/SCRIPT%3E
 }}}
-Uncomment back the web.xml vulnerability and the whole site is now protected.
+Uncomment it back and the whole site is now protected agins XSS attacks.
