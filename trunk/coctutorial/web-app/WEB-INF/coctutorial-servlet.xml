@@ -34,10 +34,11 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    
+   
+    <!-- Resolves i18n messages from files of the form "message_lowerCaseLanguageAbbreviation_upperCaseCountryAbbreviation"  -->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
       <property name="basename">
         <value>messages</value>
       </property>
     </bean>
-</beans> 
+</beans>

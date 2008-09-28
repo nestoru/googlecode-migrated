@@ -15,5 +15,15 @@
   <servlet-mapping>  
     <servlet-name>coctutorial</servlet-name>  
     <url-pattern>/spring/*</url-pattern>  
-  </servlet-mapping>     
+  </servlet-mapping>  
+  
+  <!-- Avoiding XSS -->
+  <filter>
+    <filter-name>XssFilter</filter-name>
+    <filter-class>com.nestorurquiza.filters.XssFilter</filter-class>
+  </filter>   
+  <filter-mapping>
+		<filter-name>XssFilter</filter-name>
+		<url-pattern>/*</url-pattern>		
+	</filter-mapping>
 </web-app> 

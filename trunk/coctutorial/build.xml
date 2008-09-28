@@ -4,7 +4,7 @@
   <property file="build.properties"/>
   <property name="src.dir" value="src"/>
   <property name="build.dir" value="${application.webapp}/WEB-INF/classes"/>
- 
+  
   <path id="build.classpath">
       <fileset dir="${application.webapp}/WEB-INF/lib">
           <include name="*.jar"/>
@@ -26,6 +26,7 @@
       <javac destdir="${build.dir}" source="1.5" target="1.5" debug="true" deprecation="false" optimize="false" failonerror="true">
           <src path="${src.dir}"/>
           <classpath refid="build.classpath"/>
+          <compilerarg value="-Xlint:unchecked"/>
       </javac>
   </target>
  
