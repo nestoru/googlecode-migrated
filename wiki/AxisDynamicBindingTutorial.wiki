@@ -45,7 +45,7 @@ mkdir $CLIENTBUILDPATH
 cp "axis-1_4/webapps/axis" "$JBOSS_DEPLOY/axis.war" 
 }}}
 3. Get the sources for this tutorial from SVN.
-
+  http://nestorurquiza.googlecode.com/svn/trunk/axis-dynamic-binding/dynamicws/
 4. Compile sources
 {{{
 javac -g $SOURCEPATH/com/nestorurquiza/ws/axis/service/DynamicServiceSampleImpl.java -sourcepath $SOURCEPATH -d $BINPATH
