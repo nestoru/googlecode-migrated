@@ -20,7 +20,8 @@ The steps below should show clearly enough how a static stub generated via Java2
 
 = The solution =
 1. Prepare environment:
-  JBOSS_HOME="/usr/local/jboss-4.0.4.GA/server/default"
+{{{
+JBOSS_HOME="/usr/local/jboss-4.0.4.GA/server/default"
 JBOSS_DEPLOY="$JBOSS_HOME/deploy"
 JBOSS_LIB="$JBOSS_HOME/lib"
 AXIS_LIB="/home/nurquiza/Desktop/axis-1_4/lib"
@@ -38,7 +39,7 @@ mkdir $BINPATH
 mkdir $CLIENTBINPATH
 mkdir $BUILDPATH
 mkdir $CLIENTBUILDPATH
-
+}}}
 2. Install Axis in JBoss. Just download axis-1_4.zip, uncompress and:
 cp "axis-1_4/webapps/axis" "$JBOSS_DEPLOY/axis.war" 
 
