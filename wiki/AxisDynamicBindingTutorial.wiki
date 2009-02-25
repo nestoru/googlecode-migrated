@@ -20,7 +20,7 @@ The steps below should show clearly enough how a static stub generated via Java2
 
 = The solution =
 1. Prepare environment:
-JBOSS_HOME="/usr/local/jboss-4.0.4.GA/server/default"
+  JBOSS_HOME="/usr/local/jboss-4.0.4.GA/server/default"
 JBOSS_DEPLOY="$JBOSS_HOME/deploy"
 JBOSS_LIB="$JBOSS_HOME/lib"
 AXIS_LIB="/home/nurquiza/Desktop/axis-1_4/lib"
@@ -56,10 +56,8 @@ java -cp $CLASSPATH org.apache.axis.wsdl.WSDL2Java -o $BUILDPATH -d Application 
 cp $SOURCEPATH/com/nestorurquiza/ws/axis/service/Person.java $BUILDPATH/com/nestorurquiza/ws/axis/service/
 
 7. Change from $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd
-   <parameter name="className" value="com.nestorurquiza.ws.axis.service.DynamicServiceSampleSoapBindingSkeleton"/>
-   by
-   <parameter name="className" value="com.nestorurquiza.ws.axis.service.DynamicServiceSampleImpl"/>
-   
+   sed -i 's/DynamicServiceSampleSoapBindingSkeleton/DynamicServiceSampleImpl/g' $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd 
+
 8. Deploy the service (undeploy first just in case it exists)
 cp -r $BINPATH/com $JBOSS_AXIS_CLASSES
 java -cp $CLASSPATH org.apache.axis.client.AdminClient $BUILDPATH/com/nestorurquiza/ws/axis/service/undeploy.wsdd
