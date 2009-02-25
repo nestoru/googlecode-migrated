@@ -41,52 +41,62 @@ mkdir $BUILDPATH
 mkdir $CLIENTBUILDPATH
 }}}
 2. Install Axis in JBoss. Just download axis-1_4.zip, uncompress and:
+{{{
 cp "axis-1_4/webapps/axis" "$JBOSS_DEPLOY/axis.war" 
-
+}}}
 3. Get the sources for this tutorial from SVN.
 
 4. Compile sources
+{{{
 javac -g $SOURCEPATH/com/nestorurquiza/ws/axis/service/DynamicServiceSampleImpl.java -sourcepath $SOURCEPATH -d $BINPATH
-
+}}}
 5. Create the wsdl file
+{{{
 java -cp $CLASSPATH:$BINPATH org.apache.axis.wsdl.Java2WSDL -i com.nestorurquiza.ws.axis.service.DynamicServiceSampleImpl -o $BUILDPATH/DynamicServiceSample.wsdl -l "http://localhost:8080/axis/services/DynamicServiceSample" -n "urn:DynamicServiceSample" -p"com.nestorurquiza.ws.axis.service" "urn:DynamicServiceSample" com.nestorurquiza.ws.axis.service.DynamicServiceSample
-
+}}}
 6. Create client stubs and  deploy/undeploy descriptor (wsdd files). Replace Person.java stub with  with the original since the stubs change the scope of public members to private. We need them to be public to use the class later for the dynamic proxy approach.
+{{{
 rm -R $BUILDPATH/com
 java -cp $CLASSPATH org.apache.axis.wsdl.WSDL2Java -o $BUILDPATH -d Application -s -S true -Nurn:DynamicServiceSample com.nestorurquiza.ws.axis.service $BUILDPATH/DynamicServiceSample.wsdl
 cp $SOURCEPATH/com/nestorurquiza/ws/axis/service/Person.java $BUILDPATH/com/nestorurquiza/ws/axis/service/
-
-7. Change from $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd
-   sed -i 's/DynamicServiceSampleSoapBindingSkeleton/DynamicServiceSampleImpl/g' $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd 
-
+}}}
+7. Change $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd
+{{{
+sed -i 's/DynamicServiceSampleSoapBindingSkeleton/DynamicServiceSampleImpl/g' $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd 
+}}}
 8. Deploy the service (undeploy first just in case it exists)
+{{{
 cp -r $BINPATH/com $JBOSS_AXIS_CLASSES
 java -cp $CLASSPATH org.apache.axis.client.AdminClient $BUILDPATH/com/nestorurquiza/ws/axis/service/undeploy.wsdd
 java -cp $CLASSPATH org.apache.axis.client.AdminClient $BUILDPATH/com/nestorurquiza/ws/axis/service/deploy.wsdd
 touch "$JBOSS_AXIS_DEPLOY/WEB-INF/web.xml"
-
+}}}
 9. Write the client DynamicServiceClient. Build it using its own copy of stubs.
+{{{
 cp -r $BUILDPATH/com $CLIENTBUILDPATH
 javac -cp $CLASSPATH $SOURCEPATH/com/nestorurquiza/ws/axis/client/DynamicServiceClient.java -sourcepath $CLIENTBUILDPATH -d $CLIENTBINPATH
-
-10. Now let us create another client using a dynamic proxy technik to generate the stubs at runtime. So we create our new client and build both.:
+}}}
+10. Now let us create another client using a dynamic proxy technik to generate the stubs at runtime. So we create our new client and build both:
+{{{
 javac -cp $CLASSPATH $SOURCEPATH/com/nestorurquiza/ws/axis/client/*.java -sourcepath $CLIENTBUILDPATH -d $CLIENTBINPATH
-
+}}}
 11. Run the static stub client:
+{{{
 java -cp $CLASSPATH:$CLIENTBINPATH com.nestorurquiza.ws.axis.client.DynamicServiceClient
-
+}}}
 12. Run the dynamic proxy client:
+{{{
 java -cp $CLASSPATH:$CLIENTBINPATH com.nestorurquiza.ws.axis.client.DynamicServiceProxyClient
-
+}}}
 You should get for both cases:
-Response from DynamicServiceSample#getPerson()#getFirstName(): Fred
+  Response from DynamicServiceSample#getPerson()#getFirstName(): Fred
 
 13. Let us add a new member 'address' for 'Person' class. 
 
 14. Repeat from 4 to 8. Do not run 9 and 10. We want to use the same clients compiled when the webservice was not managing Person#address.
 
-15. Run the clients again (11 and 12) As you see the first request fails with:
-org.xml.sax.SAXException: Invalid element in com.nestorurquiza.ws.axis.service.Person - address
+15. Run the clients again (11 and 12) As you see the first request fails this time with:
+  org.xml.sax.SAXException: Invalid element in com.nestorurquiza.ws.axis.service.Person - address
 
 = Useful Notes =
 * At any time you can test if the webservice is available:
