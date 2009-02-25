@@ -99,21 +99,25 @@ You should get for both cases:
   org.xml.sax.SAXException: Invalid element in com.nestorurquiza.ws.axis.service.Person - address
 
 = Useful Notes =
-* At any time you can test if the webservice is available:
-http://localhost:8080/axis then click on 'List' link 
-
-* If you want to clean generated classes just run:
-find $BINPATH -name "*.class"|xargs rm
-
-* To undeploy the web service use:
-java -cp $CLASSPATH org.apache.axis.client.AdminClient $BUILDPATH/com/nestorurquiza/ws/axis/service/undeploy.wsdd
-
-* To see TCP traffic and so all SOAP messages going back and forth use 'tcpmon' utility. You can change the client code to connect to port 8081 for example and then run:
-java -cp $CLASSPATH org.apache.axis.utils.tcpmon 8081 localhost 8080 &
-
-* To play with responses from services from the command prompt use one of the provided samples:
-axis-1_4/samples/client/DynamicInvoker.java ( java -cp $CLASSPATH:$CLIENTBINPATH com.nestorurquiza.ws.axis.client.DynamicInvoker "http://localhost:8080/axis/services/DynamicServiceSample?wsdl" getPerson  "Right Said Fred")
-
-* Look for custom serialization in the Axis User Guide.
-
-* Look for answers in axis-user mailing list
+ * At any time you can test if the webservice is available:
+   {{{
+   http://localhost:8080/axis then click on 'List' link 
+   }}}
+ * If you want to clean generated classes just run:
+   {{{
+   find $BINPATH -name "*.class"|xargs rm
+   }}}
+ * To undeploy the web service use:
+   {{{
+   java -cp $CLASSPATH org.apache.axis.client.AdminClient $BUILDPATH/com/nestorurquiza/ws/axis/service/undeploy.wsdd
+   }}}
+ * To see TCP traffic and so all SOAP messages going back and forth use 'tcpmon' utility. You can change the client code to connect to port 8081 for example and then run:
+   {{{
+   java -cp $CLASSPATH org.apache.axis.utils.tcpmon 8081 localhost 8080 &
+   }}}
+ * To play with responses from services from the command prompt use one of the provided samples (axis-1_4/samples/client/DynamicInvoker.java)
+   {{{
+   java -cp $CLASSPATH:$CLIENTBINPATH com.nestorurquiza.ws.axis.client.DynamicInvoker "http://localhost:8080/axis/services/DynamicServiceSample?wsdl" getPerson  "Right Said Fred")
+   }}}
+ * Look for custom serialization in the Axis User Guide.
+ * Look for answers in axis-user mailing list
