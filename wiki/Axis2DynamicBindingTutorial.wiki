@@ -32,7 +32,7 @@ com.nestorurquiza.ws.axis2.service.DynamicServiceSample
 com.nestorurquiza.ws.axis2.service.Person
 com.nestorurquiza.ws.axis2.service.Address
 }}} 
- Be sure Person#address and its accessors are commented out. Also all references to Address from DynamicServiceSample should be commented out. We want to uncomment them later to prove our client will not break if a new complex type is included as part of the response.
+  Be sure Person#address and its accessors are commented out. Also all references to Address from DynamicServiceSample should be commented out. We want to uncomment them later to prove our client will not break if a new complex type is included as part of the response.
  1. Copy the quickstartaxiom example as a scaffold for the new project, for example:
 {{{
 cp -r $AXIS2_HOME/samples/quickstartaxiom $SERVICE_PROJECT_HOME/service
