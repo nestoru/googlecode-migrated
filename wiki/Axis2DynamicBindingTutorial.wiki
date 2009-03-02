@@ -9,7 +9,7 @@ The second important class is org.apache.axis2.databinding.utils.BeanUtil which 
 
 I will use Tomcat (Jetty lacks of out of the box default hot deployment which would force me to use maven for a quick proof of concept) this time to host the web service. In order to install Axis2 in JBoss some modifications are needed specially because axis2.war includes commons-logging and log4j and JBoss is not happy when a WAR includes them (making the long story short). If you go for JBoss I will recommend using version 5 and above. As a side note I will be using Tomcat runnning on port 8085. So you might have to change the URLs below to reflect your Tomcat listening port.
 
-The whole source code is on SVN.
+The whole source code is accessible from http://nestorurquiza.googlecode.com/svn/trunk/axis2-dynamic-binding/
 
 
 = Details =
