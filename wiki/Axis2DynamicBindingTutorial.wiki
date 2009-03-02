@@ -32,7 +32,7 @@ com.nestorurquiza.ws.axis2.service.DynamicServiceSample
 com.nestorurquiza.ws.axis2.service.Person
 com.nestorurquiza.ws.axis2.service.Address
 }}} 
-Be sure Person#address and its accessors are commented out. Also all references to Address from DynamicServiceSample should be commented out. We want to uncomment them later to prove our client will not break if a new complex type is included as part of the response.
+ Be sure Person#address and its accessors are commented out. Also all references to Address from DynamicServiceSample should be commented out. We want to uncomment them later to prove our client will not break if a new complex type is included as part of the response.
  1. Copy the quickstartaxiom example as a scaffold for the new project, for example:
 {{{
 cp -r $AXIS2_HOME/samples/quickstartaxiom $SERVICE_PROJECT_HOME/service
@@ -213,40 +213,38 @@ http://localhost:8085/axis2/services/DynamicServiceSample/getPerson?userName=Rig
 }}}
  
 Next step is to build a client for which we will use the AXIOM method
-1. Copy server folder into client to use it as scaffolder. Remove  $CLIENT_PROJECT_HOME/resources folder from client. Remove everything below $CLIENT_PROJECT_HOME/build/classes/.
-1. Use the samples.quickstart.service.pojo.StockQuoteService sample class as scaffold to build the client (com.nestorurquiza.ws.axis2.client.DynamicServiceSampleClient). Our client service depends on Person POJO. Note this Person class is the same we used when building the service. They will be different though in next steps. It will never use the Address class, so our Client classes are:
+ 1. Copy server folder into client to use it as scaffolder. Remove  $CLIENT_PROJECT_HOME/resources folder from client. Remove everything below $CLIENT_PROJECT_HOME/build/classes/.
+ 1. Use the samples.quickstart.service.pojo.StockQuoteService sample class as scaffold to build the client (com.nestorurquiza.ws.axis2.client.DynamicServiceSampleClient). Our client service depends on Person POJO. Note this Person class is the same we used when building the service. They will be different though in next steps. It will never use the Address class, so our Client classes are:
 {{{
 com.nestorurquiza.ws.axis2.client.DynamicServiceSampleClient
 com.nestorurquiza.ws.axis2.service.Person
 }}}
-1.Run the client. The result is the firstName extracted from a 'Person' response that contains firstName and lastName:
+ 1.Run the client. The result is the firstName extracted from a 'Person' response that contains firstName and lastName:
 {{{
 cd $CLIENT_PROJECT_HOME
 ant run.client
 }}}
 
 Let us now modify the service
-1. Edit $SERVICE_PROJECT_HOME/com/nestorurquiza/ws/axis2/service/Person.java to include the Address field and accessors.
-2. Edit $SERVICE_PROJECT_HOME/comne/nestorurquiza/ws/axis2/service/DynamicServiceSample.java to include references to 'Address'.
-1. Build and deploy the service:
+ 1. Edit $SERVICE_PROJECT_HOME/com/nestorurquiza/ws/axis2/service/Person.java to include the Address field and accessors.
+ 1. Edit $SERVICE_PROJECT_HOME/comne/nestorurquiza/ws/axis2/service/DynamicServiceSample.java to include references to 'Address'.
+ 1. Build and deploy the service:
 {{{
 cd $SERVICE_PROJECT_HOME
 ant clean generate.service
 cp $SERVICE_PROJECT_HOME/build/DynamicServiceSample.aar $TOMCAT_HOME/webapps/axis2/WEB-INF/services
 }}}
-1. Test the web service. You will see firstName, lastName and address comming up.
+ 1. Test the web service. You will see firstName, lastName and address comming up.
 {{{
 http://localhost:8085/axis2/services/DynamicServiceSample/getPerson?userName=Right%20Said%20Fred
-}}}
-
-And now test the client again. 
-1. Run the below. The client should be still succesfully pulling the information we care about even though the web service is returning new information (Address) as well.
+}}} 
+ 1. Run the below. The client should be still succesfully pulling the information we care about even though the web service is returning new information (Address) as well.
 {{{
 cd $CLIENT_PROJECT_HOME
 ant run.client
 }}}
 
-Here are some of the advantages of using a Dynamic binding mechanism like in this case we do using straight AXIOM:
+Here are some of the advantages of using a Dynamic binding mechanism like in this case we do, using straight AXIOM:
 1. The service can return new nodes as part of the response without need of client recompilation.
 2. The client can add new members (for example middleName) even though the service does not supply a response including them.
 
