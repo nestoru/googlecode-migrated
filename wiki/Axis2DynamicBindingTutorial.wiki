@@ -245,8 +245,14 @@ ant run.client
 }}}
 
 Here are some of the advantages of using a Dynamic binding mechanism like in this case we do, using straight AXIOM:
-1. The service can return new nodes as part of the response without need of client recompilation.
-2. The client can add new members (for example middleName) even though the service does not supply a response including them.
+ 1. The service can return new nodes as part of the response without need of client recompilation.
+ 1. The client can add new members (for example middleName) even though the service does not supply a response including them.
+ 1. If you need just raw XML use the below:
+ {{{
+ String rawXML = result.getFirstElement().toString()
+ }}}
+ 1. You can always post process/parse the raw XML applying custom rules making even more dynamic the behavior of your clients.
+
 
 = References =
 http://ws.apache.org/axis2/1_4/quickstartguide.html
