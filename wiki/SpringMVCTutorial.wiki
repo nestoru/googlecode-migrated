@@ -153,3 +153,19 @@ And then you will see how the below URL shows XSS vulnerability.
 http://localhost:8080/coctutorial/spring/params/write?par=XssAttack%3CSCRIPT%3Ealert(String.fromCharCode(88,83,83))%3C/SCRIPT%3E
 }}}
 Uncomment it back and the whole site is now protected agins XSS attacks.
+
+= JSON Services =
+Say you want to use your Spring Controllers to expose JSON then you need to use a JSONView. The same will apply for other content types like XML. I have included a sample following guidelines from http://ffzhuang.blogspot.com/2008/03/spring-mvc-json-view.html
+So hit:
+{{{
+http://localhost:8080/coctutorial/spring/jsonParams/write?p1=foo&p2=bar&callback
+}}}
+You will get a JSON response 
+{{{
+({"callback":[""],"p1":["foo"],"p2":["bar"]});
+}}}
+= Deploying =
+The resulting WAR file (after running "ant clean;ant") has been tested in tomcat 6/5 and in JBoss 4.0.4. You will notice some specific configurations on build.properties and build.xml.
+
+= IDE =
+Files are provided for Eclipse using external dependencies to JBoss4.0.4 lib directory on a local Ubuntu Desktop. You might need to configure the project properties especially "Java Build Path"
