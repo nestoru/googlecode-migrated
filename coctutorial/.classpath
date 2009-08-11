@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/json-lib-2.2.3.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/spring-webmvc.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/spring.jar"/>
+	<classpathentry kind="lib" path="web-app/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="/usr/local/jboss-4.0.4.GA/server/default/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/usr/local/jboss-4.0.4.GA/server/default/lib/log4j.jar"/>
+	<classpathentry kind="lib" path="/usr/local/jboss-4.0.4.GA/server/default/lib/javax.servlet.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
