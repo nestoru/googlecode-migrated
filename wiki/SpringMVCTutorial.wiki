@@ -169,3 +169,6 @@ The resulting WAR file (after running "ant clean;ant") has been tested in tomcat
 
 = IDE =
 Files are provided for Eclipse using external dependencies to JBoss4.0.4 lib directory on a local Ubuntu Desktop. You might need to configure the project properties especially "Java Build Path"
+
+= Maven integration =
+See my Maven Tutorial hosted here at Goggle Code for information to migrate this tutorial to Maven.
