@@ -7,6 +7,8 @@ Configuration tutorial plus new behavior based on Spring Web Flow.
 I will show here how to migrate coctutorial project
 from Ant build to Maven build. I will use Maven for my upcoming tutorial to be hosted in a separate project called "spring-web-flow-tutorial".
 
+If you use Eclipse go ahead and install Maven plugin for it (Add site http://m2eclipse.sonatype.org/update/)
+
  1. Below is the struture of the non-maven project which uses Ant for building purposes:
 {{{
 |-- build.properties
