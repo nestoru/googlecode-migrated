@@ -7,8 +7,7 @@ Configuration tutorial plus new behavior based on Spring Web Flow.
 I will show here how to migrate coctutorial project
 from Ant build to Maven build. I will use Maven for my upcoming tutorial to be hosted in a separate project called "spring-web-flow-tutorial".
 
- 1. Below is the struture of the non-maven project which uses Ant for
-building purposes:
+ 1. Below is the struture of the non-maven project which uses Ant for building purposes:
 {{{
 |-- build.properties
 |-- build.xml
@@ -54,11 +53,8 @@ building purposes:
    |-- messages_es_ES.properties
    `-- static.html
 }}}
- 1. Maven has a predefined structure we must fill out with the above
-files. The target directory will be excluded with svn:ignore. There is
-where Maven builds the project and we want to store sources *only* on
-SVN.
-{{{
+ 1. Maven has a predefined structure we must fill out with the above files. The target directory will be excluded with svn:ignore. There is where Maven builds the project and we want to store sources *only* on SVN.
+ {{{
 |-- pom.xml
 |-- src
 |   |-- main
@@ -69,7 +65,7 @@ SVN.
 |       |-- java
 |       `-- resources
 `-- target
-}}}
+ }}}
  1. Let us refactor the project then:
 {{{
 rm build.properties
@@ -85,9 +81,7 @@ rm -fR web-app/
 rm -fR src/main/webapp/WEB-INF/lib/
 mv src/main/webapp/messages* src/main/resources/
 }}}
- 1. Now our maven project has the right structure. Note that anything
-you put in resources will end up in the classpath under classes
-folder:
+ 1. Now our maven project has the right structure. Note that anything you put in resources will end up in the classpath under classes folder:
 {{{
 .
 `-- src
@@ -129,18 +123,7 @@ folder:
        |-- java
        `-- resources
 }}}
- 1. It is time to create our project file (pom.xml) just in the root of
-the project. I am not concern at this point with deployment or
-releasing tasks. That might be subject of another tutorial. The
-important things about this project is that we are creating a
-MANIFEST.MF file with lot of valuable information about the project
-and that we are managing dependencies from repositories instead of
-using SVN to store binary jar files. It is a good idea to install your
-own repository server. I currently use Archiva for that purpose but in
-this project I am pointing directly to Spring repo. Note how we are
-satisfying the same dependencies we had before. It might be confusing
-we are including Spring Web Flow here even though we were not needing
-that before but the jar comes with both MVC + SWF classes.
+ 1. It is time to create our project file (pom.xml) just in the root of the project. I am not concern at this point with deployment or releasing tasks. That might be subject of another tutorial. The important things about this project is that we are creating a MANIFEST.MF file with lot of valuable information about the project and that we are managing dependencies from repositories instead of using SVN to store binary jar files. It is a good idea to install your own repository server. I currently use Archiva for that purpose but in this project I am pointing directly to Spring repo. Note how we are satisfying the same dependencies we had before. It might be confusing we are including Spring Web Flow here even though we were not needing that before but the jar comes with both MVC + SWF classes. Note the use of property jboss.deploy.dir from profiles dev-jboss-deploy and dev-jboss deploy-webapp. We will use them to agile deployment of the whole exploded WAR when there is java or webapp changes respectively.
 {{{
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -445,13 +428,7 @@ file="target/${pom.build.finalName}.war" />
  </properties>
 </project>
 }}}
-Note the use of property jboss.deploy.dir from profiles
-dev-jboss-deploy and dev-jboss-deploy-webapp. We will use them to
-agile deployment of the whole exploded WAR when there is java or
-webapp changes respectively.
- 1. If you use Eclipse you want to create now the necessary Eclipse
-project files which must be svn:ignore later. These files are hidden
-(.classpath, .settings, .project)
+ 1. If you use Eclipse you want to create now the necessary Eclipse project files which must be svn:ignore later. These files are hidden (.classpath, .settings, .project)
 {{{
 mvn eclipse:clean
 mvn eclipse:eclipse
@@ -465,19 +442,15 @@ mvn install
 cp cp target/spring-web-flow-tutorial.war
 /usr/local/jboss-4.0.4.GA/server/default/deploy/
 }}}
- 1. I prefer to use exploded deployment as it allows changes to any
-file inside webapp to be easy deployed without the need of redeploying
-the application. So use this to deploy in exploded directory:
+ 1. I prefer to use exploded deployment as it allows changes to any file inside webapp to be easy deployed without the need of redeploying the application. So use this to deploy in exploded directory:
 {{{
 mvn clean install -Pdev-jboss-deploy antrun:run
 }}}
-Use this to deploy just changed webapp components:
+ 1. Use this to deploy just changed webapp components:
 {{{
 mvn process-resources -Pdev-jboss-deploy-webapp antrun:run
-- Hide quoted text -
 }}}
- 1. Test same simple URLs as previous tutorial, now just changing the
-context path as we have changed the name of the project:
+ 1. Test same simple URLs as previous tutorial, now just changing the context path as we have changed the name of the project:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/
 http://localhost:8080/spring-web-flow-tutorial/spring/greeting/hello
@@ -497,9 +470,7 @@ http://localhost:8080/spring-web-flow-tutorial/static.html
 {{{
 http://localhost:8080/spring-web-flow-tutorial/index.jsp
 }}}
- 1. Test the site is not XSS vulnerable. As a reminder a Javascript
-modal popup will be showing up if you remove the XSSFilter from
-web.xml and hit:
+ 1. Test the site is not XSS vulnerable. As a reminder a Javascript modal popup will be showing up if you remove the XSSFilter from web.xml and hit:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/spring/params/write?par=XssAttack%3CSCRIPT%3Ealert(String.fromCharCode(88,83,83))%3C/SCRIPT%3E
 }}}
