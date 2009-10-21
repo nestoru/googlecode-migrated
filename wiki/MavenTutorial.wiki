@@ -54,7 +54,7 @@ building purposes:
    |-- messages_es_ES.properties
    `-- static.html
 }}}
-1. Maven has a predefined structure we must fill out with the above
+ 1. Maven has a predefined structure we must fill out with the above
 files. The target directory will be excluded with svn:ignore. There is
 where Maven builds the project and we want to store sources *only* on
 SVN.
