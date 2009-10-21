@@ -7,7 +7,7 @@ Configuration tutorial plus new behavior based on Spring Web Flow.
 I will show here how to migrate coctutorial project
 from Ant build to Maven build. I will use Maven for my upcoming tutorial to be hosted in a separate project called "spring-web-flow-tutorial".
 
-1. Below is the struture of the non-maven project which uses Ant for
+ 1. Below is the struture of the non-maven project which uses Ant for
 building purposes:
 {{{
 |-- build.properties
@@ -70,7 +70,7 @@ SVN.
 |       `-- resources
 `-- target
 }}}
-1. Let us refactor the project then:
+ 1. Let us refactor the project then:
 {{{
 rm build.properties
 rm build.xml
@@ -85,7 +85,7 @@ rm -fR web-app/
 rm -fR src/main/webapp/WEB-INF/lib/
 mv src/main/webapp/messages* src/main/resources/
 }}}
-1. Now our maven project has the right structure. Note that anything
+ 1. Now our maven project has the right structure. Note that anything
 you put in resources will end up in the classpath under classes
 folder:
 {{{
@@ -129,7 +129,7 @@ folder:
        |-- java
        `-- resources
 }}}
-1. It is time to create our project file (pom.xml) just in the root of
+ 1. It is time to create our project file (pom.xml) just in the root of
 the project. I am not concern at this point with deployment or
 releasing tasks. That might be subject of another tutorial. The
 important things about this project is that we are creating a
@@ -449,23 +449,23 @@ Note the use of property jboss.deploy.dir from profiles
 dev-jboss-deploy and dev-jboss-deploy-webapp. We will use them to
 agile deployment of the whole exploded WAR when there is java or
 webapp changes respectively.
-1. If you use Eclipse you want to create now the necessary Eclipse
+ 1. If you use Eclipse you want to create now the necessary Eclipse
 project files which must be svn:ignore later. These files are hidden
 (.classpath, .settings, .project)
 {{{
 mvn eclipse:clean
 mvn eclipse:eclipse
 }}}
-1. Build the project from the project root directory
+ 1. Build the project from the project root directory
 {{{
 mvn install
 }}}
-1. Deploy in your app the resulting WAR file
+ 1. Deploy in your app the resulting WAR file
 {{{
 cp cp target/spring-web-flow-tutorial.war
 /usr/local/jboss-4.0.4.GA/server/default/deploy/
 }}}
-1. I prefer to use exploded deployment as it allows changes to any
+ 1. I prefer to use exploded deployment as it allows changes to any
 file inside webapp to be easy deployed without the need of redeploying
 the application. So use this to deploy in exploded directory:
 {{{
@@ -476,34 +476,34 @@ Use this to deploy just changed webapp components:
 mvn process-resources -Pdev-jboss-deploy-webapp antrun:run
 - Hide quoted text -
 }}}
-1. Test same simple URLs as previous tutorial, now just changing the
+ 1. Test same simple URLs as previous tutorial, now just changing the
 context path as we have changed the name of the project:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/
 http://localhost:8080/spring-web-flow-tutorial/spring/greeting/hello
 http://localhost:8080/spring-web-flow-tutorial/spring/greeting/hi
 }}}
-1. Test internationalization:
+ 1. Test internationalization:
 {{{
 curl --header "Accept-Language: en-gb"
 "http://localhost:8080/spring-web-flow-tutorial/spring/localeGreeting/hello"
 Hello Mate !!!
 }}}
-1. Test static pages:
+ 1. Test static pages:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/static.html
 }}}
-1. Test plain old JSP with not using Spring at all:
+ 1. Test plain old JSP with not using Spring at all:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/index.jsp
 }}}
-1. Test the site is not XSS vulnerable. As a reminder a Javascript
+ 1. Test the site is not XSS vulnerable. As a reminder a Javascript
 modal popup will be showing up if you remove the XSSFilter from
 web.xml and hit:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/spring/params/write?par=XssAttack%3CSCRIPT%3Ealert(String.fromCharCode(88,83,83))%3C/SCRIPT%3E
 }}}
-1. Test the simple JSON Service:
+ 1. Test the simple JSON Service:
 {{{
 http://localhost:8080/spring-web-flow-tutorial/spring/jsonParams/write?p1=foo&p2=bar&callback
 }}}
