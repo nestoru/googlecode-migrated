@@ -7,6 +7,16 @@ Configuration tutorial plus new behavior based on Spring Web Flow.
 I will show here how to migrate coctutorial project
 from Ant build to Maven build. I will use Maven for my upcoming tutorial to be hosted in a separate project called "spring-web-flow-tutorial".
 
+Maven is just a shell script that invokes a Java program. After you install it program you might need to configure an environment variable JAVA_OPTS. In my case (using MAC) I set in ~/,profile:
+{{{
+JAVA_OPTS=-Xms128m -Xmx256m -XX:MaxPermSize=256m
+}}}
+To get the changes applid in the current session you will need to export the variable:
+{{{
+export JAVA_OPTS
+}}}
+Look for your OS how to set up the environment variable.
+
 If you use Eclipse go ahead and install Maven plugin for it (Add site http://m2eclipse.sonatype.org/update/)
 
  1. Below is the struture of the non-maven project which uses Ant for building purposes:
