@@ -10,6 +10,7 @@ BEGIN {
   OFS= "\t"
   start_time = systime() 
   #test_counter = 0;
+  print "asin", "title", "amount", "description" 
 }
 
 XMLSTARTELEM {
@@ -27,19 +28,20 @@ XMLSTARTELEM  == "Item" {}
 XMLCHARDATA                { data  = $0    }
 XMLENDELEM  == "ASIN"      { asin  = data  }
 XMLENDELEM  == "Title"     { title  = data  }
-XMLENDELEM  == "Amount"    { 
-  amount  = data 
-}
-XMLENDELEM  == "BrowseNodeId"	{
-  if(depth == 4){
-    if(node != "")
-      node = node ","
-    node = node "" data
-  } 
-}
+XMLENDELEM  == "Amount"    { amount  = data }
+XMLENDELEM  == "Content"    { description  = data }
+
+#XMLENDELEM  == "BrowseNodeId"	{
+#  if(depth == 4){
+#    if(node != "")
+#      node = node ","
+#    node = node "" data
+#  } 
+#}
+
 XMLENDELEM  == "Item" {
-  print asin, title, amount, node 
-  data = asin = title = amount = node = ""
+  print asin, title, amount, description
+  data = asin = title = amount = description = ""
 }
 END{
   #print "Took me " systime()-start_time " seconds"
