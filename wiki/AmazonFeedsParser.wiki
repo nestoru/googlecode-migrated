@@ -1,0 +1,59 @@
+= Amazon Feeds Parser =
+The inspiration for this project was a need to parse big Amazon feeds XML files (dozens of GB) in an acceptable time.
+
+After giving up with XSLT I decided to give "xgawk" a try.
+       
+== The project ==
+The project consist is hosted at http://nestorurquiza.googlecode.com/svn/trunk/amazon-feeds/
+This is an early phase and by the time of this writing it is composed of only three xgawk files with the addition of a chunk from the big Amazon feel for Apparel root Category:
+{{{
+amz_categories.xgawk		
+amz_products.xgawk		
+amz_product_category.xgawk
+
+}}}
+
+Which you can use like:
+{{{
+xgawk -f amz_categories.xgawk us_ecs_apparel.xml > amz_categories
+xgawk -f amz_products.xgawk us_ecs_apparel.xml > amz_products
+xgawk -f amz_product_category.xgawk us_ecs_apparel.xml > amz_product_category
+}}}
+You will end up with three tab separated values (tsv) files that should be enough to start rendering and searching Amazon products and nodes (or categories).
+
+Of course you need to have xgawk ready. Below are the steps I followed in my local MacBook Pro (2.26 GHz Intel Core 2 Duo, 4GB 1067 MHz DDR3)
+
+ 1. Download the sources from the xgawk official site.
+ 1. Uncompress them. (in my case xgawk-3.1.6a-20090408)
+ 1. Run the below commands:
+{{{
+cd xgawk-3.1.6a-20090408/
+./configure 
+make
+sudo make install
+}}}
+ 1. Add the below line to file ~/.bash_profile
+{{{
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+}}}
+
+== Performance ==
+Below are some numbers from my local environment. I have to say that by the time the scripts were running I was writing emails, browsing the web, programming in Perl, awk and Java, even chatting on skype and msn. I did not experience any big delays on any of those tasks but of course they might have affected the below results. I might come back and post some results from our Red Hat Servers when deployed.
+
+The file parsed here (us_ecs_apparel.xml) is 34GB. I got:
+{{{
+       72min for 175033 products resulting in 20MB of tsv file.
+       74min for 7866 nodes (or categories) resulting in 223KB of tsv file. 
+       74 min 965733 product-nodes (or product_categories) mappings resulting in 19MB of tsv file.
+}}}
+
+You can get the total execution time per script commenting out the below line:
+{{{
+#print "Took me " systime()-start_time " seconds"
+}}}
+
+Memory footprint was very slow (not even 2MB of physical and half GB virtual memory). they were processor intensive tasks of course.
+
+The more challenging code to write is the script amz_categories.xgawk as combinations of nodes and parents are repeated again and again per product. The technique I have used is just inserting into a two-dimensional array (which in awk language can be seen actually as a hash)	both child and parent as keys. That is the reason why memory will be used and no output from the command will be available up to the moment it finishes running.
+
+Please report any bugs to nestor dot urquiza at gmail dot com.
