@@ -60,5 +60,5 @@ END{
       print item, parent, a_nodes[item_parent]
   }
 
-  print "Took me " systime()-start_time " seconds"
+  #print "Took me " systime()-start_time " seconds"
 }

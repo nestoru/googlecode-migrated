@@ -51,5 +51,5 @@ END{
   #    print a_asin_node[1], a_asin_node[2]
   #}
 
-  print "Took me " systime()-start_time " seconds"
+  #print "Took me " systime()-start_time " seconds"
 }
