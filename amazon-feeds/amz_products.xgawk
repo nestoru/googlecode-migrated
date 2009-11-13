@@ -42,5 +42,5 @@ XMLENDELEM  == "Item" {
   data = asin = title = amount = node = ""
 }
 END{
-  print "Took me " systime()-start_time " seconds"
+  #print "Took me " systime()-start_time " seconds"
 }
