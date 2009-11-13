@@ -1,0 +1,64 @@
+# amz_categories.xgawk
+# Amazon product/node (or product/category) feeds parser
+#  
+#  
+# author: Nestor Urquiza
+# date: November 13, 2009
+#
+@load xml
+BEGIN { 
+  OFS= "\t"
+  start_time = systime() 
+  #test_counter = 0;
+  print "item", "parent", "nodes"
+}
+
+XMLSTARTELEM {
+    depth++
+    #test_counter ++;
+    #if(test_counter == 100000){
+    #  exit
+    #}
+}
+
+XMLENDELEM   { depth-- }
+
+XMLSTARTELEM  == "Item" {}
+
+XMLSTARTELEM  == "Ancestors" {ancestors = 1}
+XMLENDELEM  == "Ancestors" {ancestors = 0}
+
+XMLCHARDATA                { data  = $0    }
+XMLENDELEM  == "BrowseNodeId"      { 
+  if(depth == 4){
+    parent = 0
+    item = data
+  }else if(ancestors == 1){
+    parent = item
+    item = data
+  }
+  #print "item:" item
+  #print "parent:" parent
+}
+XMLENDELEM  == "Name"      { 
+  #if(depth > 4 && ancestors == 1){
+    a_nodes[item,parent] = data
+  #}
+}
+
+
+XMLENDELEM  == "Item" {
+  data = ""
+  
+}
+END{
+  
+  for (item_parent in a_nodes) {
+      split(item_parent, a_item_parent, "\034")
+      item = a_item_parent[1]
+      parent = a_item_parent[2]
+      print item, parent, a_nodes[item_parent]
+  }
+
+  print "Took me " systime()-start_time " seconds"
+}

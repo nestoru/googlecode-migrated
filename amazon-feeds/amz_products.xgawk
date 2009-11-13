@@ -1,0 +1,46 @@
+# amz_products.xgawk
+# Amazon product/node (or product/category) feeds parser
+#  
+#  
+# author: Nestor Urquiza
+# date: November 13, 2009
+#
+@load xml
+BEGIN { 
+  OFS= "\t"
+  start_time = systime() 
+  #test_counter = 0;
+}
+
+XMLSTARTELEM {
+    depth++
+    #test_counter ++;
+    #if(test_counter == 100000){
+    #  exit
+    #}
+}
+
+XMLENDELEM   { depth-- }
+
+XMLSTARTELEM  == "Item" {}
+
+XMLCHARDATA                { data  = $0    }
+XMLENDELEM  == "ASIN"      { asin  = data  }
+XMLENDELEM  == "Title"     { title  = data  }
+XMLENDELEM  == "Amount"    { 
+  amount  = data 
+}
+XMLENDELEM  == "BrowseNodeId"	{
+  if(depth == 4){
+    if(node != "")
+      node = node ","
+    node = node "" data
+  } 
+}
+XMLENDELEM  == "Item" {
+  print asin, title, amount, node 
+  data = asin = title = amount = node = ""
+}
+END{
+  print "Took me " systime()-start_time " seconds"
+}
