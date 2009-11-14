@@ -42,10 +42,15 @@ Below are some numbers from my local environment. I have to say that by the time
 
 The file parsed here (us_ecs_apparel.xml) is 34GB. I got:
 {{{
-       72min for 175033 products resulting in 20MB of tsv file.
-       74min for 7866 nodes (or categories) resulting in 223KB of tsv file. 
-       74min 965733 product-nodes (or product_categories) mappings resulting in 19MB of tsv file.
+       72min for 175033 products (id, title, price, description) resulting in 20MB of tsv file.
+       74min for 7866 nodes/categories (id, parent, name) resulting in 223KB of tsv file. 
+       74min for 965733 product-nodes/product_categories (product_id, node_id) mappings resulting in 19MB of tsv file.
 }}}
+
+After I added image, height and width fields for small, medium and large images (total 9 fields) the processing time increased considerably:
+{{{
+       140min for 175033 products (id, title, price, description, lg_img, md_img, sm_img, lg_height, md_height, sm_height, lg_width, md_width, sm_width) resulting in 75MB of tsv file.
+}}} 
 
 You can get the total execution time per script while commenting out the below line:
 {{{
