@@ -10,7 +10,7 @@ BEGIN {
   OFS= "\t"
   start_time = systime() 
   #test_counter = 0;
-  print "asin", "title", "amount", "description", "lg_img", "md_img", "sm_img", "lg_height", "md_height", "sm_height", "lg_width", "md_width", "sm_width"
+  #print "asin", "title", "amount", "description", "lg_img", "md_img", "sm_img", "lg_height", "md_height", "sm_height", "lg_width", "md_width", "sm_width"
 }
 
 XMLSTARTELEM {

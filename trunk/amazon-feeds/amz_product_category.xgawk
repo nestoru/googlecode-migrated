@@ -10,7 +10,7 @@ BEGIN {
   OFS= "\t"
   start_time = systime() 
   #test_counter = 0;
-  print "asin", "node"
+  #print "asin", "node"
 }
 
 XMLSTARTELEM {
