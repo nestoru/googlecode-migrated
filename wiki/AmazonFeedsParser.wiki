@@ -5,15 +5,24 @@ After giving up with XSLT I decided to give "xgawk" a try.
        
 == The project ==
 The project is hosted at http://nestorurquiza.googlecode.com/svn/trunk/amazon-feeds/
-This is an early phase and by the time of this writing it is composed of only three xgawk files with the addition of a chunk from the big Amazon feed for "Apparel" root Category:
+This is an early phase and by the time of this writing it is composed of only three xgawk files, one perl script to manage processing of multiple feeds concurrently and some  chunks from the big Amazon feeds like for example the biggest one "Apparel" root Category:
 {{{
-amz_categories.xgawk		
-amz_products.xgawk		
-amz_product_category.xgawk
-chunk_us_ecs_apparel.xml
+.
+|-- amz_categories.xgawk
+|-- amz_product_category.xgawk
+|-- amz_products.xgawk
+|-- amz_xml_to_tsv.pl
+|-- output
+`-- xml-sources
+    |-- categories
+    |-- chunk_us_ecs_apparel.xml
+    |-- chunk_us_ecs_cellphone.xml
+    |-- chunk_us_ecs_watches.xml
+    |-- product_category
+    `-- products
 }}}
 
-Use:
+To process individual feeds use:
 {{{
 xgawk -f amz_categories.xgawk us_ecs_apparel.xml > amz_categories
 xgawk -f amz_products.xgawk us_ecs_apparel.xml > amz_products
@@ -36,6 +45,27 @@ sudo make install
 {{{
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 }}}
+
+To process several feeds use the perl script with no parameters. Note you need to change the $PROJECT_HOME variable inside the script to point to your local project base directory. 
+
+After you run it you will get some data below the output directory. All *.tsv files are created directly from each root category feed xml file and all of them are combined in three unique tsv files named products, categories and product_category.  
+{{{
+-- output
+|   |-- categories
+|   |-- chunk_us_ecs_apparel_categories.tsv
+|   |-- chunk_us_ecs_apparel_product_category.tsv
+|   |-- chunk_us_ecs_apparel_products.tsv
+|   |-- chunk_us_ecs_cellphone_categories.tsv
+|   |-- chunk_us_ecs_cellphone_product_category.tsv
+|   |-- chunk_us_ecs_cellphone_products.tsv
+|   |-- chunk_us_ecs_watches_categories.tsv
+|   |-- chunk_us_ecs_watches_product_category.tsv
+|   |-- chunk_us_ecs_watches_products.tsv
+|   |-- product_category
+|   `-- products
+}}}
+
+Now you can import the files in your local DB Engine.
 
 == Performance ==
 Below are some numbers from my local environment. I have to say that by the time the scripts were running I was writing emails, browsing the web, programming in Perl, awk and Java, even chatting on skype and msn. I did not experience any big delays on any of those tasks but of course they might have affected the below results. I might come back and post some results from our Red Hat Servers when the package is deployed there.
@@ -61,4 +91,5 @@ Memory footprint was very slow (not even 2MB of physical and half GB virtual mem
 
 The more challenging code to write was the script amz_categories.xgawk as combinations of nodes and parents are repeated again and again per product. The technique I have used is just inserting into a two-dimensional array (which in awk language can be seen actually as a two-dimensional hash) both child and parent as keys. That is the reason why memory will be used and no output from the command will be available up to the moment it finishes running.
 
-Please report any bugs to nestor dot urquiza at gmail dot com.
+== Contributing ==
+Please report any bugs or contributions to nestor dot urquiza at gmail dot com.
