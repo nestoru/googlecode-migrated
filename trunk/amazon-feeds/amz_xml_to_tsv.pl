@@ -27,6 +27,8 @@ foreach (@children) {
   waitpid($_, 0);
 }
 
+print "Took me " . (time - $^T) . " seconds \n";
+
 sub wanted {
   if($_ =~ m/.*\.xml/){
      $xmlFilePath = $File::Find::name;
