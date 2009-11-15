@@ -48,7 +48,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 To process several feeds use the perl script with no parameters. Note you need to change the $PROJECT_HOME variable inside the script to point to your local project base directory. 
 
-After you run it you will get some data below the output directory. All *.tsv files are created directly from each root category feed xml file and all of them are combined in three unique tsv files named products, categories and product_category.  
+After you run it you will get some data below the output directory. All ".tsv" files are created directly from each root category feed xml file and all of them are combined in three unique tsv files named products, categories and product_category.  
 {{{
 -- output
 |   |-- categories
