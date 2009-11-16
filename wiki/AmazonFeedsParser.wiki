@@ -48,10 +48,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 To process several feeds use the perl script with no parameters. Note you need to change the $PROJECT_HOME variable inside the script to point to your local project base directory. 
 
-After you run it you will get some data below the output directory. All ".tsv" files are created directly from each root category feed xml file and all of them are combined in three unique tsv files named products, categories and product_category.  
+After you run it you will get some data below the output directory. All ".tsv" files are created directly from each root category feed xml file. 
 {{{
 -- output
-|   |-- categories
 |   |-- chunk_us_ecs_apparel_categories.tsv
 |   |-- chunk_us_ecs_apparel_product_category.tsv
 |   |-- chunk_us_ecs_apparel_products.tsv
@@ -60,10 +59,10 @@ After you run it you will get some data below the output directory. All ".tsv" f
 |   |-- chunk_us_ecs_cellphone_products.tsv
 |   |-- chunk_us_ecs_watches_categories.tsv
 |   |-- chunk_us_ecs_watches_product_category.tsv
-|   |-- chunk_us_ecs_watches_products.tsv
-|   |-- product_category
-|   `-- products
+|   `-- chunk_us_ecs_watches_products.tsv
 }}}
+
+Even though the included fields are a subset of all available you can edit the corresponding xgawk file to include more or delete some of them.
 
 Now you can import the files in your local DB Engine.
 
