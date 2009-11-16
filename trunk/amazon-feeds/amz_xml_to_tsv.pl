@@ -30,7 +30,7 @@ foreach (@children) {
 print "Took me " . (time - $^T) . " seconds \n";
 
 sub wanted {
-  if($_ =~ m/.*\.xml/){
+  if($_ =~ m/.*\.xml$/){
      $xmlFilePath = $File::Find::name;
      print "Found " . $xmlFilePath  . "\n";
 	 my $fileName = "";
@@ -56,9 +56,9 @@ sub wanted {
 	    $catCategoriesCommand = "find $OUTPUT_FOLDER -name \"*" . $OUT_CATEGORIES . ".tsv\"|xargs cat > $OUTPUT_FOLDER" . "/" . $OUT_CATEGORIES;
 		$catProductsCommand = "find $OUTPUT_FOLDER -name \"*" . $OUT_PRODUCTS . ".tsv\"|xargs cat > $OUTPUT_FOLDER" . "/" . $OUT_PRODUCTS;
 		$catProductCategoryCommand = "find $OUTPUT_FOLDER -name \"*" . $OUT_PRODUCT_CATEGORY . ".tsv\"|xargs cat > $OUTPUT_FOLDER" . "/" . $OUT_PRODUCT_CATEGORY;
-		runCommand($catCategoriesCommand);
-		runCommand($catProductsCommand);
-		runCommand($catProductCategoryCommand);
+		#runCommand($catCategoriesCommand);
+		#runCommand($catProductsCommand);
+		#runCommand($catProductCategoryCommand);
 	
 	    exit(0);
 	  } else {
