@@ -39,11 +39,11 @@ XMLENDELEM  == "Title"     { title  = data  }
 XMLENDELEM  == "Amount"    { amount  = data }
 XMLENDELEM  == "Content"    { description  = data }
 
-#XMLENDELEM  == "aws:URL"    { 
-#  if(small == 1) 	{ sm_img = data} 
-#  if(medium == 1) 	{ md_img = data} 
-#  if(large == 1) 	{ lg_img = data} 
-#}
+XMLENDELEM  == "aws:URL"    { 
+  if(small == 1) 	{ sm_img = data} 
+  if(medium == 1) 	{ md_img = data} 
+  if(large == 1) 	{ lg_img = data} 
+}
 #XMLENDELEM  == "aws:Height"    { 
 #  if(small == 1)	{ sm_height = data}
 #  if(medium == 1)	{ md_height = data}
