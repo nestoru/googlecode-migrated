@@ -5,13 +5,14 @@ After giving up with XSLT I decided to give "xgawk" a try.
        
 == The project ==
 The project is hosted at http://nestorurquiza.googlecode.com/svn/trunk/amazon-feeds/
-This is an early phase and by the time of this writing it is composed of only three xgawk files, one perl script to manage processing of multiple feeds concurrently and some  chunks from the big Amazon feeds like for example the biggest one "Apparel" root Category:
+This is an early phase and by the time of this writing it is composed of three xgawk files, one perl script to manage processing of multiple feeds concurrently and three folders: tmp, output and xml-sources. I have provided some sample chunks (from the big Amazon feeds like for example the biggest one "Apparel" root Category) below xml-sources.
 {{{
 .
 |-- amz_categories.xgawk
 |-- amz_product_category.xgawk
 |-- amz_products.xgawk
 |-- amz_xml_to_tsv.pl
+|-- tmp
 |-- output
 `-- xml-sources
     |-- categories
@@ -46,9 +47,9 @@ sudo make install
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 }}}
 
-To process several feeds use the perl script with no parameters. Note you need to change the $PROJECT_HOME variable inside the script to point to your local project base directory. 
+To process several feeds use the perl script with no parameters. Note you need to change the $PROJECT_HOME and $GZIP_SOURCES_FOLDER variables from inside the script to point to your local project base directory and the directory where the already downloaded feeds are. 
 
-After you run it you will get some data below the output directory. All ".tsv" files are created directly from each root category feed xml file. 
+After you run it you will get some data below the output directory. All ".tsv" files are created directly from each root category feed xml file. Note that the tmp directory is needed for the script to run.
 {{{
 -- output
 |   |-- chunk_us_ecs_apparel_categories.tsv
