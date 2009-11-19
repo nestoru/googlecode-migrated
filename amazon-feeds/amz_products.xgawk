@@ -37,7 +37,7 @@ XMLCHARDATA                { data  = $0    }
 XMLENDELEM  == "ASIN"      { asin  = data  }
 XMLENDELEM  == "Title"     { title  = data  }
 XMLENDELEM  == "Amount"    { amount  = data }
-XMLENDELEM  == "Content"    { description  = data }
+XMLENDELEM  == "Content"    { description  = gsub(/\t/, " ", data) }
 
 XMLENDELEM  == "aws:URL"    { 
   if(small == 1) 	{ sm_img = data} 
