@@ -67,6 +67,9 @@ Even though the included fields are a subset of all available you can edit the c
 
 Now you can import the files in your local DB Engine.
 
+== Optimizing Resources ==
+Amazon provides a Perl script to download just the feeds that have changed. On top of that I create symlinks for the new feeds and run the Amazon Feeds Parser just for those.
+
 == Performance ==
 Below are some numbers from my local environment. I have to say that by the time the scripts were running I was writing emails, browsing the web, programming in Perl, awk and Java, even chatting on skype and msn. I did not experience any big delays on any of those tasks but of course they might have affected the below results. I might come back and post some results from our Red Hat Servers when the package is deployed there.
 
