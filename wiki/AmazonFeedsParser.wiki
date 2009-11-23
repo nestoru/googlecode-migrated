@@ -63,7 +63,7 @@ After you run it you will get some data below the output directory. All ".tsv" f
 |   `-- chunk_us_ecs_watches_products.tsv
 }}}
 
-Even though the included fields are a subset of all available you can edit the corresponding xgawk file to include more or delete some of them.
+Even though the included fields are a subset of all available you can edit the corresponding xgawk file to include more or delete some of them. I have provided some filtering which you can change as well for example I filter just Amazon Merchant (ATVPDKIKX0DER) Products. For a complete list of changes (many of them customizations) check http://code.google.com/p/nestorurquiza/source/list
 
 Now you can import the files in your local DB Engine.
 
