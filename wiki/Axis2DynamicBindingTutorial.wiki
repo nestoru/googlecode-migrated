@@ -7,7 +7,10 @@ Axis2 supports JAX-WS and I will be using it to demonstrate how to build a dynam
 
 The second important class is org.apache.axis2.databinding.utils.BeanUtil which allows to bind the SOAP response to a Java Object.
 
-I decided to use JAXB to generate Web Service related classes (using jaxb-xjc.jar). The reason is that I used AXIS2 AXIOM API to dynamically consume the Web Service but because of a current problem in Axis2 AXIOM implementation I had to use JAXB for deserialization/unmarshalling. 
+I decided to use JAXB to generate Web Service related classes (using jaxb-xjc.jar). The reason is that I used AXIS2 AXIOM API to dynamically consume the Web Service but because of a current problem in Axis2 AXIOM implementation I had to use JAXB for deserialization/unmarshalling. You can use SOAPUI tool JAXB artifacts generator (from tools menu) which uses anyway jaxb or you can use the command prompt:
+{{{
+%JAXB_HOME%/bin/xjc.sh -d /a/destination/folder/in/your/computer -p your.package.stub.namespace -wsdl http://your.WSDL.url
+}}}
 
 I will use Tomcat (Jetty lacks of out of the box default hot deployment which would force me to use maven for a quick proof of concept) this time to host the web service. In order to install Axis2 in JBoss some modifications are needed specially because axis2.war includes commons-logging and log4j and JBoss is not happy when a WAR includes them (making the long story short). If you go for JBoss I will recommend using version 5 and above. As a side note I will be using Tomcat runnning on port 8085. So you might have to change the URLs below to reflect your Tomcat listening port.
 
