@@ -7,7 +7,7 @@ Axis2 supports JAX-WS and I will be using it to demonstrate how to build a dynam
 
 The second important class is org.apache.axis2.databinding.utils.BeanUtil which allows to bind the SOAP response to a Java Object.
 
-I decided to use JAXB to generate Web Service related classes (using jaxb-xjc.jar). The reason is that I used AXIS2 AXIOM API to dynamically consume the Web Service but because of a current problem in Axis2 AXIOM implementation I had to use JAXB for deserialization/unmarshalling. You can use SOAPUI tool JAXB artifacts generator (from tools menu) which uses anyway jaxb or you can use the command prompt:
+I decided to use JAXB to generate Web Service related classes (using jaxb-xjc.jar). The reason is that I used AXIS2 AXIOM API to dynamically consume the Web Service but because of a current problem in Axis2 AXIOM implementation (http://thinkinginsoftware.blogspot.com/2009/03/dotnet-web-services-from-axis2.html) I had to use JAXB for deserialization/unmarshalling. You can use SOAPUI tool JAXB artifacts generator (from tools menu) which uses anyway jaxb or you can use the command prompt:
 {{{
 $JAXB_HOME/bin/xjc.sh -d /a/destination/folder/in/your/computer -p your.package.stub.namespace -wsdl http://your.WSDL.url
 }}}
