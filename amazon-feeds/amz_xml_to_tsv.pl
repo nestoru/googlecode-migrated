@@ -9,8 +9,9 @@
 
 use File::Find;
 
-my $GZIP_SOURCES_FOLDER				= "/Users/nurquiza/kk/scripts/amazon/ResultsDir";
-my $PROJECT_HOME 					= "/Users/nurquiza/kk/amazon/amazon-feeds";
+#my $GZIP_SOURCES_FOLDER				= "/Users/nurquiza/kk/amazon/amazon/feeds_symlinks";
+my $GZIP_SOURCES_FOLDER				= "/Users/nurquiza/kk/amazon/amazon/downloaded_feeds";
+my $PROJECT_HOME 					= "/Users/nurquiza/kk/amazon/amazon-feeds-parser";
 my $XML_SOURCES_FOLDER				= $PROJECT_HOME . "/xml-sources";
 my $TMP_FOLDER						= $PROJECT_HOME . "/tmp"; 
 my $OUTPUT_FOLDER					= $PROJECT_HOME . "/output";
@@ -97,7 +98,7 @@ sub wanted {
 
 sub runCommand {
     $command = $_[0];
-    #print "$command\n";
+    print "Running $command\n";
     system($command);
     if($? != 0){
        my $message = "Failed processing command [ $command ]. Signal:" . $?;
@@ -108,7 +109,7 @@ sub runCommand {
 
 sub runCommandAndFailOnError {
     $command = $_[0];
-    #print "$command\n";
+    print "Running: $command\n";
     system($command);
     if($? != 0){
        my $message = "Failed processing command [ $command ]. Signal:" . $?;

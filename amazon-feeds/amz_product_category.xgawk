@@ -9,6 +9,7 @@
 BEGIN { 
   OFS= "\t"
   start_time = systime() 
+  validReleaseDate = 0
   #test_counter = 0;
   print "asin", "node"
 }
@@ -29,9 +30,44 @@ XMLSTARTELEM  == "Ancestors" {ancestors = 1}
 XMLENDELEM  == "Ancestors" {ancestors = 0}
 
 XMLCHARDATA                { data  = $0  }
+
+XMLENDELEM  == "MerchantID" {
+  if(data == "ATVPDKIKX0DER"){
+    validMerchantID = 1
+  }else{ 
+    validMerchantID = 0
+  }
+  #print data "|" valid
+}
+
+XMLENDELEM  == "OfferListingID" {
+  if(data != ""){
+    validOfferListingID = 1
+  }else{
+    validOfferListingID = 0
+  }
+  #print data "|" valid
+}
+
+XMLENDELEM  == "Availability" {
+  if(data ~ /Usually ships in/){
+    validAvailability = 1
+  }else{
+    validAvailability = 0
+  }
+  #print data "|" valid
+}
+
+XMLENDELEM  == "ReleaseDate" {
+  if(data != ""){
+    validReleaseDate = 1
+  }
+  #print data "|" valid
+}
+
 XMLENDELEM  == "ASIN"      { asin = data }
 XMLENDELEM  == "BrowseNodeId"      { 
-  if(depth == 4){
+  if(depth == 4 && validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate == 0){
     node = data
     #ma_asin_node[asin,node] = ""
     print asin, node
