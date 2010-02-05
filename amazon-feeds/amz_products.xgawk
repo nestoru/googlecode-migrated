@@ -9,7 +9,6 @@
 BEGIN { 
   OFS= "\t"
   start_time = systime() 
-  validReleaseDate = 0
   #test_counter = 0;
   #print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "lg_height", "md_height", "sm_height", "lg_width", "md_width", "sm_width", "sku", "brand"
   print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "sku", "brand", "sales_rank", "shipping_price", "offer_listing_id"
@@ -39,6 +38,8 @@ XMLENDELEM      ==      "ItemPrice" { itemPrice = 0 }
 
 XMLSTARTELEM    ==      "ShippingPrice" { shippingPrice = 1 }
 XMLENDELEM      ==      "ShippingPrice" { shippingPrice = 0 }
+
+XMLSTARTELEM    ==      "Item" {validReleaseDate = 0}
 
 XMLCHARDATA                { data  = $0    }
 
@@ -121,7 +122,8 @@ XMLENDELEM  == "SalesRank"    { sales_rank = data }
 #}
 
 XMLENDELEM  == "Item" {
-  if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate == 0){
+  #print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
+  if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
     #print asin, title, amount, description, lg_img, md_img, sm_img, lg_height, md_height, sm_height, lg_width, md_width, sm_width
     print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId
     #data = asin = title = amount = description = lg_img = md_img = sm_img = lg_height = md_height = sm_height = lg_width = md_width = sm_width = ""
