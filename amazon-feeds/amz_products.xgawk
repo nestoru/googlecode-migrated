@@ -42,7 +42,13 @@ XMLENDELEM      ==      "AmazonPrice" { amazonPrice = 0 }
 XMLSTARTELEM    ==      "ShippingPrice" { shippingPrice = 1 }
 XMLENDELEM      ==      "ShippingPrice" { shippingPrice = 0 }
 
-XMLSTARTELEM    ==      "Item" {validReleaseDate = 0}
+XMLSTARTELEM    ==      "Item" {
+  print "new item:"
+  validMerchantID = 0
+  validOfferListingID = 0
+  validAvailability = 0 
+  validReleaseDate = 0
+}
 
 XMLCHARDATA                { data  = $0    }
 
@@ -81,6 +87,8 @@ XMLENDELEM  == "ReleaseDate" {
   if(amazonPrice == 1){
     if(data != ""){
       validReleaseDate = 1
+    }else{
+      validReleaseDate = 0
     }
   }
 }
@@ -129,7 +137,8 @@ XMLENDELEM  == "SalesRank"    { sales_rank = data }
 #}
 
 XMLENDELEM  == "Item" {
-  #print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
+  print "end element:"
+  print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
   if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
     #print asin, title, amount, description, lg_img, md_img, sm_img, lg_height, md_height, sm_height, lg_width, md_width, sm_width
     print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId
