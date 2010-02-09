@@ -36,6 +36,9 @@ XMLENDELEM  	== 	"LargeImage" { large = 0 }
 XMLSTARTELEM    ==      "ItemPrice" { itemPrice = 1 }
 XMLENDELEM      ==      "ItemPrice" { itemPrice = 0 }
 
+XMLSTARTELEM    ==      "AmazonPrice" { amazonPrice = 1 }
+XMLENDELEM      ==      "AmazonPrice" { amazonPrice = 0 }
+
 XMLSTARTELEM    ==      "ShippingPrice" { shippingPrice = 1 }
 XMLENDELEM      ==      "ShippingPrice" { shippingPrice = 0 }
 
@@ -44,7 +47,7 @@ XMLSTARTELEM    ==      "Item" {validReleaseDate = 0}
 XMLCHARDATA                { data  = $0    }
 
 XMLENDELEM  == "MerchantID" {
-  if(data == "ATVPDKIKX0DER"){
+  if(amazonPrice == 1 && data == "ATVPDKIKX0DER"){
     validMerchantID = 1
   }else{
     validMerchantID = 0
@@ -81,10 +84,10 @@ XMLENDELEM  == "ReleaseDate" {
 XMLENDELEM  == "ASIN"      { asin  = data  }
 XMLENDELEM  == "Title"     { title  = data  }
 XMLENDELEM  == "Amount"    {
-  if(itemPrice == 1 && shippingPrice == 1){ 
+  if(iamazonPrice == 1 && shippingPrice == 1){ 
     shippingPriceAmount = data
   }
-  if(itemPrice == 1 && shippingPrice != 1){
+  if(amazonPrice == 1 && shippingPrice != 1){
     amount  = data
   } 
 }
