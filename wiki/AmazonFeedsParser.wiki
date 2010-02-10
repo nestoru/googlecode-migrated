@@ -3,6 +3,17 @@ The inspiration for this project was a need to parse big Amazon feeds XML files 
 
 After giving up with XSLT I decided to give "xgawk" a try.
        
+== XGAWK Installation ==
+{{{
+wget http://home.vr-web.de/Juergen.Kahrs/gawk/XML/xgawk-3.1.6a-20090408.tar.gz
+gzip -d xgawk-3.1.6a-20090408.tar.gz
+tar xvf xgawk-3.1.6a-20090408.tar
+cd xgawk-3.1.6a-20090408
+./configure
+make
+su -c 'make install'
+}}}
+
 == The project ==
 The project is hosted at http://nestorurquiza.googlecode.com/svn/trunk/amazon-feeds/
 This is an early phase and by the time of this writing it is composed of three xgawk files, one perl script to manage processing of multiple feeds concurrently and three folders: tmp, output and xml-sources. I have provided some sample chunks (from the big Amazon feeds like for example the biggest one "Apparel" root Category) below xml-sources.
