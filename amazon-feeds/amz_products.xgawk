@@ -138,14 +138,18 @@ XMLENDELEM  == "SalesRank"    { sales_rank = data }
 
 XMLENDELEM  == "Item" {
   #print "end element:"
-  #print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
+  print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
   if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
     #print asin, title, amount, description, lg_img, md_img, sm_img, lg_height, md_height, sm_height, lg_width, md_width, sm_width
-    print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId
+    #print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId
     #data = asin = title = amount = description = lg_img = md_img = sm_img = lg_height = md_height = sm_height = lg_width = md_width = sm_width = ""
   }
   data = asin = title = amount = description = lg_img = md_img = sm_img = sku = brand = sales_rank = shippingPriceAmount = offerListingId = ""
 }
 END{
+  if (XMLERROR){
+    printf("XMLERROR '%s' at row %d col %d len %d\n",
+            XMLERROR, XMLROW, XMLCOL, XMLLEN)
+  }
   #print "Took me " systime()-start_time " seconds"
 }
