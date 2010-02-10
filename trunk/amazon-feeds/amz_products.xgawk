@@ -93,7 +93,7 @@ XMLENDELEM  == "ReleaseDate" {
   }
 }
 
-XMLENDELEM  == "ASIN"      { if(depth == 1) asin  = data  }
+XMLENDELEM  == "ASIN"      { if(depth == 2) asin  = data  }
 XMLENDELEM  == "Title"     { title  = data  }
 XMLENDELEM  == "Amount"    {
   if(amazonPrice == 1 && shippingPrice == 1){ 
