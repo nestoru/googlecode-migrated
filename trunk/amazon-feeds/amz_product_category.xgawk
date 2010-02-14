@@ -23,59 +23,77 @@ XMLSTARTELEM {
 
 XMLENDELEM   { depth-- }
 
-XMLSTARTELEM  == "Item" {validReleaseDate = 0}
 
 XMLSTARTELEM  == "Ancestors" {ancestors = 1}
 XMLENDELEM  == "Ancestors" {ancestors = 0}
 
 XMLCHARDATA                { data  = $0  }
 
+XMLSTARTELEM    ==      "AmazonPrice" { amazonPrice = 1 }
+XMLENDELEM      ==      "AmazonPrice" { amazonPrice = 0 }
+
+XMLSTARTELEM    ==      "Item" {
+  #print "new item:"
+  validMerchantID = 0
+  validOfferListingID = 0
+  validAvailability = 0
+  validReleaseDate = 0
+}
+
 XMLENDELEM  == "MerchantID" {
-  if(data == "ATVPDKIKX0DER"){
-    validMerchantID = 1
-  }else{ 
-    validMerchantID = 0
+  if(amazonPrice == 1){
+    if(data == "ATVPDKIKX0DER"){
+      validMerchantID = 1
+    }else{
+      validMerchantID = 0
+    }
   }
-  #print data "|" valid
 }
 
 XMLENDELEM  == "OfferListingID" {
-  if(data != ""){
-    validOfferListingID = 1
-  }else{
-    validOfferListingID = 0
+  if(amazonPrice == 1){
+    offerListingId = data
+    if(data != ""){
+      validOfferListingID = 1
+    }else{
+      validOfferListingID = 0
+    }
   }
-  #print data "|" valid
 }
 
 XMLENDELEM  == "Availability" {
-  if(data ~ /Usually ships in/){
-    validAvailability = 1
-  }else{
-    validAvailability = 0
+  if(amazonPrice == 1){
+    if(data ~ /Usually ships in/){
+      validAvailability = 1
+    }else{
+      validAvailability = 0
+    } 
   }
-  #print data "|" valid
 }
 
 XMLENDELEM  == "ReleaseDate" {
-  if(data != ""){
-    validReleaseDate = 1
+  if(amazonPrice == 1){
+    if(data != ""){
+      validReleaseDate = 1
+    }else{
+      validReleaseDate = 0
+    }
   }
-  #print data "|" valid
 }
 
 XMLENDELEM  == "ASIN"      { asin = data }
 XMLENDELEM  == "BrowseNodeId"      { 
-  if(depth == 4 && validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
+  if(depth == 4){
     node = data
-    #ma_asin_node[asin,node] = ""
-    print asin, node
   }
   #print "asin:" asin
   #print "node:" node
 }
 
 XMLENDELEM  == "Item" {
+  if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
+    print asin, node
+  }
   data = ""
   
 }
