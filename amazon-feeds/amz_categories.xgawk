@@ -25,6 +25,8 @@ XMLENDELEM   { depth-- }
 
 XMLSTARTELEM  == "Ancestors" {ancestors = 1}
 XMLENDELEM  == "Ancestors" {ancestors = 0}
+XMLSTARTELEM  == "Children" {children = 1}
+XMLENDELEM  == "Children" {children = 0}
 
 XMLCHARDATA                { data  = $0    }
 
@@ -83,19 +85,32 @@ XMLENDELEM  == "ReleaseDate" {
 XMLENDELEM  == "ASIN"      { if(depth == 2) asin  = data  }
 
 XMLENDELEM  == "BrowseNodeId"      { 
-  if(depth == 4){
+  parentBrowseNodeId[depth] = data
+  if(children != 1 && ancestors != 1){
     parent = 0
     item = data
-  }else if(ancestors == 1){
-    parent = item
+  }
+  if(children == 1){
+    parent = parentBrowseNodeId[depth - 2]
     item = data
   }
-  #print "item:" item
-  #print "parent:" parent
+  if(ancestors == 1){
+    parent = data
+    item = parentBrowseNodeId[depth - 2]
+  }
+
 }
 XMLENDELEM  == "Name"      { 
-  #if(depth > 4 && ancestors == 1){
-  aTempNodes[item,parent] = data
+  parentBrowseNodeName[depth] = data
+  if(ancestors == 1){
+    #Take care of the child node for this ancestor
+    aTempNodes[item,parent] = parentBrowseNodeName[depth - 2]
+    delete aTempNodes[item, 0]
+    //Take care of this ancestor node
+    aTempNodes[parent, 0] = data
+  }else{
+    aTempNodes[item,parent] = data
+  }
 }
 
 
