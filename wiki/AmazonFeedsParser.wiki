@@ -16,6 +16,8 @@ su -c 'make install'
 
 If you intend to run xgawk to process files with more than 2^31 bytes in 32 bits architecture then take a look at http://sourceforge.net/mailarchive/forum.php?thread_name=dff43e6d1002131449k438c91acj7458637126595e08%40mail.gmail.com&forum_name=xmlgawk-users
 
+If you run into problems take a loot at the "Troubleshooting" section below.
+
 == The project ==
 The project is hosted at http://nestorurquiza.googlecode.com/svn/trunk/amazon-feeds/
 This is an early phase and by the time of this writing it is composed of three xgawk files, one perl script to manage processing of multiple feeds concurrently and three folders: tmp, output and xml-sources. I have provided some sample chunks (from the big Amazon feeds like for example the biggest one "Apparel" root Category) below xml-sources.
@@ -448,6 +450,29 @@ Below is an Item node to show the XML elements from the Amazon feed. This corres
 </Description>
 </Item>
 }}}
+
+== Troubleshooting ==
+At least for Ubuntu 64 bits I was getting the below message:
+{{{
+# xgawk -l xml
+xgawk: fatal: extension: cannot find dynamic library `xml'
+}}}
+It turned out to be a configuration problem:
+{{{
+./configure:
+...
+checking expat.h usability... no
+checking expat.h presence... no
+checking for expat.h... no
+...
+}}}
+So to install expat in Ubuntu just run the below and reinstall xgawk:
+{{{
+#apt-get install expat
+#apt-get install libexpat1-dev
+}}}
+
+You can always get help while subscribing to xgawk mailing list (https://lists.sourceforge.net/lists/listinfo/xmlgawk-users) or perhaps browsing older posts from http://sourceforge.net/mailarchive/forum.php?forum_name=xmlgawk-users
 
 == Contributing ==
 Please report any bugs or contributions to nestor dot urquiza at gmail dot com.
