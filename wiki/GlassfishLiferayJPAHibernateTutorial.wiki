@@ -1,14 +1,14 @@
 #labels Glassfish,JPA,Hibernate,Liferay,Tutorial
-1. Install Glassfish running the below command and select as destination directory ~/glassfish
+ 1. Install Glassfish running the below command and select as destination directory ~/glassfish
 {{{
 ./glassfish-v3-prelude-unix-ml.sh
 }}}
-1. Locate bin/updatetool program inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA.
+ 1. Locate bin/updatetool program inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA.
 1. Create liferay domain. You will be prompted for master and admin password.
 {{{
 ~/glassfish/bin/asadmin create-domain --adminport 4848 liferay-domain
 }}}
-1. Get liferay components. For this tutorial I am using Liferay version 5.2.3:
+ 1. Get liferay components. For this tutorial I am using Liferay version 5.2.3:
 {{{
 mkdir ~/liferay-components
 cd ~/liferay-components
@@ -27,21 +27,21 @@ cp ~/liferay-components/liferay-portal-dependencies-5.2.3/* ~/glassfish/glassfis
 cp ~/liferay-components/liferay-plugins-sdk-5.2.3/lib/* ~/glassfish/glassfish/domains/liferay-domain/lib/
 cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/glassfish/glassfish/domains/liferay-domain/lib/
 }}}
-1. Ensure the JVM is running with enough Perm Space
+ 1. Ensure the JVM is running with enough Perm Space
 {{{
 #vi ~/glassfish/glassfish/domains/liferay-domain/config/domain.xml
 <jvm-options>-XX:MaxPermSize=128m</jvm-options>
 }}}
-1. Make sure the login information is stored locally. If you miss this point Glassfish will complain if you use stop-domain flag:
+ 1. Make sure the login information is stored locally. If you miss this point Glassfish will complain if you use stop-domain flag:
 {{{
 ~/glassfish/bin/asadmin login -p 4848
 }}}
-1. Start the server. The sample page (domains/liferay-domain/docroot/index.html) should be accessible from http://localhost:8080/
+ 1. Start the server. The sample page (domains/liferay-domain/docroot/index.html) should be accessible from http://localhost:8080/
 {{{
 ~/glassfish/bin/asadmin start-domain liferay-domain
 }}}
-1. Login to the admin console (hit http://localhost:4848)
-1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes. There is a bug that will cause a 500 is "Database Vendor" is selected so leave it blank:
+ 1. Login to the admin console (hit http://localhost:4848)
+ 1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes. There is a bug that will cause a 500 is "Database Vendor" is selected so leave it blank:
 {{{
 name: LiferayPool
 Resource Type: javax.sql.ConnectionPoolDataSource
@@ -54,28 +54,28 @@ username: root
 password: root
 #Click Finish
 }}}
-1. Click on the LiferayPool link. Click on "ping" to be sure the connection works.
-1. Navigate to Go to Resources/JDBC/JDBC Resources and create a new one:
+ 1. Click on the LiferayPool link. Click on "ping" to be sure the connection works.
+ 1. Navigate to Go to Resources/JDBC/JDBC Resources and create a new one:
 {{{
 JNDI Name: jdbc/LiferayPool
 Pool Name: LiferayPool
 }}}
-1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Select precompile JSPs option. It will take a while processing.
-1. After the deployment finishes hitting http://localhost:8080 should bring Liferay login page.
-1. If you take a look at the log file you will see:
+ 1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Select precompile JSPs option. It will take a while processing.
+ 1. After the deployment finishes hitting http://localhost:8080 should bring Liferay login page.
+ 1. If you take a look at the log file you will see:
 {{{
 Using dialect org.hibernate.dialect.HSQLDialect
 }}}
-1. Stop the server so we start configuring MySQL instead of the development HSSQL:
+ 1. Stop the server so we start configuring MySQL instead of the development HSSQL:
 {{{
 ~/glassfish/bin/asadmin stop-domain liferay-domain
 }}}
-1. I had a local MySQL Liferay Database in place but if you do not then download the sql scripts and use sql/create-minimal or sql/create scripts.
+ 1. I had a local MySQL Liferay Database in place but if you do not then download the sql scripts and use sql/create-minimal or sql/create scripts.
 {{{
 wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
 unzip liferay-portal-sql-5.2.3.zip
 }}}
-1. Configure the extension environment. Change the below for your local directory structure
+ 1. Configure the extension environment. Change the below for your local directory structure
 {{{
 #vi /Users/nurquiza/liferay-components/liferay-portal-ext-5.2.3/app.server.properties
     app.server.type=glassfish
@@ -90,27 +90,27 @@ unzip liferay-portal-sql-5.2.3.zip
     app.server.glassfish.zip.name=glassfish-v3-prelude.zip
     app.server.glassfish.zip.url=http://download.java.net/glassfish/v3-prelude/release/${app.server.glassfish.zip.name}
 }}}
-1. Edit extension properties to point to LiferayPool
+ 1. Edit extension properties to point to LiferayPool
 {{{
 #vi ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties
    jdbc.default.jndi.name=jdbc/LiferayPool
 }}}
-1. Deploy properties
+ 1. Deploy properties
 {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/
 ant deploy-properties
 }}}
-1. Start Glassfish
+ 1. Start Glassfish
 {{{
 ~/glassfish/bin/asadmin start-domain liferay-domain
 }}}
-1. Liferay should be up and running when you hit http://localhost:8080. Login with test@liferay.com/test (default Liferay admin account).
-1. From logs you should be able to se now:
+ 1. Liferay should be up and running when you hit http://localhost:8080. Login with test@liferay.com/test (default Liferay admin account).
+ 1. From logs you should be able to se now:
 {{{
 Using dialect org.hibernate.dialect.MySQLDialect
 }}}
-1. Select from the dock menu "Add Application", then click on "Install more Applications". The "Plugin Installer" page should show up. Click on "Configuration tab and set your preferred plugin deployment diretory, in my case I picked "/Users/nurquiza/liferay-plugin-deploy". Click on "Save".
-1. Configure the plugin environment. Here are the important bits:
+ 1. Select from the dock menu "Add Application", then click on "Install more Applications". The "Plugin Installer" page should show up. Click on "Configuration tab and set your preferred plugin deployment diretory, in my case I picked "/Users/nurquiza/liferay-plugin-deploy". Click on "Save".
+ 1. Configure the plugin environment. Here are the important bits:
 {{{
 #vi ~/liferay-components/liferay-plugins-sdk-5.2.3/build.properties
 ...
@@ -122,12 +122,12 @@ app.server.portal.dir=${app.server.dir}/domains/liferay-domain/applications/life
 auto.deploy.dir=/Users/nurquiza/liferay-plugin-deploy
 ...
 }}}
-1. Create a simple plugin to test jndi datasources are working:
+ 1. Create a simple plugin to test jndi datasources are working:
 {{{
 cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/
 ./create.sh jsp_jndi_test "JSP JNDI Tester Portlet"
 }}}
-1. Edit view.jsp:
+ 1. Edit view.jsp:
 {{{
 #vi jsp_jndi_test-portlet/docroot/view.jsp
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -162,20 +162,20 @@ conn.getMetaData().getDatabaseProductName());
 cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jndi_test-portlet
 ant deploy
 }}}
-1. Go to Liferay and include the portlet ("Add Application", search for "jndi" and click on "Add" for "JSP JNDI Tester Portlet"
-1. If you run into troubles examine the logs, correct any issues,
+ 1. Go to Liferay and include the portlet ("Add Application", search for "jndi" and click on "Add" for "JSP JNDI Tester Portlet"
+ 1. If you run into troubles examine the logs, correct any issues,
 redeploy and refresh the home page
 (http://localhost:8080/web/guest/home):
 {{{
 tail -100f /Users/nurquiza/glassfish/domains/liferay-domain/logs/server.log
 }}}
-1. Stop Glassfish
-1. Create another portlet to test JPA with Hibernate
+ 1. Stop Glassfish
+ 1. Create another portlet to test JPA with Hibernate
 {{{
 cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/
 ./create.sh jsp_jpa_hibernate_test "JPA Hibernate Tester Portlet"
 }}}
-1. Edit web.xml:
+ 1. Edit web.xml:
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
@@ -187,7 +187,7 @@ cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/
   </persistence-unit-ref>
 </web-app>
 }}}
-1. Create persistence.xml as per JPA spec
+ 1. Create persistence.xml as per JPA spec
 {{{
 #mkdir ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/META-INF
 #vi ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/META-INF/persistence.xml
@@ -212,7 +212,7 @@ cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/
     </persistence-unit>
 </persistence>
 }}}
-1. Edit ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/view.jsp
+ 1. Edit ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/view.jsp
 {{{
 #vi jsp_jpa_hibernate_test-portlet/docroot/view.jsp
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -226,14 +226,14 @@ EntityManager entityManager = entityManagerFactory.createEntityManager();
 out.println("<br/>entityManager : " + entityManager);
 %>
 }}}
-1. Deploy the portlet
+ 1. Deploy the portlet
 {{{
 cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/
 ant deploy
 }}}
-1. Go to Liferay and include the portlet ("Add Application", search
+ 1. Go to Liferay and include the portlet ("Add Application", search
 for "jpa" and click on "Add" for "JPA Hibernate Tester Portlet"
-1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page. If you are able to get this working please clarify how you actually managed.
+ 1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page. If you are able to get this working please clarify how you actually managed.
 (http://localhost:8080/web/guest/home):
 {{{
 tail -100f ~/glassfish/domains/liferay-domain/logs/server.log
