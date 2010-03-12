@@ -4,7 +4,7 @@
 ./glassfish-v3-prelude-unix-ml.sh
 }}}
  1. Locate bin/updatetool program inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA.
-1. Create liferay domain. You will be prompted for master and admin password.
+ 1. Create liferay domain. You will be prompted for master and admin password.
 {{{
 ~/glassfish/bin/asadmin create-domain --adminport 4848 liferay-domain
 }}}
