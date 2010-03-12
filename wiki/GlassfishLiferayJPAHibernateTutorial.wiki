@@ -230,8 +230,3 @@ cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_tes
 ant deploy
 }}}
  1. Go to Liferay and include the portlet ("Add Application", search for "jpa" and click on "Add" for "JPA Hibernate Tester Portlet"
- 1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page. If you are able to get this working please clarify how you actually managed.
-(http://localhost:8080/web/guest/home):
-{{{
-tail -100f ~/glassfish/domains/liferay-domain/logs/server.log
-}}}
