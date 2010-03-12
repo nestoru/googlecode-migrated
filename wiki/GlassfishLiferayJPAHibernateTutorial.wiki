@@ -21,7 +21,7 @@ unzip liferay-portal-src-5.2.3.zip
 unzip liferay-plugins-sdk-5.2.3.zip -d liferay-plugins-sdk-5.2.3
 unzip liferay-portal-dependencies-5.2.3.zip
 }}}
-1. Copy dependencies to Glassfish Liferay Domain
+ 1. Copy dependencies to Glassfish Liferay Domain
 {{{
 cp ~/liferay-components/liferay-portal-dependencies-5.2.3/* ~/glassfish/glassfish/domains/liferay-domain/lib/
 cp ~/liferay-components/liferay-plugins-sdk-5.2.3/lib/* ~/glassfish/glassfish/domains/liferay-domain/lib/
@@ -157,15 +157,13 @@ conn.getMetaData().getDatabaseProductName());
 }
 %>
 }}}
-1. Deploy the portlet
+ 1. Deploy the portlet
 {{{
 cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jndi_test-portlet
 ant deploy
 }}}
  1. Go to Liferay and include the portlet ("Add Application", search for "jndi" and click on "Add" for "JSP JNDI Tester Portlet"
- 1. If you run into troubles examine the logs, correct any issues,
-redeploy and refresh the home page
-(http://localhost:8080/web/guest/home):
+ 1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page (http://localhost:8080/web/guest/home):
 {{{
 tail -100f /Users/nurquiza/glassfish/domains/liferay-domain/logs/server.log
 }}}
