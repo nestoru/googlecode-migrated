@@ -167,7 +167,6 @@ ant deploy
 {{{
 tail -100f /Users/nurquiza/glassfish/domains/liferay-domain/logs/server.log
 }}}
- 1. Stop Glassfish
  1. Create another portlet to test JPA with Hibernate
 {{{
 cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/
