@@ -1,4 +1,4 @@
-= Glassfish Liferay JPA Hibernate Tutorial =
+#labels Glassfish,JPA,Hibernate,Liferay,Tutorial
 1. Install Glassfish running the below command and select as destination directory ~/glassfish
 {{{
 ./glassfish-v3-prelude-unix-ml.sh
