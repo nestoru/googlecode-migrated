@@ -116,17 +116,14 @@ ant deploy-properties
 Using dialect org.hibernate.dialect.MySQLDialect
 }}}
  1. Select from the dock menu "Add Application", then click on "Install more Applications". The "Plugin Installer" page should show up. Click on "Configuration tab and set your preferred plugin deployment diretory, in my case I picked "/Users/nurquiza/liferay-plugin-deploy". Click on "Save".
- 1. Configure the plugin environment. Here are the important bits:
+ 1. Configure the plugin environment. Note that a specific file for your user name is recomended instead of editing directly build.properties:
 {{{
-#vi ~/liferay-components/liferay-plugins-sdk-5.2.3/build.properties
-...
+#vi ~/liferay-components/liferay-plugins-sdk-5.2.3/build.`whoami`.properties
 app.server.dir=/Users/nurquiza/glassfish/glassfish
 app.server.lib.global.dir=${app.server.dir}/domains/liferay-domain/lib
 app.server.lib.portal.dir=${app.server.lib.global.dir}
 app.server.portal.dir=${app.server.dir}/domains/liferay-domain/applications/liferay-portal-5.2.3
-...
 auto.deploy.dir=/Users/nurquiza/liferay-plugin-deploy
-...
 }}}
  1. Create a simple plugin to test jndi datasources are working:
 {{{
