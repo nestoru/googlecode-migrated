@@ -1,4 +1,6 @@
 #labels Glassfish,JPA,Hibernate,Liferay,Tutorial
+When applicable I will provide exceptions for Glassfish v3 release. Prelude or Release version are very close anyway.
+
  1. Install Glassfish running the below command and select as destination directory ~/glassfish
 {{{
 ./glassfish-v3-prelude-unix-ml.sh
@@ -27,10 +29,10 @@ cp ~/liferay-components/liferay-portal-dependencies-5.2.3/* ~/glassfish/glassfis
 cp ~/liferay-components/liferay-plugins-sdk-5.2.3/lib/* ~/glassfish/glassfish/domains/liferay-domain/lib/
 cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/glassfish/glassfish/domains/liferay-domain/lib/
 }}}
- 1. Ensure the JVM is running with enough Perm Space
+ 1. Ensure the JVM is running with enough Perm Space (Needed only for Prelude version)
 {{{
 #vi ~/glassfish/glassfish/domains/liferay-domain/config/domain.xml
-<jvm-options>-XX:MaxPermSize=128m</jvm-options>
+<jvm-options>-XX:MaxPermSize=192m</jvm-options>
 }}}
  1. Make sure the login information is stored locally. If you miss this point Glassfish will complain if you use stop-domain flag:
 {{{
