@@ -43,7 +43,7 @@ cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/gla
 ~/glassfish/bin/asadmin start-domain liferay-domain
 }}}
  1. Login to the admin console (hit http://localhost:4848)
- 1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes. There is a bug that will cause a 500 is "Database Vendor" is selected so leave it blank:
+ 1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes (In Prelude there is a bug that will cause a 500 if "Database Vendor" is selected so leave it blank):
 {{{
 name: LiferayPool
 Resource Type: javax.sql.ConnectionPoolDataSource
@@ -62,7 +62,7 @@ password: root
 JNDI Name: jdbc/LiferayPool
 Pool Name: LiferayPool
 }}}
- 1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Select precompile JSPs option. It will take a while processing.
+ 1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Select precompile JSPs option and leave the rest as default. It will take a while processing.
  1. After the deployment finishes hitting http://localhost:8080 should bring Liferay login page.
  1. If you take a look at the log file you will see:
 {{{
