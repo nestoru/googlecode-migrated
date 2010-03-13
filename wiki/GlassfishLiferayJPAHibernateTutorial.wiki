@@ -110,7 +110,7 @@ ant deploy-properties
 {{{
 ~/glassfish/bin/asadmin start-domain liferay-domain
 }}}
- 1. Liferay should be up and running when you hit http://localhost:8080. Login with test@liferay.com/test (default Liferay admin account).
+ 1. Hit http://localhost:8080. Login with test@liferay.com/test (default Liferay admin account).
  1. From logs you should be able to se now:
 {{{
 Using dialect org.hibernate.dialect.MySQLDialect
