@@ -77,9 +77,9 @@ Using dialect org.hibernate.dialect.HSQLDialect
 wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
 unzip liferay-portal-sql-5.2.3.zip
 }}}
- 1. Configure the extension environment. Change the below for your local directory structure
+ 1. Configure the extension environment. Change the below for your local directory structure. Note that we create a new file in this step instead of modifying app.server.properties directly (in my case app.server.nurquiza.properties)
 {{{
-#vi /Users/nurquiza/liferay-components/liferay-portal-ext-5.2.3/app.server.properties
+#vi /Users/nurquiza/liferay-components/liferay-portal-ext-5.2.3/app.server.`whoami`.properties
     app.server.type=glassfish
     app.server.parent.dir=/Users/nurquiza/glassfish
     app.server.glassfish.instance.dir=${app.server.glassfish.dir}/domains/liferay-domain
