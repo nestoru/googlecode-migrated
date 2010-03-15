@@ -18,6 +18,7 @@ wget http://downloads.sourceforge.net/lportal/liferay-portal-ext-5.2.3.zip
 wget http://downloads.sourceforge.net/lportal/liferay-portal-5.2.3.war
 wget http://downloads.sourceforge.net/lportal/liferay-portal-dependencies-5.2.3.zip
 wget http://downloads.sourceforge.net/lportal/liferay-plugins-sdk-5.2.3.zip
+wget http://downloads.sourceforge.net/lportal/liferay-portal-src-5.2.3.zip
 unzip liferay-portal-ext-5.2.3.zip
 unzip liferay-portal-src-5.2.3.zip
 unzip liferay-plugins-sdk-5.2.3.zip -d liferay-plugins-sdk-5.2.3
