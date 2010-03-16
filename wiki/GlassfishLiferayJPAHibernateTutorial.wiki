@@ -1,7 +1,7 @@
 #labels Usethebelowifversion3prelude,JPA,Hibernate,Liferay,Tutorial
 When applicable I will provide exceptions for Glassfish v3 release. Prelude or Release version are very close anyway.
 
- 1. Install Glassfish running the below command and select as destination directory ~/glassfish
+ 1. Install Glassfish running the below command and select as destination directory ~/glassfish. Below is the command for the prelude version.
 {{{
 ./glassfish-v3-prelude-unix-ml.sh
 }}}
