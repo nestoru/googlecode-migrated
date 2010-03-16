@@ -30,7 +30,7 @@ cp ~/liferay-components/liferay-portal-dependencies-5.2.3/* ~/glassfish/glassfis
 cp ~/liferay-components/liferay-plugins-sdk-5.2.3/lib/* ~/glassfish/glassfish/domains/liferay-domain/lib/
 cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/glassfish/glassfish/domains/liferay-domain/lib/
 }}}
- 1. Ensure the JVM is running with enough Perm Space (Needed only for Prelude version)
+ 1. Ensure the JVM is running with enough Perm Space (You might need more than the 192 enough in my case)
 {{{
 #vi ~/glassfish/glassfish/domains/liferay-domain/config/domain.xml
 <jvm-options>-XX:MaxPermSize=192m</jvm-options>
