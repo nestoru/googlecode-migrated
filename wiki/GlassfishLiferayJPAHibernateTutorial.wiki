@@ -34,6 +34,7 @@ cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/gla
 {{{
 #vi ~/glassfish/glassfish/domains/liferay-domain/config/domain.xml
 <jvm-options>-XX:MaxPermSize=192m</jvm-options>
+<jvm-options>-Xmx512m</jvm-options>
 }}}
  1. Make sure the login information is stored locally. If you miss this point Glassfish will complain if you use stop-domain flag (deprecated in version 3 final):
 {{{
