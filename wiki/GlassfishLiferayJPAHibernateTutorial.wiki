@@ -170,7 +170,7 @@ ant deploy
  1. Go to Liferay and include the portlet ("Add Application", search for "jndi" and click on "Add" for "JSP JNDI Tester Portlet"
  1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page (http://localhost:8080/web/guest/home):
 {{{
-tail -100f /Users/nurquiza/glassfish/domains/liferay-domain/logs/server.log
+tail -100f /Users/nurquiza/glassfish/glassfish/domains/liferay-domain/logs/server.log
 }}}
  1. Create another portlet to test JPA with Hibernate
 {{{
