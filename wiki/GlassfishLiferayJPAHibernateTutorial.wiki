@@ -13,7 +13,7 @@ In any case this tutorial is about installing from the binary file which so far 
 chmod +x glassfish-v3-unix.sh
 ./glassfish-v3-unix.sh
 }}}
- 1. For GUI locate bin/updatetool program inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA.
+ 1. Locate bin/updatetool program (GUI) inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA.
  1. Create liferay domain. You will be prompted for master and admin password.
 {{{
 ~/glassfishv3/bin/asadmin create-domain --adminport 4848 liferay-domain
