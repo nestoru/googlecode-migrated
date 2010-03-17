@@ -82,7 +82,7 @@ mysql -u root -psecret1 < liferay-portal-sql-5.2.3/create-minimal/create-minimal
 }}}
  1. Configure the extension environment. Change the below for your local directory structure. Note that we create a new file in this step instead of modifying app.server.properties directly (in my case app.server.nurquiza.properties)
 {{{
-#vi /Users/nurquiza/liferay-components/liferay-portal-ext-5.2.3/app.server.`whoami`.properties
+#vi ~/liferay-components/liferay-portal-ext-5.2.3/app.server.`whoami`.properties
     app.server.type=glassfish
     app.server.parent.dir=/Users/nurquiza/glassfish
     app.server.glassfish.instance.dir=${app.server.glassfish.dir}/domains/liferay-domain
@@ -171,7 +171,7 @@ ant deploy
  1. Go to Liferay and include the portlet ("Add Application", search for "jndi" and click on "Add" for "JSP JNDI Tester Portlet"
  1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page (http://localhost:8080/web/guest/home):
 {{{
-tail -100f /Users/nurquiza/glassfish/glassfish/domains/liferay-domain/logs/server.log
+tail -100f ~/glassfish/glassfish/domains/liferay-domain/logs/server.log
 }}}
  1. Create another portlet to test JPA with Hibernate
 {{{
