@@ -78,6 +78,8 @@ Using dialect org.hibernate.dialect.HSQLDialect
 {{{
 wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
 unzip liferay-portal-sql-5.2.3.zip
+cd ~/liferay-components/liferay-portal-sql-5.2.3
+mysql -u root -proot > ./create-minimal/create-minimal-mysql.sql
 }}}
  1. Configure the extension environment. Change the below for your local directory structure. Note that we create a new file in this step instead of modifying app.server.properties directly (in my case app.server.nurquiza.properties)
 {{{
