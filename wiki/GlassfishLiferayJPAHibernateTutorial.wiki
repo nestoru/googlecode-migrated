@@ -1,5 +1,13 @@
 #labels Usethebelowifversion3prelude,JPA,Hibernate,Liferay,Tutorial
- 1. Download Glassfish binary (GUI). At least on MAC OSX and Ubuntu Jaunty the zip file (CLI) will fail to accept Liferay WAR throwing actually different exceptions on both OS. 
+ At least on MAC OSX and Ubuntu Jaunty the zip file (CLI) will fail to accept Liferay WAR throwing actually different exceptions on both OS. 
+
+Apparently there are switches to make the binary installer work with an external configuration file which I have not tested. 
+
+If you need to install Glassfish in a remote Linux server you can use VNC or SSH X11 forwarding. If you are connecting from Windows you can use XMing as XServer and Putty with X11 enabled.
+
+In any case this tutorial is about installing from the binary file which so far I have tested *only* from a GUI installation.
+
+ 1. Download Glassfish binary (GUI).  
  1. Install Glassfish running the below command and select as destination directory ~/glassfishv3v3. Below is the GUI command for the release version.
 {{{
 chmod +x glassfish-v3-unix.sh
