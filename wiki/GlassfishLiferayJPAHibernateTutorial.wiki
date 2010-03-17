@@ -122,7 +122,7 @@ Using dialect org.hibernate.dialect.MySQLDialect
  1. Configure the plugin environment. Note that a specific file for your user name is recomended instead of editing directly build.properties:
 {{{
 #vi ~/liferay-components/liferay-plugins-sdk-5.2.3/build.`whoami`.properties
-app.server.dir=/Users/nurquiza/glassfish/glassfish
+app.server.dir=/Users/nurquiza/glassfishv3/glassfish
 app.server.lib.global.dir=${app.server.dir}/domains/liferay-domain/lib
 app.server.lib.portal.dir=${app.server.lib.global.dir}
 app.server.portal.dir=${app.server.dir}/domains/liferay-domain/applications/liferay-portal-5.2.3
