@@ -1,5 +1,5 @@
 #labels Usethebelowifversion3prelude,JPA,Hibernate,Liferay,Tutorial
- At least on MAC OSX and Ubuntu Jaunty the zip file (CLI) will fail to accept Liferay WAR throwing actually different exceptions on both OS. 
+At least on MAC OSX and Ubuntu Jaunty the zip file (CLI) will fail to accept Liferay WAR throwing actually different exceptions on both OS. 
 
 Apparently there are switches to make the binary installer work with an external configuration file which I have not tested. 
 
