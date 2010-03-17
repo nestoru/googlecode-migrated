@@ -1,11 +1,21 @@
 #labels Usethebelowifversion3prelude,JPA,Hibernate,Liferay,Tutorial
- 1. Download Glassfish binary
- 1. Install Glassfish running the below command and select as destination directory ~/glassfish. Below is the command for the prelude version.
+ 1. Download Glassfish binary (GUI) or zip file (CLI) depending if you have GUI access or not
+ 1. Install Glassfish running the below command and select as destination directory ~/glassfishv3. Below is the GUI command for the release version.
 {{{
 chmod +x glassfish-v3-unix.sh
 ./glassfish-v3-unix.sh
 }}}
- 1. Locate bin/updatetool program inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA.
+ Below are the CLI steps:
+{{{
+cd ~/
+unzip glassfish-v3.zip
+}}}
+ 1. For GUI locate bin/updatetool program inside the installation directory, run it and select "Available Add-ons". Install Hibernate JPA. For CLI run:
+{{{
+cd glassfishv3/bin
+chmod +x ./pkg
+./pkg
+}}}
  1. Create liferay domain. You will be prompted for master and admin password.
 {{{
 ~/glassfish/bin/asadmin create-domain --adminport 4848 liferay-domain
