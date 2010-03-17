@@ -1,6 +1,6 @@
 #labels Usethebelowifversion3prelude,JPA,Hibernate,Liferay,Tutorial
  1. Download Glassfish binary (GUI) or zip file (CLI) depending if you have GUI access or not
- 1. Install Glassfish running the below command and select as destination directory ~/glassfishv3. Below is the GUI command for the release version.
+ 1. Install Glassfish running the below command and select as destination directory ~/glassfishv3v3. Below is the GUI command for the release version.
 {{{
 chmod +x glassfish-v3-unix.sh
 ./glassfish-v3-unix.sh
@@ -18,7 +18,7 @@ chmod +x ./pkg
 }}}
  1. Create liferay domain. You will be prompted for master and admin password.
 {{{
-~/glassfish/bin/asadmin create-domain --adminport 4848 liferay-domain
+~/glassfishv3/bin/asadmin create-domain --adminport 4848 liferay-domain
 }}}
  1. Get liferay components. For this tutorial I am using Liferay version 5.2.3:
 {{{
@@ -36,23 +36,23 @@ unzip liferay-portal-dependencies-5.2.3.zip
 }}}
  1. Copy dependencies to Glassfish Liferay Domain
 {{{
-cp ~/liferay-components/liferay-portal-dependencies-5.2.3/* ~/glassfish/glassfish/domains/liferay-domain/lib/
-cp ~/liferay-components/liferay-plugins-sdk-5.2.3/lib/* ~/glassfish/glassfish/domains/liferay-domain/lib/
-cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/glassfish/glassfish/domains/liferay-domain/lib/
+cp ~/liferay-components/liferay-portal-dependencies-5.2.3/* ~/glassfishv3/glassfish/domains/liferay-domain/lib/
+cp ~/liferay-components/liferay-plugins-sdk-5.2.3/lib/* ~/glassfishv3/glassfish/domains/liferay-domain/lib/
+cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/glassfishv3/glassfish/domains/liferay-domain/lib/
 }}}
  1. Ensure the JVM is running with enough Perm Space (You might need more than the 192 enough in my case)
 {{{
-#vi ~/glassfish/glassfish/domains/liferay-domain/config/domain.xml
+#vi ~/glassfishv3/glassfish/domains/liferay-domain/config/domain.xml
 <jvm-options>-XX:MaxPermSize=192m</jvm-options>
 <jvm-options>-Xmx512m</jvm-options>
 }}}
  1. Make sure the login information is stored locally. If you miss this point Glassfish will complain if you use stop-domain flag (deprecated in version 3 final):
 {{{
-~/glassfish/bin/asadmin login -p 4848
+~/glassfishv3/bin/asadmin login -p 4848
 }}}
  1. Start the server. The sample page (domains/liferay-domain/docroot/index.html) should be accessible from http://localhost:8080/
 {{{
-~/glassfish/bin/asadmin start-domain liferay-domain
+~/glassfishv3/bin/asadmin start-domain liferay-domain
 }}}
  1. Login to the admin console (hit http://localhost:4848)
  1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes (In Prelude there is a bug that will cause a 500 if "Database Vendor" is selected so leave it blank):
@@ -82,7 +82,7 @@ Using dialect org.hibernate.dialect.HSQLDialect
 }}}
  1. Stop the server so we start configuring MySQL instead of the development HSSQL:
 {{{
-~/glassfish/bin/asadmin stop-domain liferay-domain
+~/glassfishv3/bin/asadmin stop-domain liferay-domain
 }}}
  1. I had a local MySQL Liferay Database in place but if you do not then download the sql scripts and use sql/create-minimal or sql/create scripts.
 {{{
@@ -121,7 +121,7 @@ ant deploy-properties
 }}}
  1. Start Glassfish
 {{{
-~/glassfish/bin/asadmin start-domain liferay-domain
+~/glassfishv3/bin/asadmin start-domain liferay-domain
 }}}
  1. Hit http://localhost:8080. Login with test@liferay.com/test (default Liferay admin account).
  1. From logs you should be able to se now:
@@ -181,7 +181,7 @@ ant deploy
  1. Go to Liferay and include the portlet ("Add Application", search for "jndi" and click on "Add" for "JSP JNDI Tester Portlet"
  1. If you run into troubles examine the logs, correct any issues, redeploy and refresh the home page (http://localhost:8080/web/guest/home):
 {{{
-tail -100f ~/glassfish/glassfish/domains/liferay-domain/logs/server.log
+tail -100f ~/glassfishv3/glassfish/domains/liferay-domain/logs/server.log
 }}}
  1. Create another portlet to test JPA with Hibernate
 {{{
