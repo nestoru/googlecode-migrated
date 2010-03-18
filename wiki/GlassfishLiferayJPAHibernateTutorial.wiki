@@ -54,11 +54,19 @@ cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/gla
  1. Login to the admin console (hit http://localhost:4848)
  1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Do *not* select precompile JSPs option. If you pick JSP pre-compilation you might get missing jar files errors. In my case running OSX 64 bits it compiled without problems however in a Ubuntu Jaunty 32 bits box it was impossible to get it working with pre-compilation enabled.
  1. After the deployment finishes hitting http://localhost:8080 should bring Liferay login page.
- 1. If you take a look at the log file you will see:
+ 1. If you take a look at the log file you will see Hypersonic Database is being used. Let us change that for MySQL:
 {{{
 Using dialect org.hibernate.dialect.HSQLDialect
 }}}
- 1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes (In Prelude there is a bug that will cause a 500 if "Database Vendor" is selected so leave it blank):
+ 1. I had a local MySQL Liferay Database in place but if you do not then download the sql scripts and use sql/create-minimal or sql/create scripts.
+{{{
+wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
+unzip liferay-portal-sql-5.2.3.zip
+mysql -u root -psecret1 < liferay-portal-sql-5.2.3/create-minimal/create-minimal-mysql.sql
+mysql> CREATE USER 'liferay'@'localhost' IDENTIFIED BY 'liferay-password';
+mysql> GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON lportal.* TO 'liferay'@'localhost';
+}}}
+ 1. Navigate to Resources/JDBC/Connection Pools and create a new one. In Prelude there is a bug that will cause a 500 if "Database Vendor" is selected so leave it blank:
 {{{
 name: LiferayPool
 Resource Type: javax.sql.ConnectionPoolDataSource
@@ -67,8 +75,8 @@ Datasource Classname: com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSourc
 url: jdbc:mysql://localhost:3306/lportal?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false
 Url: jdbc:mysql://localhost:3306/lportal?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false
 #Add additional Properties
-username: root
-password: root
+username: liferay
+password: <liferay-password>
 #Click Finish
 }}}
  1. Click on the LiferayPool link. Click on "ping" to be sure the connection works.
@@ -76,12 +84,6 @@ password: root
 {{{
 JNDI Name: jdbc/LiferayPool
 Pool Name: LiferayPool
-}}}
- 1. I had a local MySQL Liferay Database in place but if you do not then download the sql scripts and use sql/create-minimal or sql/create scripts.
-{{{
-wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
-unzip liferay-portal-sql-5.2.3.zip
-mysql -u root -psecret1 < liferay-portal-sql-5.2.3/create-minimal/create-minimal-mysql.sql
 }}}
  1. Stop the server so we start configuring MySQL instead of the development HSSQL:
 {{{
