@@ -56,6 +56,12 @@ cp ~/liferay-components/liferay-portal-ext-5.2.3/lib/development/mysql.jar ~/gla
 ~/glassfishv3/bin/asadmin login -p 4848
 }}}
  1. Login to the admin console (hit http://localhost:4848)
+ 1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Do *not* select precompile JSPs option. If you pick JSP pre-compilation you might get missing jar files errors. In my case running OSX 64 bits it compiled without problems however in a Ubuntu Jaunty 32 bits box it was impossible to get it working with pre-compilation enabled.
+ 1. After the deployment finishes hitting http://localhost:8080 should bring Liferay login page.
+ 1. If you take a look at the log file you will see:
+{{{
+Using dialect org.hibernate.dialect.HSQLDialect
+}}}
  1. Navigate to Resources/JDBC/Connection Pools and create a new one. I am using root/root credentials here because of course this is just for developing purposes (In Prelude there is a bug that will cause a 500 if "Database Vendor" is selected so leave it blank):
 {{{
 name: LiferayPool
@@ -75,21 +81,15 @@ password: root
 JNDI Name: jdbc/LiferayPool
 Pool Name: LiferayPool
 }}}
- 1. Navigate to Applications/Web Applications and hit deploy. Point to absolute path, in my case /Users/nurquiza/liferay-components/liferay-portal-5.2.3.war.  Use local packaged file option if the file is local to the server. Use "liferay-portal-5.2.3" as application name. Select root (/) as "Context Root". Do *not* select precompile JSPs option. If you pick JSP pre-compilation you might get missing jar files errors. In my case running OSX 64 bits it compiled without problems however in a Ubuntu Jaunty 32 bits box it was impossible to get it working with pre-compilation enabled.
- 1. After the deployment finishes hitting http://localhost:8080 should bring Liferay login page.
- 1. If you take a look at the log file you will see:
-{{{
-Using dialect org.hibernate.dialect.HSQLDialect
-}}}
- 1. Stop the server so we start configuring MySQL instead of the development HSSQL:
-{{{
-~/glassfishv3/bin/asadmin stop-domain liferay-domain
-}}}
  1. I had a local MySQL Liferay Database in place but if you do not then download the sql scripts and use sql/create-minimal or sql/create scripts.
 {{{
 wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
 unzip liferay-portal-sql-5.2.3.zip
 mysql -u root -psecret1 < liferay-portal-sql-5.2.3/create-minimal/create-minimal-mysql.sql
+}}}
+ 1. Stop the server so we start configuring MySQL instead of the development HSSQL:
+{{{
+~/glassfishv3/bin/asadmin stop-domain liferay-domain
 }}}
  1. Configure the extension environment. Change the below for your local directory structure. Note that we create a new file in this step instead of modifying app.server.properties directly (in my case app.server.nurquiza.properties)
 {{{
