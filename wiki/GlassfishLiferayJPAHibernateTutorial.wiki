@@ -85,21 +85,13 @@ password: <liferay-password>
 JNDI Name: jdbc/LiferayPool
 Pool Name: LiferayPool
 }}}
- 1. Stop the server so we start configuring MySQL instead of the development HSSQL:
-{{{
-~/glassfishv3/bin/asadmin stop-domain liferay-domain
-}}}
- 1. If the stop command fails make sure the login information is stored locally.
-{{{
-~/glassfishv3/bin/asadmin login -p 4848
-}}}
- 1. Configure the extension environment. Change the below for your local directory structure. Note that we create a new file in this step instead of modifying app.server.properties directly (in my case app.server.nurquiza.properties)
+ 1. Configure the extension environment. Change the below for your local directory structure. Note that we create a new file in this step instead of modifying app.server.properties directly (in my case app.server.nurquiza.properties). Note you will need to change app.server.parent.dir.
 {{{
 #vi ~/liferay-components/liferay-portal-ext-5.2.3/app.server.`whoami`.properties
 app.server.type=glassfish
 app.server.parent.dir=/Users/nurquiza/glassfishv3
 app.server.glassfish.instance.dir=${app.server.glassfish.dir}/domains/liferay-domain
-app.server.glassfish.portal.dir=/Users/nurquiza/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3
+app.server.glassfish.portal.dir=${app.server.parent.dir}/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3
 app.server.glassfish.version=3
 app.server.glassfish.zip.name=glassfish-v3.zip
 app.server.glassfish.zip.url=http://download.java.net/glassfish/v3/release/${app.server.glassfish.zip.name}
@@ -107,12 +99,20 @@ app.server.glassfish.zip.url=http://download.java.net/glassfish/v3/release/${app
  1. Edit extension properties to point to LiferayPool
 {{{
 #vi ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties
-   jdbc.default.jndi.name=jdbc/LiferayPool
+jdbc.default.jndi.name=jdbc/LiferayPool
 }}}
  1. Deploy properties
 {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/
 ant deploy-properties
+}}}
+ 1. Stop the server:
+{{{
+~/glassfishv3/bin/asadmin stop-domain liferay-domain
+}}}
+ 1. If the stop command fails make sure the login information is stored locally.
+{{{
+~/glassfishv3/bin/asadmin login -p 4848
 }}}
  1. Start Glassfish
 {{{
