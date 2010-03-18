@@ -1,4 +1,17 @@
 #labels Usethebelowifversion3prelude,JPA,Hibernate,Liferay,Tutorial
+If you are using like I am a VM with 64bits Ubuntu Server or any other GUI-less Server you will need to ssh into the box using X11 forwarding:
+{{{
+ssh -X ubuntu-server
+}}}
+
+That way you will be able to get the GUI back on your local XServer. And you definitely need the GUI for glassfish installation and for using updatetool command.
+
+Of course to be able to interact with the server you will need to use Bridging or any other technique from your Virtualization software (I use Virtual Box) that will allow the VM to run with its own IP.
+
+In addition all http://locahost references below should be replaced by http://liferay where liferay will be an entry in your hosts file pointing to the Server VM IP.
+
+JSP pre-compilation from Glassfish Liferay deployment has worked for me on MAC OSX (32 and 64 bits) and on Ubuntu 64 bits so far. Ubuntu 32 bits will work but you better leave (as I recommend below) the "compile jsp" option unchecked.
+
 At least on MAC OSX and Ubuntu Jaunty the zip file (CLI) will fail to accept Liferay WAR throwing actually different exceptions on both OS. 
 
 Apparently there are switches to make the binary installer work with an external configuration file which I have not tested. 
