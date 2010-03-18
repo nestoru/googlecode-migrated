@@ -119,9 +119,11 @@ ant deploy-properties
 ~/glassfishv3/bin/asadmin start-domain liferay-domain
 }}}
  1. Hit http://localhost:8080. Login with test@liferay.com/test (default Liferay admin account).
- 1. From logs you should be able to se now:
+ 1. From logs you should be able to see how previous Hypersonic DB is now replaced by MySQL:
 {{{
-Using dialect org.hibernate.dialect.MySQLDialect
+$ grep org.hibernate.dialect /home/liferay/glassfishv3/glassfish/domains/liferay-domain/logs/server.log 
+[#|2010-03-18T07:45:10.507-0400|INFO|glassfishv3.0|javax.enterprise.system.std.com.sun.enterprise.v3.services.impl|_ThreadID=29;_ThreadName=Thread-1;|07:45:10,506 INFO  [DialectDetector:97] Using dialect org.hibernate.dialect.HSQLDialect
+[#|2010-03-18T09:11:09.459-0400|INFO|glassfishv3.0|javax.enterprise.system.std.com.sun.enterprise.v3.services.impl|_ThreadID=11;_ThreadName=Thread-1;|09:11:09,458 INFO  [DialectDetector:97] Using dialect org.hibernate.dialect.MySQLDialect
 }}}
  1. Select from the dock menu "Add Application", then click on "Install more Applications". The "Plugin Installer" page should show up. Click on "Configuration tab and set your preferred plugin deployment diretory, in my case I picked "/Users/nurquiza/liferay-plugin-deploy". Click on "Save".
  1. Configure the plugin environment. Note that a specific file for your user name is recomended instead of editing directly build.properties:
