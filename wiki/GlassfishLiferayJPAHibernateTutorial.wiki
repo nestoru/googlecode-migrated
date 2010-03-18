@@ -194,25 +194,26 @@ cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/
 }}}
  1. Create persistence.xml as per JPA spec
 {{{
-#mkdir ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/META-INF
-#vi ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/META-INF/persistence.xml
+#mkdir -p ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/WEB-INF/classes/META-INF
+#vi ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/WEB-INF/classes/META-INF/persistence.xml
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0"
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-   <persistence-unit name="liferayJPAHibernateSample" transaction-type="RESOURCE_LOCAL">
-          <provider>org.hibernate.ejb.HibernatePersistence</provider>
-          <jta-data-source>jdbc/LiferayPool</jta-data-source>
-          <properties>
-                 <property name="hibernate.dialect"
-                          value="org.hibernate.dialect.MySQLDialect"/>
-                 <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-                 <property name="hibernate.show_sql" value="true"/>
-                 <property name="hibernate.cache.provider_class"
-                          value="org.hibernate.cache.HashtableCacheProvider"/>
-                 <property name="hibernate.jndi.class">com.sun.appserv.naming.S1ASCtxFactory</property>
-                 <property name="hibernate.jndi.url">iiop://127.0.0.1:3700</property>
-          </properties>
-   </persistence-unit>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+	<persistence-unit name="liferayJPAHibernatePersistenceUnit" transaction-type="RESOURCE_LOCAL">
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<jta-data-source>jdbc/LiferayPool</jta-data-source>
+        <properties>
+		<property name="hibernate.connection.datasource" value="jdbc/LiferayPool" />
+          	<property name="hibernate.connection.release_mode" value="after_transaction" />
+           	<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+           	<property name="hibernate.hbm2ddl.auto" value="true" />
+           	<property name="hibernate.cache.use_query_cache" value="false" />
+           	<property name="hibernate.show_sql" value="true" />
+		<property name="hibernate.format_sql" value="false" />
+        </properties>
+    </persistence-unit>
 </persistence>
 }}}
  1. Edit ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets/jsp_jpa_hibernate_test-portlet/docroot/view.jsp
