@@ -1,3 +1,4 @@
+#labels agile,portlet,liferay,development,maven,spring,mvc
 Spring Portlet MVC Framework is shipped with the official Spring distro. From the samples directory you can access the "petportal" project which uses ant for building purposes. The portal is composed of several portlets =, take a look at portlet.xml there.
 
 I will mavenize, build and deploy in Liferay-on-Glassfish the PetPortal project.
@@ -188,4 +189,3 @@ jdb -attach liferay-glassfish-server:9009
  1. From Liferay interface go to the Pet Sites Portlet and click on "Add Site". Eclipse stops execution at the breakpoint.
 
 tags:Maven spring mvc portlet tutorial
-
