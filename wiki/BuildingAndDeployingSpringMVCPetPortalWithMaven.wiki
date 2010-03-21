@@ -188,4 +188,8 @@ jdb -attach liferay-glassfish-server:9009
  1. Put a breakpoint in line 52 of PetSitesEditController.
  1. From Liferay interface go to the Pet Sites Portlet and click on "Add Site". Eclipse stops execution at the breakpoint.
 
+== Some common tasks ==
+ 1. Undeploy the portlet: Login to http://liferay-glassfish-server:4848 and from Applications menu select the portlet to be removed, then press undeploy.
+
+
 tags:Maven spring mvc portlet tutorial
