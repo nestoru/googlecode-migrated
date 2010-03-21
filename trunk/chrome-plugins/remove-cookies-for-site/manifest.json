@@ -1,0 +1,27 @@
+{
+  "name": "Remove Cookies for Site",
+  "version": "1.0",
+  "description": "Remove cookies for site.",
+  "browser_action": {
+    "default_icon": "broken-cookie128.png",
+    "default_title": "Remove cookies for site",
+	"popup": "cookie.html"   
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["cookie_handler.js"]
+    }
+  ],
+  "icons": {
+      "128": "broken-cookie.png"
+   },
+  "icons": { 
+	  "48": "broken-cookie48.png",
+      "128":"broken-cookie128.png" },
+  "permissions": [
+	"tabs",
+    "http://*/*",
+	"https://*/*"
+  ]
+}
