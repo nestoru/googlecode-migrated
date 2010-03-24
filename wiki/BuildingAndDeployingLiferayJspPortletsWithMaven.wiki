@@ -16,7 +16,7 @@ cd ~/liferay-components/liferay-plugins-sdk-5.2.3/portlets
  1. Mavenize the JSP Portlet
  {{{ 
 mkdir ~/mavenized-jsp-portlet
-cd ~/mavenized-jsp-portlet-portlet
+cd ~/mavenized-jsp-portlet
 mkdir -p src/main/java
 mkdir -p src/main/resources
 mkdir -p src/main/webapp
