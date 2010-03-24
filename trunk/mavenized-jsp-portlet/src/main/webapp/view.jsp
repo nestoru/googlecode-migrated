@@ -7,7 +7,6 @@
 
 <portlet:defineObjects />
 <liferay-theme:defineObjects />
-<portlet:defineObjects />
 
 <%
 long groupId = layout.getGroupId();
