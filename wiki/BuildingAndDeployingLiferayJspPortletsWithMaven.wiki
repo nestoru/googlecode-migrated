@@ -1,7 +1,7 @@
 #labels Build,Deploy,Liferay,JSP,Portlet,Maven
 The Liferay plugin SDK provides a quick way to build JSP portlets. It would be ideal future versions of it to come with Maven builds besides the ant builds it is shipped with. As of today Maven is still officially missing from Liferay distributions.
 
-Here I show how to mavenize a JSP portlet created from the Liferay plugin SDK. I will also show how to access the Document Library API directly from JSP.
+Here I show how to mavenize a JSP portlet created from the Liferay plugin SDK. I will also show how to access the Document Library API directly from JSP. Form submission is also shown.
 
 There are several assumptions in terms of OS paths, so be aware you will need to review them or use the same paths I use. I will not talk about the configuration of the plugin SDK as I have written about that before.
 
@@ -190,6 +190,7 @@ scp target/mavenized-jsp-portlet.war liferay@liferay-glassfish-server:~/liferay-
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ page import="com.liferay.portlet.documentlibrary.service.DLFolderServiceUtil" %>
 <%@ page import="com.liferay.portlet.documentlibrary.model.DLFolder" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
 
 <portlet:defineObjects />
 <liferay-theme:defineObjects />
@@ -198,13 +199,26 @@ scp target/mavenized-jsp-portlet.war liferay@liferay-glassfish-server:~/liferay-
 <%
 long groupId = layout.getGroupId();
 java.util.List<DLFolder> folders = DLFolderServiceUtil.getFolders(groupId, 0);
-%>>
+String phrase = ParamUtil.getString(request, "phrase");
+if(phrase == null || phrase.length() == 0){
+  phrase = "Nothing";
+}
+%>
 
 <h3>User Data</h3>
 <div><liferay-ui:user-display userId="<%= user.getUserId() %>" /></div>
 <div>Company: <%=company.getCompanyId()%> </div>
 <div>Group: <%=groupId%> </div>
 <div>Folders: <%=folders%> </div>
+
+<h3>What you said</h3>
+<%=phrase%>
+
+<h3>Form Submission</h3>
+<form name="testForm" action="<portlet:renderURL/>" method="post">
+  <input type="text" name="phrase" value="<%=phrase%>">
+  <input type="submit" name="submit" value="submit">
+</form>
  }}}
  1. Build deploy and then refresh the page in Liferay to get the Data rendered.
  {{{
