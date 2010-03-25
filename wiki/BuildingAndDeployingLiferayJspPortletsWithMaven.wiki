@@ -157,19 +157,26 @@ mvn deploy:deploy-file \
 	-Durl=http://archiva-repo-domain/archiva/repository/internal/ \
 	-DrepositoryId=archiva.internal
  }}}
+ 1. If using Artifactory the above will look like: 
+ {{{
+ ...
+ -Durl=http://artifactory-repo-domain/artifactory/libs-releases-local \
+ -DrepositoryId=libs-releases-local
+ ...
+ }}}
  1. Alternatively install them locally (If you do not have a Maven repo which is strongly recommended)
  {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/lib/global
 mvn install:install-file -Dfile=portal-service.jar \
   -DgroupId=com.liferay \
   -DartifactId=portal-service \
-  -Dversion=5.1.2 \
+  -Dversion=5.2.3 \
   -Dpackaging=jar
 
 mvn install:install-file -Dfile=portal-kernel.jar \
   -DgroupId=com.liferay \
   -DartifactId=portal-kernel \
-  -Dversion=5.1.2 \
+  -Dversion=5.2.3 \
   -Dpackaging=jar
  }}}
  1. Build the project
