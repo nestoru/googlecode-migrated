@@ -1,4 +1,4 @@
-Here is a playground with some tips about customizing Liferay.
+Here is a playground with some tips about customizing Liferay. The resulting code can be seen from the "Source" link above.
 
  1. Change the Liferay Logo by your company logo: Just go to Control Pannel; Portal; Settings; Display Settings. Click on Change and point to your png image; Save and click again on Display settings to verify the logo was changed. You can allow community administrators to change the new logo or not from that page.
  1. Create a custom theme project. I am creating one that will customize Liferay to show a predominant blue (005E82) color
