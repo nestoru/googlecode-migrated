@@ -23,6 +23,135 @@ cp -r $THEME/templates docroot/_diffs
  {{{
  diff ~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/html/themes/classic/css/ docroot/_diffs/css/
  }}}
+ 1. Take a look at my results below. I have changed the base color and eliminated some background images:
+ {{{
+***********
+custom.css
+***********
+15d14
+< 	background: transparent url(../images/common/body_bg.png) repeat-x 0 0;
+26d24
+< 	background: transparent url(../images/common/banner_bg.jpg) no-repeat 20% 0;
+51,53c49,50
+< 	background: url(../images/dock/my_places_public.png) no-repeat 15px 50%;
+< 	border-left: 1px solid #D3DADD;
+< 	color: #D3DADD;
+---
+> 	border-left: 1px solid #005E82;
+> 	color: #000;
+68d64
+< 	background-image: url(../images/dock/my_places_private.png);
+74,75c70,71
+< 	background: #020509;
+< 	border-top: 1px solid #304049;
+---
+> 	background: #005E82;
+> 	border-top: 1px solid #005E82;
+87c83
+< 	border: 1px solid #304049;
+---
+> 	border: 1px solid #005E82;
+94c90
+< 	color: #D3DADD;
+---
+> 	color: #fff;
+104a101
+>         color: #fff;
+108c105
+< 	background-color: #1E2529;
+---
+> 	background-color: #005E82;
+118c115
+< 	background: #1E2529;
+---
+> 	background: #000;
+126c123
+< 	background: #1E2529;
+---
+> 	background: #005E82;
+149c146
+< 	background-color: #020509;
+---
+> 	background-color: #005E82;
+153c150
+< 	background: #020509 url(../images/navigation/bullet_selected.png) no-repeat 5px 50%;
+---
+> 	background: #005E82 url(../images/navigation/bullet_selected.png) no-repeat 5px 50%;
+159c156
+< 	background-color: #1E2529;
+---
+> 	background-color: #005E82;
+201c198
+< 	background: #020509;
+---
+> 	background: #005E82;
+237c234
+< 	border: 2px solid #828F95;
+---
+> 	border: 2px solid #005E82;
+243,244c240,241
+< 	background: #D3DADD;
+< 	border-bottom: 1px solid #AEB8BC;
+---
+> 	background: #005E82;
+> 	border-bottom: 1px solid #005E82;
+275c272
+< }
+\ No newline at end of file
+---
+> }
+
+***************
+navigation.css
+***************
+48c48
+< 	background: url(../images/dock/welcome_message.png) no-repeat 0 50%;
+---
+> 	background: #005E82;
+122c122
+< 	background: #020509 url(../images/dock/center_bg.png) repeat-x;
+---
+> 	background: #005E82;
+129d128
+< 	background: url(../images/dock/right_bg.png) no-repeat 100% 0;
+138,139c137
+< 	background: url(../images/dock/left_bg.png) no-repeat 0 0;
+< 	border-right: 1px solid #34404F;
+---
+> 	border-right: 1px solid #005E82;
+156c154
+< 	border-color: #DEDEDE #BFBFBF #BFBFBF #DEDEDE;
+---
+> 	border-color: #005E82;
+162c160
+< 	border-top: 1px solid #DEDEDE;
+---
+> 	border-top: 1px solid #005E82;
+206c204
+< 	background-color: #D3DADD;
+---
+> 	background-color: #005E82;
+238c236
+< 	background-color: #DFF4FF;
+---
+> 	background-color: #005E82;
+248c246
+< 	background-color: #828F95;
+---
+> 	background-color: #005E82;
+252c250
+< 	background-color: #828F95;
+---
+> 	background-color: #005E82;
+257c255
+< 	background-color: #828F95;
+---
+> 	background-color: #005E82;
+266c264
+< 	border-bottom: 2px solid #DEDEDE;
+---
+> 	border-bottom: 2px solid #005E82;
+ }}}
  1. Deploy the theme. As I am using an external server to deploy I need to use scp and while the ant script could be changed to do that in one step I put it here separately because still I use my local server instance as well and so I need the ant script to work locally.
 {{{
 ant clean deploy
