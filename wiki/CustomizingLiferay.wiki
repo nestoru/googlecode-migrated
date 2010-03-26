@@ -1,0 +1,39 @@
+Here is a playground with some tips about customizing Liferay.
+
+ 1. Change the Liferay Logo by your company logo: Just go to Control Pannel; Portal; Settings; Display Settings. Click on Change and point to your png image; Save and click again on Display settings to verify the logo was changed. You can allow community administrators to change the new logo or not from that page.
+ 1. Create a custom theme project. I am creating one that will customize Liferay to show a predominant blue (005E82) color
+{{{
+cd liferay-plugins-sdk-5.2.3
+./create.sh 005E82 "Predominant 005E82 r0g94b130"
+cd  005E82-theme
+mkdir docroot/_diffs/css
+}}}
+ 1. Copy ncessary folders form an existing theme. Below I use the classic theme.
+{{{
+THEME=~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/html/themes/classic
+cp -r $THEME/css docroot/_diffs
+cp -r $THEME/javascript docroot/_diffs
+cp -r $THEME/images docroot/_diffs
+cp -r $THEME/templates docroot/_diffs
+}}}
+ 1. Make sure absolutely all changes are done in the _diffs directory
+ 1. Update custom.css to adapt to desired background and border colors (in this case 005E82)
+ 1. Update navigation.css the same and in addition use a transparent 1px square png as images/dock/menu_bar.png 
+ 1. You can always compare current theming with the one you started it from:
+ {{{
+ diff ~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/html/themes/classic/css/ docroot/_diffs/css/
+ }}}
+ 1. Deploy the theme. As I am using an external server to deploy I need to use scp and while the ant script could be changed to do that in one step I put it here separately because still I use my local server instance as well and so I need the ant script to work locally.
+{{{
+ant clean deploy
+scp ~/liferay-plugin-deploy/005E82-theme-5.2.3.1.war liferay@liferay-glassfish-server:~/liferay-plugin-deploy
+}}}
+ 1. Now go to Liferay and from the Dock Menu select "Manage Pages", click on "Look An Feel" and select the new created theme. See how the creative has changed.
+ 1. Commit to the repository the whole plugin folder but exclude the below folders:
+{{{
+docroot/css		
+docroot/images		
+docroot/javascript	
+docroot/templates
+}}}
+ 1. Remember to change the theme per community using "Manage Pages" option. Note that for private and public pages you can specify different themes.
