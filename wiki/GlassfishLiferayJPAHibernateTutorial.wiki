@@ -77,8 +77,8 @@ Using dialect org.hibernate.dialect.HSQLDialect
 {{{
 wget http://downloads.sourceforge.net/lportal/liferay-portal-sql-5.2.3.zip
 unzip liferay-portal-sql-5.2.3.zip
-mysql -u root -p<password>1 < liferay-portal-sql-5.2.3/create-minimal/create-minimal-mysql.sql
-mysql> CREATE USER 'liferay'@'localhost' IDENTIFIED BY 'liferay-password';
+mysql -u root -p<liferay-password> < liferay-portal-sql-5.2.3/create-minimal/create-minimal-mysql.sql
+mysql> CREATE USER 'liferay'@'localhost' IDENTIFIED BY '<liferay-password>';
 mysql> GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON lportal.* TO 'liferay'@'localhost';
 }}}
  1. Navigate to Resources/JDBC/Connection Pools and create a new one. In Prelude there is a bug that will cause a 500 if "Database Vendor" is selected so leave it blank:
