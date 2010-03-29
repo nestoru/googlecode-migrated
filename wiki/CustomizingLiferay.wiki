@@ -166,7 +166,7 @@ docroot/javascript
 docroot/templates
 }}}
  1. Remember to change the theme per community using "Manage Pages" option. Note that for private and public pages you can specify different themes.
-  1. Configure extension environment to use custom landing page adding the two lines below.
+ 1. Configure extension environment to use custom landing page adding the two lines below.
 {{{
 #vi ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties 
 auth.forward.by.last.path=true
@@ -178,9 +178,10 @@ mkdir -p ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ext/port
 cp ~/liferay-components/liferay-portal-src-5.2.3/portal-impl/src/com/liferay/portal/events/DefaultLandingPageAction.java ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ext/portal/events/CustomDefaultLandingPageAction.java
 }}}
  1. Start by editing the java class changing its namespace to com.ext.portal.events.CustomDefaultLandingPageAction.java
+{{{
 #vi ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ext/portal/events/CustomDefaultLandingPageAction.java 
 }}}
- 1. You might want to visit http://www.liferay.com/community/forums/-/message_boards/message/2111793 to get an idea of the needed code. In my case I modified the code there to redirect the user to his first available community.
+ 1. Include specific business rules to redirect to the proper page according to your needs. You might want to visit http://www.liferay.com/community/forums/-/message_boards/message/2111793 to get an idea of the needed code. In my case I modified the code there to redirect the user to his first available community.
  1. Deploy the newly created class. The whole ext-impl.jar will be actually deployed:
 {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl
