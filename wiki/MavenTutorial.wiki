@@ -490,3 +490,20 @@ http://localhost:8080/spring-web-flow-tutorial/spring/params/write?par=XssAttack
 {{{
 http://localhost:8080/spring-web-flow-tutorial/spring/jsonParams/write?p1=foo&p2=bar&callback
 }}}
+
+== SVN for maven projects ==
+Be sure you follow the below steps when committing to an SVN repository
+ 1. Delete the target directory and any hidden file (those starting with a dot). Hidden directories would be Eclipse or other IDE related files which should not be committed to SVN. Commonly you should prepare your SVN before building with IDEs but if you don't just delete the files to commit and later you can run "mvn eclipse:eclipse" for example as explained before.
+{{{
+rm -fR <project-directory>/target
+rm -fR <project-directory>/.*
+}}}
+ 1. Import the project into the SVN repo:
+{{{
+svn import <project-directory> <svn-base-url>/<project-directory> -m "first import"
+}}} 
+ 1. Ignore the target and hidden directories
+{{{
+svn propset svn:ignore target .
+svn propset svn:ignore ".*" .
+}}}
