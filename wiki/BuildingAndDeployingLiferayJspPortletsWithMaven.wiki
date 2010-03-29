@@ -142,7 +142,7 @@ cd ~/liferay-components/liferay-portal-ext-5.2.3/lib/global
 mvn deploy:deploy-file \
 	-DgroupId=com.liferay \
 	-DartifactId=portal-service \
-	-Dversion=5.1.2 \
+	-Dversion=5.2.3 \
 	-Dpackaging=jar \
 	-Dfile="portal-service.jar" \
 	-Durl=http://archiva-repo-domain/archiva/repository/internal/ \
@@ -151,7 +151,7 @@ mvn deploy:deploy-file \
 mvn deploy:deploy-file \
 	-DgroupId=com.liferay \
 	-DartifactId=portal-kernel \
-	-Dversion=5.1.2 \
+	-Dversion=5.2.3 \
 	-Dpackaging=jar \
 	-Dfile="portal-kernel.jar" \
 	-Durl=http://archiva-repo-domain/archiva/repository/internal/ \
