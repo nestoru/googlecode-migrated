@@ -188,3 +188,4 @@ cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl
 rm  classes/META-INF/*
 ant deploy
 }}}
+ 1. I have mavenized the ext-impl environment and you can find it at http://nestorurquiza.googlecode.com/svn/trunk/customizing-liferay/mavenized-ext-impl/. Going that path no more ant tasks will be needed to create the ext-impl.jar.
