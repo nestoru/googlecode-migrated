@@ -121,3 +121,4 @@ cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ src/main/j
 	</scm>
 </project>
 }}}
+ 1. See the final result here http://nestorurquiza.googlecode.com/svn/trunk/customizing-liferay/mavenized-ext-impl/
