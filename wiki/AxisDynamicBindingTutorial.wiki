@@ -1,3 +1,4 @@
+#labels axis,soap,dynamic,binding,dotnetservicesfromjava
 #How To use Axis to implement SOAP Dynamic Proxy
 = Introduction =
 
