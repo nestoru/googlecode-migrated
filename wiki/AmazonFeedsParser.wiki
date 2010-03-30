@@ -1,3 +1,4 @@
+#labels amazon,feeds,parser,huge,xml,xgawk
 = Amazon Feeds Parser =
 The inspiration for this project was a need to parse big Amazon feeds XML files (dozens of GB) in an acceptable time.
 
