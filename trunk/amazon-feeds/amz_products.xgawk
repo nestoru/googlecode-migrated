@@ -11,7 +11,7 @@ BEGIN {
   start_time = systime() 
   #test_counter = 0;
   #print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "lg_height", "md_height", "sm_height", "lg_width", "md_width", "sm_width", "sku", "brand"
-  print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "sku", "brand", "sales_rank", "shipping_price", "offer_listing_id"
+  print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "sku", "brand", "sales_rank", "shipping_price", "offer_listing_id", "height", "heightUnits", "length", "lengthUnits", "weight", "weightUnits", "width", "widthUnits", "color", "feature"
 }
 
 XMLSTARTELEM {
@@ -43,6 +43,97 @@ XMLCHARDATA                { data  = $0    }
 
 XMLSTARTELEM    ==      "AmazonPrice" { amazonPrice = 1 }
 XMLENDELEM      ==      "AmazonPrice" { amazonPrice = 0 }
+
+XMLSTARTELEM    ==      "ItemAttributes" { itemAttributes = 1 }
+XMLENDELEM      ==      "ItemAttributes" { 
+  itemAttributes = 0 
+}
+XMLSTARTELEM    ==      "ItemDimensions" { itemDimensions = 1 }
+XMLENDELEM      ==      "ItemDimensions" { itemDimensions = 0 }
+
+XMLSTARTELEM    ==      "Height" {
+  if(itemAttributes == 1) {
+    for (i=1; i<=NF; i++) {
+      #printf(" %s='%s'", $i, XMLATTR[$i])
+      if($i == "Units"){
+        heightUnits = XMLATTR[$i]
+      }
+    }
+  }
+}
+
+XMLSTARTELEM    ==      "Length" {
+  if(itemAttributes == 1) {
+    for (i=1; i<=NF; i++) {
+      #printf(" %s='%s'", $i, XMLATTR[$i])
+      if($i == "Units"){
+        lenUnits = XMLATTR[$i]
+      }
+    }
+  }
+}
+
+XMLSTARTELEM    ==      "Weight" {
+  if(itemAttributes == 1) {
+    for (i=1; i<=NF; i++) {
+      #printf(" %s='%s'", $i, XMLATTR[$i])
+      if($i == "Units"){
+        weightUnits = XMLATTR[$i]
+      }
+    }
+  }
+}
+
+XMLSTARTELEM    ==      "Width" {
+  if(itemAttributes == 1) {
+    for (i=1; i<=NF; i++) {
+      #printf(" %s='%s'", $i, XMLATTR[$i])
+      if($i == "Units"){
+        widthUnits = XMLATTR[$i]
+      }
+    }
+  }
+}
+
+XMLENDELEM    ==      "Height" { 
+  if(itemAttributes == 1) {
+    height = data
+  }
+}
+
+XMLENDELEM    ==      "Length" { 
+  if(itemAttributes == 1) {
+    len = data
+  }
+}
+XMLENDELEM    ==      "Weight" { 
+  if(itemAttributes == 1) {
+    weight = data
+  }
+}
+XMLENDELEM    ==      "Width" { 
+  if(itemAttributes == 1) {
+    width = data
+  }
+}
+
+XMLENDELEM    ==      "Color" { 
+  if(itemAttributes == 1) {
+    color = data
+  }
+}
+
+XMLENDELEM    ==      "Feature" { 
+  gsub("^[ \t]*", "", data)
+  gsub("[ \t]*$", "", data)
+  gsub("[\r\n]*", "", data)
+  if(itemAttributes == 1 && data != "") {
+    if( feature != "") {
+      feature = feature ". "
+    }
+    feature = feature data
+  }
+}
 
 XMLSTARTELEM    ==      "Item" {
   #print "new item:"
@@ -142,10 +233,10 @@ XMLENDELEM  == "Item" {
   #print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
   if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
     #print asin, title, amount, description, lg_img, md_img, sm_img, lg_height, md_height, sm_height, lg_width, md_width, sm_width
-    print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId
+    print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId, height, heightUnits, len, lenUnits, weight, weightUnits, width, widthUnits, color, feature
     #data = asin = title = amount = description = lg_img = md_img = sm_img = lg_height = md_height = sm_height = lg_width = md_width = sm_width = ""
   }
-  data = asin = title = amount = description = lg_img = md_img = sm_img = sku = brand = sales_rank = shippingPriceAmount = offerListingId = ""
+  data = asin = title = amount = description = lg_img = md_img = sm_img = sku = brand = sales_rank = shippingPriceAmount = offerListingId = height = heightUnits = len = lenUnits = weight = weightUnits = width = widthUnits = color = feature = ""
 }
 END{
   if (XMLERROR){
