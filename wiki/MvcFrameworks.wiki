@@ -1,3 +1,4 @@
+#labels mvc,frameworks,grails,spring
 After several years of programming for the Web I am still looking for the ideal WEB framework ;-) I even built my own one (http://thinkinginsoftware.blogspot.com/). While evaluating Spring Framework, Rails and Grails some time ago I wrote these notes which at some point I would review just to see mainly if Grails is now in better shape.
 
 
