@@ -1,3 +1,4 @@
+#labels maven,tutorial
 = Maven tutorial =
 I am planning to use Spring Web Flow to make stateful web services. I
 was planning to illustrate once again how no-invasive Spring is, while
