@@ -11,7 +11,7 @@ BEGIN {
   start_time = systime() 
   #test_counter = 0;
   #print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "lg_height", "md_height", "sm_height", "lg_width", "md_width", "sm_width", "sku", "brand"
-  print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "sku", "brand", "sales_rank", "shipping_price", "offer_listing_id", "height", "heightUnits", "length", "lengthUnits", "weight", "weightUnits", "width", "widthUnits", "color", "feature"
+  print "asin", "title", "price", "description", "lg_img", "md_img", "sm_img", "sku", "brand", "sales_rank", "shipping_price", "offer_listing_id", "height", "heightUnits", "length", "lengthUnits", "weight", "weightUnits", "width", "widthUnits", "color", "feature", "upc", "isbn"
 }
 
 XMLSTARTELEM {
@@ -135,6 +135,19 @@ XMLENDELEM    ==      "Feature" {
   }
 }
 
+XMLENDELEM    ==      "UPC" {
+  if(itemAttributes == 1) {
+    upc = data
+  }
+}
+
+XMLENDELEM    ==      "ISBN" {
+  if(itemAttributes == 1) {
+    isbn = data
+  }
+}
+
+
 XMLSTARTELEM    ==      "Item" {
   #print "new item:"
   validMerchantID = 0
@@ -233,7 +246,7 @@ XMLENDELEM  == "Item" {
   #print asin, validMerchantID, validOfferListingID, validAvailability, validReleaseDate
   if(validMerchantID == 1 && validOfferListingID == 1 && validAvailability == 1 && validReleaseDate != 1){
     #print asin, title, amount, description, lg_img, md_img, sm_img, lg_height, md_height, sm_height, lg_width, md_width, sm_width
-    print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId, height, heightUnits, len, lenUnits, weight, weightUnits, width, widthUnits, color, feature
+    print asin, title, amount, description, lg_img, md_img, sm_img, sku, brand, sales_rank, shippingPriceAmount, offerListingId, height, heightUnits, len, lenUnits, weight, weightUnits, width, widthUnits, color, feature, upc, isbn
     #data = asin = title = amount = description = lg_img = md_img = sm_img = lg_height = md_height = sm_height = lg_width = md_width = sm_width = ""
   }
   data = asin = title = amount = description = lg_img = md_img = sm_img = sku = brand = sales_rank = shippingPriceAmount = offerListingId = height = heightUnits = len = lenUnits = weight = weightUnits = width = widthUnits = color = feature = ""
