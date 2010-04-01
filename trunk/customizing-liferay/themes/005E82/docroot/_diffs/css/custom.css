@@ -244,6 +244,7 @@ body {
 }
 
 .portlet-title {
+	color: #fff;
 	float: left;
 	padding: 5px;
 }
