@@ -1,6 +1,10 @@
 #labels liferay,customize,customization,theme,lookandfeel,creative,presentation,extension,environment,icon,landing,page
 Here is a playground with some tips about customizing Liferay. The resulting code can be seen from the "Source" link above.
 
+ 1. Change favicon.ico: In reality version 5.2.3 and before use liferay.ico instead. Change it from your theme, deploy it and struggle with your browser cache ;-)
+{{{
+cp favicon.ico ~/liferay-components/liferay-plugins-sdk-5.2.3/themes/005E82-theme/docroot/_diffs/images/liferay.ico
+}}}
  1. Change the Liferay Logo by your company logo: Just go to Control Pannel; Portal; Settings; Display Settings. Click on Change and point to your png image; Save and click again on Display settings to verify the logo was changed. You can allow community administrators to change the new logo or not from that page.
  1. Create a custom theme project. I am creating one that will customize Liferay to show a predominant blue (005E82) color
 {{{
