@@ -1,7 +1,7 @@
 #labels liferay,customize,customization,theme,lookandfeel,creative,presentation,extension,environment,icon,landing,page
 Here is a playground with some tips about customizing Liferay. The resulting code can be seen from the "Source" link above.
 
- 1. Change favicon.ico: In reality version 5.2.3 and before use liferay.ico instead. Change it from your theme, deploy it and struggle with your browser cache ;-)
+ 1. Change favicon.ico: In reality version 5.2.3 and before use liferay.ico instead. Change it from your theme, deploy it, take a look at the bottom section named "Disabling cache in development environments" and struggle with your browser cache ;-)
 {{{
 cp favicon.ico ~/liferay-components/liferay-plugins-sdk-5.2.3/themes/005E82-theme/docroot/_diffs/images/liferay.ico
 }}}
