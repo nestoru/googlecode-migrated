@@ -192,7 +192,7 @@ ant deploy
  1. I have mavenized the ext-impl environment and you can find it at http://nestorurquiza.googlecode.com/svn/trunk/customizing-liferay/mavenized-ext-impl/. Going that path no more ant tasks will be needed to create the ext-impl.jar.
 
 == Disabling cache in development environments ==
-Take a look at liferay WAR or exploded directory WEB-INF/classes/portal-developer.properties file. It is convenient to get put the whole content of that file in ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties 
+ 1. Take a look at liferay WAR or exploded directory WEB-INF/classes/portal-developer.properties file. It is convenient to get put the whole content of that file in ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties 
 {{{
 #
 # Eliminating Caching for development environment. Please put true in production systems
@@ -208,4 +208,9 @@ openoffice.cache.enabled=false
 velocity.engine.resource.manager.cache.enabled=false
 com.liferay.portal.servlet.filters.cache.CacheFilter=false
 com.liferay.portal.servlet.filters.theme.ThemePreviewFilter=true
+}}}
+ 1. Deploy properties
+{{{
+cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl
+ant deploy-properties
 }}}
