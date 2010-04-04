@@ -201,7 +201,7 @@ XMLENDELEM  == "ReleaseDate" {
 XMLENDELEM  == "ASIN"      { if(depth == 2) asin  = data  }
 XMLENDELEM  == "Title"     { title  = data  }
 XMLENDELEM  == "Amount"    {
-  print "strtonum" strtonum(data)
+  #print "strtonum" strtonum(data)
   if(data !~ /^[0-9]+$/){
     data = -1
   }
