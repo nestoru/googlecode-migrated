@@ -1,0 +1,6 @@
+I will be documenting here those bits I find using a lot in Liferay code.
+
+1. Show an error message:
+{{{
+<div class="portlet-msg-error"><%=error %></div>
+}}}
