@@ -1,7 +1,7 @@
 #labels maven,liferay,extensionenvironment,ext-impl,ext-impl.jar
 In this tutorial I show how I mavenized the Liferay extension implementation JAR file (ext-impl.jar).
 
- 1. Install necessary dependencies. Below I am showing the local installation. You should have your own company maven repository (Archiva or Artifactory can be used for example)
+ 1. Install necessary dependencies. Below I am showing the local installation. You should have your own company maven repository (Archiva or Artifactory can be used for example). Note that ext-service should be mavenized and make this project depending on it but for now I assumed you built it with ant.
 {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/modules
 mvn install:install-file -Dfile=portal-impl.jar -DgroupId=com.liferay -DartifactId=portal-impl -Dversion=5.2.3 -Dpackaging=jar
