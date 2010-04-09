@@ -127,3 +127,7 @@ cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ src/main/j
 </project>
 }}}
  1. See the final result here http://nestorurquiza.googlecode.com/svn/trunk/customizing-liferay/mavenized-ext-impl/
+ 1. Now you can deploy it to your server like:
+{{{
+cp ext-impl.jar ~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/WEB-INF/lib
+}}}
