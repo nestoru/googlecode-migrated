@@ -3,12 +3,14 @@ In this tutorial I show how I mavenized the Liferay extension implementation JAR
 
  1. Install necessary dependencies. Below I am showing the local installation. You should have your own company maven repository (Archiva or Artifactory can be used for example)
 {{{
-cd ~/liferay-components//liferay-portal-ext-5.2.3/modules/
+cd ~/liferay-components//liferay-portal-ext-5.2.3/modules
 mvn install:install-file -Dfile=portal-impl.jar -DgroupId=com.liferay -DartifactId=portal-impl -Dversion=5.2.3 -Dpackaging=jar
-cd ~/liferay-components/liferay-portal-src-5.2.3/portal-service/portal-service.jar
+cd ~/liferay-components/liferay-portal-src-5.2.3/portal-service
 mvn install:install-file -Dfile=portal-service.jar -DgroupId=com.liferay -DartifactId=portal-service -Dversion=5.2.3 -Dpackaging=jar
-cd ~/liferay-components/liferay-portal-src-5.2.3/portal-kernel/portal-kernel.jar
+cd ~/liferay-components/liferay-portal-src-5.2.3/portal-kernel
 mvn install:install-file -Dfile=portal-kernel.jar -DgroupId=com.liferay -DartifactId=portal-kernel -Dversion=5.2.3 -Dpackaging=jar
+cd ~liferay-components/liferay-portal-ext-5.2.3/ext-service
+mvn install:install-file -Dfile=ext-service.jar -DgroupId=com.liferay -DartifactId=ext-service -Dversion=5.2.3 -Dpackaging=jar
 }}}
  1. Mavenize project
 {{{
