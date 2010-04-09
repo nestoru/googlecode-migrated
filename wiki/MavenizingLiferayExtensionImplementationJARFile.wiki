@@ -131,3 +131,4 @@ cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ src/main/j
 {{{
 cp ext-impl.jar ~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/WEB-INF/lib
 }}}
+ 1. Of course you will need to restart your server.
