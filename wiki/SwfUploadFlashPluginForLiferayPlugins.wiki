@@ -1,6 +1,4 @@
 #labels swfupload,flash,liferay,javascript,documentlibrary,DL
-= SwfUpload flash Plugin for Liferay Plugins =
-
 Multiple file uploading cannot be accomplished without the help of browser plugins. I tried using swfupload (Flash plugin + javascript) from within Liferay and here are some notes that hopefully will help others. I am using the plugin environments and all my tests have been performed from JSPPortlets.
 
  1. Include a Servlet in your plugin WAR as you would in normal servlet development.
