@@ -96,7 +96,7 @@ function myUploadComplete(file) {
 	}
 }
 }}}
- 1. Use the Portlet session from the portlet to store information to be passed to the servlet:
+ 1. Use the Portlet session from the portlet to store information to be passed to the servlet (For example in JSPPortlet#doDispatch()):
 {{{
 renderRequest.getPortletSession().setAttribute(WebKeys.THEME_DISPLAY, themeDisplay, PortletSession.APPLICATION_SCOPE);
 try {
