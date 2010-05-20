@@ -177,6 +177,11 @@ docroot/templates
 auth.forward.by.last.path=true
 login.events.post=com.liferay.portal.events.LoginPostAction,com.ext.portal.events.CustomDefaultLandingPageAction
 }}}
+ 1. Deploy the properties file
+{{{
+cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/
+ant deploy-properties
+}}}
  1. Create the needed CustomDefaultLandingPageAction class
 {{{
 mkdir -p ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ext/portal/events
