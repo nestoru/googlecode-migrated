@@ -21,7 +21,7 @@ mkdir -p src/main/resources
 mkdir -p src/test/java
 mkdir -p src/test/resources
 cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/META-INF/ src/main/resources
-cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com/ src/main/java/
+cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com src/main/java/
 #vi pom.xml 
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
