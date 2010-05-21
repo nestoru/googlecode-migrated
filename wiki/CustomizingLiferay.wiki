@@ -199,7 +199,27 @@ rm  classes/META-INF/*
 ant deploy
 }}}
  1. I have mavenized the ext-impl environment and you can find it at http://nestorurquiza.googlecode.com/svn/trunk/customizing-liferay/mavenized-ext-impl/. Going that path no more ant tasks will be needed to create the ext-impl.jar.
-
+ 1. Configure email. Edit and deploy portal-ext.properties 
+{{{
+#Email Config
+mail.session.mail.store.protocol=smtp
+mail.session.mail.transport.protocol=smtp
+mail.session.mail.smtp.host=smtp.gmail.com
+mail.session.mail.smtp.password=yourpassword
+mail.session.mail.smtp.user=yourgmailaddress
+mail.session.mail.smtp.port=465
+mail.session.mail.smtp.auth=true
+mail.session.mail.smtp.starttls.enable=true
+mail.session.mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+}}} 
+ 1. Send an email
+{{{
+InternetAddress from = new InternetAddress("nestor.urquiza@gmail.com", "myself");
+InternetAddress to = new InternetAddress("nestor.urquiza@gmail.com", "myself");
+MailMessage message = new MailMessage(from, to, "test from liferay", "This is a test message from a Liferay portlet", true);
+log.info("Test Email Message: "+ message);
+MailServiceUtil.sendEmail(message);
+}}}
 == Disabling cache in development environments ==
  1. Take a look at liferay WAR or exploded directory WEB-INF/classes/portal-developer.properties file. It is convenient to get put the whole content of that file in ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties 
 {{{
@@ -228,25 +248,4 @@ ant deploy-properties
 #if($permissionChecker.isOmniadmin())
  #parse ("$full_templates_path/dock.vm")
 #end
-}}}
- 1. Configure email. Edit and deploy portal-ext.properties 
-{{{
-#Email Config
-mail.session.mail.store.protocol=smtp
-mail.session.mail.transport.protocol=smtp
-mail.session.mail.smtp.host=smtp.gmail.com
-mail.session.mail.smtp.password=yourpassword
-mail.session.mail.smtp.user=yourgmailaddress
-mail.session.mail.smtp.port=465
-mail.session.mail.smtp.auth=true
-mail.session.mail.smtp.starttls.enable=true
-mail.session.mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
-}}} 
- 1. Send an email
-{{{
-InternetAddress from = new InternetAddress("nestor.urquiza@gmail.com", "myself");
-InternetAddress to = new InternetAddress("nestor.urquiza@gmail.com", "myself");
-MailMessage message = new MailMessage(from, to, "test from liferay", "This is a test message from a Liferay portlet", true);
-log.info("Test Email Message: "+ message);
-MailServiceUtil.sendEmail(message);
 }}}
