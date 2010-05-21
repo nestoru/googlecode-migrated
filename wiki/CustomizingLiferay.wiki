@@ -223,3 +223,9 @@ com.liferay.portal.servlet.filters.theme.ThemePreviewFilter=true
 cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl
 ant deploy-properties
 }}}
+ 1. Remove the Dock (Welcome tab) for non-admin users. In your theme edit docroot/_diffs/templates/portal_normal.vm as shown below. Do not forget to reinstall the theme ( "ant clean deploy" and make sure the theme is droped into the liferay plugin folder. 
+{{{
+#if($permissionChecker.isOmniadmin())
+ #parse ("$full_templates_path/dock.vm")
+#end
+}}}
