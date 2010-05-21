@@ -229,3 +229,24 @@ ant deploy-properties
  #parse ("$full_templates_path/dock.vm")
 #end
 }}}
+ 1. Configure email. Edit and deploy portal-ext.properties 
+{{{
+#Email Config
+mail.session.mail.store.protocol=smtp
+mail.session.mail.transport.protocol=smtp
+mail.session.mail.smtp.host=smtp.gmail.com
+mail.session.mail.smtp.password=yourpassword
+mail.session.mail.smtp.user=yourgmailaddress
+mail.session.mail.smtp.port=465
+mail.session.mail.smtp.auth=true
+mail.session.mail.smtp.starttls.enable=true
+mail.session.mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+}}} 
+ 1. Send an email
+{{{
+InternetAddress from = new InternetAddress("nestor.urquiza@gmail.com", "myself");
+InternetAddress to = new InternetAddress("nestor.urquiza@gmail.com", "myself");
+MailMessage message = new MailMessage(from, to, "test from liferay", "This is a test message from a Liferay portlet", true);
+log.info("Test Email Message: "+ message);
+MailServiceUtil.sendEmail(message);
+}}}
