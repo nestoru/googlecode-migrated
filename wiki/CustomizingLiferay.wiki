@@ -220,6 +220,12 @@ MailMessage message = new MailMessage(from, to, "test from liferay", "This is a 
 log.info("Test Email Message: "+ message);
 MailServiceUtil.sendEmail(message);
 }}}
+ 1. Remove the Dock (Welcome tab) for non-admin users. In your theme edit docroot/_diffs/templates/portal_normal.vm as shown below. Do not forget to reinstall the theme ( "ant clean deploy" and make sure the theme is droped into the liferay plugin folder. 
+{{{
+#if($permissionChecker.isOmniadmin())
+ #parse ("$full_templates_path/dock.vm")
+#end
+}}}
 == Disabling cache in development environments ==
  1. Take a look at liferay WAR or exploded directory WEB-INF/classes/portal-developer.properties file. It is convenient to get put the whole content of that file in ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties 
 {{{
@@ -242,10 +248,4 @@ com.liferay.portal.servlet.filters.theme.ThemePreviewFilter=true
 {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl
 ant deploy-properties
-}}}
- 1. Remove the Dock (Welcome tab) for non-admin users. In your theme edit docroot/_diffs/templates/portal_normal.vm as shown below. Do not forget to reinstall the theme ( "ant clean deploy" and make sure the theme is droped into the liferay plugin folder. 
-{{{
-#if($permissionChecker.isOmniadmin())
- #parse ("$full_templates_path/dock.vm")
-#end
 }}}
