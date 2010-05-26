@@ -1,6 +1,4 @@
 #labels apache2.2,mod-jk,modjk,windows
-= Windows Apache 2.2 and ModJk Tutorial =
-
  1. Here is the software to download:
 {{{
 http://www.eng.lsu.edu/mirrors/apache/tomcat/tomcat-connectors/jk/binaries/win32/jk-1.2.30/mod_jk-1.2.30-httpd-2.2.3.so
