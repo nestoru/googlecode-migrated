@@ -5,7 +5,7 @@ http://www.eng.lsu.edu/mirrors/apache/tomcat/tomcat-connectors/jk/binaries/win32
 http://mirror.olnevhost.net/pub/apache/httpd/binaries/win32/httpd-2.2.15-win32-x86-openssl-0.9.8m-r2.msi
 }}}
  1. Install Apache and your java application server.
- 1. Copy mod_jk to C:\Program Files\Apache Software Foundation\Apache2.2\modules
+ 1. Copy mod_jk-1.2.30-httpd-2.2.3.so to C:\Program Files\Apache Software Foundation\Apache2.2\modules
  1. Create workers.properties in C:\Program Files\Apache Software Foundation\Apache2.2\conf
  {{{
 #default (standalone workers)
