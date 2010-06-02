@@ -19,6 +19,7 @@ worker.list=default1
  1. Edit httpd.conf from C:\Program Files\Apache Software Foundation\Apache2.2\conf 
  {{{
 ...
+NameVirtualHost *:80
 LoadModule rewrite_module modules\mod_rewrite.so
 Include conf/mod-jk.conf
 Include conf/vhosts.conf
@@ -44,7 +45,7 @@ JkShmFile logs\apache2\jk.shm
  }}}
  1. Create vhosts.conf in C:\Program Files\Apache Software Foundation\Apache2.2\conf
  {{{
-<VirtualHost sample.com:80>
+<VirtualHost *:80>
     ServerName sample.com
 
     DocumentRoot "c:\docroot\sample.war"
