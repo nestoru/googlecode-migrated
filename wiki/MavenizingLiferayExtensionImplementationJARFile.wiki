@@ -113,16 +113,16 @@ cp -R ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/com src/main/ja
 				<version>2.0-beta-7</version>
 				<configuration>
 					<tagBase>
-						http://svn.btx.bittime.com/ProductDev/tags/mvn/gra-core
-		          </tagBase>
+						http://your.repository.domain/path/to/tags
+		                        </tagBase>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 	<scm>
-		<connection>scm:svn:http://your.repository.domain/path/to/tags/directory</connection>
-		<developerConnection>scm:svn:http://your.repository.domain/path/to/tags/directory</developerConnection>
-		<url>http://your.repository.domain/path/to/tags/directory</url>
+		<connection>scm:svn:http://your.repository.domain/path/to/trunk-or-branch/directory</connection>
+                <developerConnection>scm:svn:http://your.repository.domain/path/to/trunk-or-branch/directory</developerConnection>
+                <url>http://your.repository.domain/path/to/trunk-or-branc/directory</url>
 	</scm>
 </project>
 }}}
