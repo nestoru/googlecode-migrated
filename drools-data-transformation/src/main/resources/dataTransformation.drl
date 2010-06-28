@@ -1,0 +1,20 @@
+package com.nestorurquiza.drools
+ 
+import com.nestorurquiza.drools.DroolsDataTransformation.OutputFeed;
+import com.nestorurquiza.drools.DroolsDataTransformation.FeedRow;
+import java.util.Map;
+import java.util.HashMap;
+ 
+rule "transform data"
+	dialect "mvel"
+	when
+		feedRow : FeedRow()
+		outputFeed : OutputFeed()
+	then
+		inFields = feedRow.fields;
+		Map outFields = new HashMap();
+	    outFields.put("a", inFields.a);
+		outFields.put("b", inFields.b);
+		outFields.put("c", inFields.b * .15);
+		outputFeed.add(outFields);
+end

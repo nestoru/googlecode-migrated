@@ -1,0 +1,42 @@
+package com.nestorurquiza.drools
+ 
+import com.nestorurquiza.drools.DroolsDataTransformation.FeedRow;
+import com.nestorurquiza.drools.DroolsDataTransformation.InputFeedRow;
+import com.nestorurquiza.drools.DroolsDataTransformation.OutputFeedRow;
+import java.util.Map;
+import java.util.HashMap;
+
+function void setTip(FeedRow inFeedRow, FeedRow outFeedRow, float tip) {
+	Map inFields = inFeedRow.getFields();
+	outFeedRow.putField("d", (Double) inFields.get("b") * tip);
+}
+
+rule "Any location"
+	dialect "mvel"
+	when
+		inFeedRow : InputFeedRow( )
+		outFeedRow : OutputFeedRow()
+	then
+		Map inFields = inFeedRow.getFields();
+    	outFeedRow.putField("a", inFields.get("a"));
+		outFeedRow.putField("b", inFields.get("b"));
+		outFeedRow.putField("c", inFields.get("c"));
+end
+
+rule "Miami Beach Tips"
+	dialect "mvel"
+	when
+		inFeedRow : InputFeedRow( fields.c == "Miami Beach" )
+		outFeedRow : OutputFeedRow()
+	then
+		setTip( inFeedRow, outFeedRow, .2 );
+end
+
+rule "Non Miami Beach Tips"
+	dialect "mvel"
+	when
+		inFeedRow : InputFeedRow( fields.c != "Miami Beach" )
+		outFeedRow : OutputFeedRow()
+	then
+		setTip( inFeedRow, outFeedRow, .15 );
+end
