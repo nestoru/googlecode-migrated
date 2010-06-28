@@ -4,7 +4,6 @@ This project (proof of concept) is hosted at http://nestorurquiza.googlecode.com
 == Setting up your environment ==
 Note the versions I have used for each package. I have tried with several combinations and the below does work for me at least on MAC OSX Snow Leopard.
 
- 1. Download Drools (hhttp://download.jboss.org/drools/release/5.1.0.33002.M2/drools-5.1.0.M2-bin.zip) and unzip the file let us say in ~/drools-5.1.0.M2-bin. This will be needed only for non Maven projects. I am showing at the end how to configure your environment for non maven approach.
  1. Install in your local or remote maven repository some needed dependencies. Showing local installation:
  {{{
 mvn install:install-file -DgroupId=org.drools -DartifactId=drools-core -Dversion=5.1.0.M2 -Dpackaging=jar -Dfile=/Users/nestor/drools-5.1.0.M2-bin/drools-core-5.1.0.M2.jar 
@@ -54,7 +53,8 @@ mvn -Declipse.workspace=/Users/nestor/eclipse-workspace-test eclipse:add-maven-r
 I prefer to use Maven of course and I have written before why.
 
 If you are not using Maven your project will have a slightly different structure. You can always convert the project to a Drools project using right click on top of the project entry.
-
+ 
+ 1. Download Drools (hhttp://download.jboss.org/drools/release/5.1.0.33002.M2/drools-5.1.0.M2-bin.zip) and unzip the file let us say in ~/drools-5.1.0.M2-bin. 
  1. Start Eclipse and select New | Project | Drools. Enter a name for the project. Press "next" twice. Click on "Configure Workspace Settings" and provide the path for drools-5.1.0.M2-bin directory. Click on "finish"
  {{{
 Name: drools-5.1.0.M2
