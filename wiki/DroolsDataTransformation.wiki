@@ -56,7 +56,9 @@ I prefer to use Maven of course and I have written before why.
 If you are not using Maven your project will have a slightly different structure. You can always convert the project to a Drools project using right click on top of the project entry.
 
  1. Start Eclipse and select New | Project | Drools. Enter a name for the project. Press "next" twice. Click on "Configure Workspace Settings" and provide the path for drools-5.1.0.M2-bin directory. Click on "finish"
+ {{{
 Name: drools-5.1.0.M2
 Path: /Users/nestor/drools-5.0-bin
+ }}}
  1. You will need to restart Eclipse after configuring the Drools runtime for changes to take effect.
  1. At this point you can step through the code as we have explained before. Of course your project will have too many dependency jars that will need to be kept in the version control system which is one of the main reasons I prefer to use Maven (I keep just source files in the repo)
