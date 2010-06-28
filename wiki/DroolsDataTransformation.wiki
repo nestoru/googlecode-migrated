@@ -1,0 +1,23 @@
+This project (proof of concept) is hosted at http://nestorurquiza.googlecode.com/svn/trunk/drools-data-transformation/
+
+== Running the project ==
+Below is how to run the two included examples as well as the output for them:
+{{{
+#simple
+#mvn exec:java -Dexec.mainClass="com.nestorurquiza.drools.DroolsDataTransformationTest" -Dexec.classpathScope=runtime
+[INFO] [exec:java {execution: default-cli}]
+Feed [feedRows=[FeedRow [fields={b=25.6, c=3.84, a=Red Lobster}], FeedRow [fields={b=35.5, c=5.325, a=The Crab House}]]]
+
+#complex
+#mvn exec:java -Dexec.mainClass="com.nestorurquiza.drools.DroolsComplexDataTransformationTest" -Dexec.classpathScope=runtime
+[INFO] [exec:java {execution: default-cli}]
+Feed [feedRows=[FeedRow [fields={d=3.8400001525878906, b=25.6, c=Miami, a=Red Lobster}], FeedRow [fields={d=7.1000001057982445, b=35.5, c=Miami Beach, a=The Crab House}]]]
+}}}
+
+I am providing two Test classes. In the so called "complex" example you see I am applying the rules per row. The reason is I want to affect a Domain object (OutputFeed) using one or more rules that apply given the nature of the input feed fields. The nature will then determine what value we use for the destination feed fields. The "Any Location" rule is applied to all records, "Miami Beach tips" is applied only to restaurants located in Miami and then "Non Miami Beach Tips" will be applied to the rest.
+
+The "Simple" example uses rules that apply same tip for all locations.
+The "Complex" example uses rules that apply different tips depending on the location.
+
+== Setting up your environment ==
+
