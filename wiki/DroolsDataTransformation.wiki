@@ -32,6 +32,7 @@ The "Complex" example uses rules that apply different tips depending on the loca
 
 == Using Eclipse IDE ==
  1. Install Eclipse. I have used latest Eclipse release: Helios.
+ 1. Install Maven plugin. Install new software from Help menu and point to http://m2eclipse.sonatype.org/sites/m2e
  1. Download Drools Eclipse plugin. I have used Drools 5.1.0.M2 (http://download.jboss.org/drools/release/5.1.0.33002.M2/drools-5.1.0.M2-eclipse-all.zip). Uncompress the file and copy the features and plugins files into the corresponding directory in the Eclipse home directory.
  1. If you have not pick an Eclipse workspace then open Eclipse and create a new one. Close Eclipse.
  1. From command prompt prepare the project:
