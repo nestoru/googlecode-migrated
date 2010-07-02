@@ -47,6 +47,7 @@ mvn -Declipse.workspace=/Users/nestor/eclipse-workspace-test eclipse:add-maven-r
  }}}
  1. Open Eclipse. If it was opened close it and open it again.
  1. From Eclipse import the project into the workspace: Right click on left pane select Import | General | Existing Projects into workspace
+ 1. Right click on the project and select Maven | Enable Dependency Management
  1. Open the drl files in src/main/resources. Put breakpoints in the "then" sections.
  1. Right click on com.nestorurquiza.drools.DroolsDataTransformationTest. Choose "Debug As | Drools Project" and the program will stop at one of the breakpoints. Inspect variables as usual. Do the same for the other class com.nestorurquiza.drools.DroolsComplexDataTransformationTest. You will get the same result you got when running the classes from the command prompt.
 
