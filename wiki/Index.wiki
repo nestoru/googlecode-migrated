@@ -1,0 +1,4 @@
+I keep on posting in my blog http://thinkinginsoftware.blogspot.com and in here. Navigating through the SVN you should get code that works. Reading this WIKi and my blog should be enough to get a feeling of some of those projects I have been involved and I am able to share.
+
+It is my hope that others while reading should share as well, not only comments on the subjects here discussed but also code that works on their own blogs and WIKIs.
+
