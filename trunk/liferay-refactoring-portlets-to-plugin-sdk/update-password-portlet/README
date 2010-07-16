@@ -1,0 +1,9 @@
+Documentation at http://thinkinginsoftware.blogspot.com/2010/07/liferay-refactoring-moving-existing.html
+Prerequisite: For this portlet to work you need to share the SessionErrors variable set by the update_password portlet so:
+{{{
+#vi ~/liferay/ext/ext-impl/src/portal-ext.properties
+...
+session.shared.attributes=org.apache.struts.action.LOCALE,COMPANY_,USER_,LIFERAY_SHARED_,com.liferay.portal.kernel.servlet.SessionErrors
+...
+}}}
+
