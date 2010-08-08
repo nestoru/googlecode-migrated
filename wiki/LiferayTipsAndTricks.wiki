@@ -1,5 +1,5 @@
 #labels liferay,tips,tricks
-I will be documenting here those bits I find using a lot in Liferay code.
+I will be documenting here those bits I find using a lot in Liferay code. See also [CustomizingLiferay Customizing Liferay].
 
  1. Show an error message:
  {{{
