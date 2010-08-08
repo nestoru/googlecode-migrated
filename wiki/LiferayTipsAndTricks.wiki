@@ -1,14 +1,14 @@
 #labels liferay,tips,tricks
 I will be documenting here those bits I find using a lot in Liferay code.
 
-1. Show an error message:
-{{{
+ 1. Show an error message:
+ {{{
 <div class="portlet-msg-error"><%=error %></div>
-}}}
-1. Force pdf documents to be downloaded (remove pdf from being opened directly by the browser (changing content-disposition=attachment)
-{{{
+ }}}
+ 1. Force pdf documents to be downloaded (remove pdf from being opened directly by the browser (changing content-disposition=attachment)
+ {{{
 #cd ~/liferay/ext/ext-impl
 #vi src/portal-ext.properties
 mime.types.content.disposition.inline=flv,swf,wmv
 #ant deploy-properties
-}}}
+ }}}
