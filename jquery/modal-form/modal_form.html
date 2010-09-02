@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery UI Dialog - Modal form</title>
+
+	<link type="text/css" href="jquery-ui-1.8.2.css" rel="stylesheet" />
+	<script type="text/javascript" src="jquery.min-1.4.2.js"></script>
+	<script type="text/javascript" src="jquery.bgiframe-2.1.1.js"></script>
+	<script type="text/javascript" src="jquery-ui.min-1.8.2.js"></script>
+	<script type="text/javascript" src="jquery.ui.dialog.js"></script>
+	
+	
+	<style type="text/css">
+		.ui-dialog { font-size: 62.5%; }
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+		$("#dialog").dialog("destroy");
+		
+		$("#dialogForm").dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				'Update repeat options': function() {
+						var repeatPattern = $('#dialogForm form').serialize();
+						$('.repeatOptionsEnabled').val(repeatPattern); 
+						setSummaryFromFields();
+						$(this).dialog('close');
+						disableRowForRepeatPatternEdition()
+				},
+				'Cancel': function() {
+					$(this).dialog('close');
+					disableRowForRepeatPatternEdition()
+				}
+			},
+			close: function() {
+				disableRowForRepeatPatternEdition()
+			}
+		});
+		
+		$('.configureRepeatOptions').click(function(){
+			enableRowForRepeatPatternEdition($(this));
+			$('#dialogForm').dialog('open');
+		});
+		
+	});
+	
+	function enableRowForRepeatPatternEdition(currentObject){
+		currentObject.parents('tr:first').find('td input.repeatOptions').addClass('repeatOptionsEnabled');
+		currentObject.addClass('configureRepeatOptionsEnabled');
+	}
+	
+	function disableRowForRepeatPatternEdition(){
+		$('.repeatOptionsEnabled').removeClass('repeatOptionsEnabled');
+		$('.configureRepeatOptionsEnabled').removeClass('configureRepeatOptionsEnabled');
+	}
+	
+	function setSummaryFromFields() {
+		var summary = "Repeat ";
+		var frequency = $('#frequency option:selected').text();
+		var interval = $('#interval option:selected').text();
+		var intervalUnit = $('#intervalUnit option:selected').text();
+		summary += frequency + " every " + interval + " " + intervalUnit;
+		$('.configureRepeatOptionsEnabled').html(summary);
+	}
+	</script>
+</head>
+<body>
+
+<div class="demo">
+
+<div id="dialogForm" title="Repeat">
+	<form>
+		<table>
+		   
+		        <tr>
+		            <th>Repeats:</th>
+		            <td><select id="frequency" name="frequency">
+						<option value="" selected="selected">Select</option>
+		                <option value="0">Daily</option>
+		                <option value="1">Every weekday (Mon-Fri)</option>
+		                <option value="2">Every Mon., Wed., and Fri.</option>
+		                <option value="3">Every Tues., and Thurs.</option>
+		                <option value="4">Weekly</option>
+		                <option value="5">Monthly</option>
+		                <option value="6">Yearly</option>
+		            </select></td>
+		        </tr>
+	
+	
+		        <tr>
+		            <th>Repeat every:</th>
+		            <td><select id="interval" name="interval">
+						<option value="" selected="selected">Select</option>
+		                <option value="1">1</option>
+		                <option value="2">2</option>
+		                <option value="3">3</option>
+		                <option value="4">4</option>
+		                <option value="5">5</option>
+		                <option value="6">6</option>
+		                <option value="7">7</option>
+		                <option value="8">8</option>
+		                <option value="9">9</option>
+		                <option value="10">10</option>
+		                <option value="11">11</option>
+		                <option value="12">12</option>
+		                <option value="13">13</option>
+		                <option value="14">14</option>
+		                <option value="15">15</option>
+		                <option value="16">16</option>
+		                <option value="17">17</option>
+		                <option value="18">18</option>
+		                <option value="19">19</option>
+		                <option value="20">20</option>
+		                <option value="21">21</option>
+		                <option value="22">22</option>
+		                <option value="23">23</option>
+		                <option value="24">24</option>
+		                <option value="25">25</option>
+		                <option value="26">26</option>
+		                <option value="27">27</option>
+		                <option value="28">28</option>
+		                <option value="29">29</option>
+		                <option value="30">30</option>
+		            </select>
+		 			<select id="intervalUnit" name="intervalUnit"><option value="" selected="selected">Select</option><option value="1">Days</option><option value="2">Hours</option><option value="3">Minutes</option></select>
+					</td>
+		        </tr>
+		</table>
+	</form>
+</div>
+
+
+<div id="tasksContains" class="uiWidget">
+
+		<h1>Tasks Details:</h1>
+
+
+	<table id="tasks" class="ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header ">
+				<th>Task</th>
+				<th>Depends On</th>
+				<th>Dependency Lag</th>
+				<th>Repeat</th>
+				<th>Repeat Options</th>
+				<th>Due Date Lag</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Daily Report</td>
+				<td><select name="dependsOn"><option value="">Select</option><option value="1">Daily Report</option><option value="2">Monthly Report</option><option value="3">Yearly Report</option></select></td>
+				<td><input type="text" name="lag" value="1"/></td>
+				<td><input type="checkbox" name="repeat"><label for="repeat"><a class="configureRepeatOptions" href="#">Repeat Options</a></label></td>
+				<td><input type="text" class="repeatOptions" name="repeatOptions"></td>
+				<td>
+					<input type="text" name="dueDateLagValue" value="1"/>
+					<select name="dueDateLagUnit"><option value="">Select</option><option value="1">Days</option><option value="2">Hours</option><option value="3">Minutes</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td>Monthly Report</td>
+				<td><select name="dependsOn"><option value="">Select</option><option value="1">Daily Report</option><option value="2">Monthly Report</option><option value="3">Yearly Report</option></select></td>
+				<td><input type="text" name="lag" value="1"/></td>
+				<td><input type="checkbox" name="repeat"/><label for="repeat"><a class="configureRepeatOptions" href="#">Repeat Options</a></label></td>
+				<td><input type="text" class="repeatOptions" name="repeatOptions"></td>
+				<td>
+					<input type="text" name="dueDateLagValue" value="1"/>
+					<select name="dueDateLagUnit"><option value="">Select</option><option value="1">Days</option><option value="2">Hours</option><option value="3">Minutes</option></select>
+				</td>
+			</tr>
+			<tr>
+				<td>Yearly Report</td>
+				<td><select name="dependsOn"><option value="">Select</option><option value="1">Daily Report</option><option value="2">Monthly Report</option><option value="3">Yearly Report</option></select></td>
+				<td><input type="text" name="lag" value="1"/></td>
+				<td><input type="checkbox" name="repeat"/><label for="repeat"><a class="configureRepeatOptions" href="#">Repeat Options</a></label></td>
+				<td><input type="text" class="repeatOptions" name="repeatOptions"></td>
+				<td>
+					<input type="text" name="dueDateLagValue" value="1"/>
+					<select name="dueDateLagUnit"><option value="">Select</option><option value="1">Days</option><option value="2">Hours</option><option value="3">Minutes</option></select>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+
+</body>
+</html>
