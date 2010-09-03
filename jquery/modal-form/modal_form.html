@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>jQuery UI Dialog - Modal form</title>
+	<title>Calendar Repeat Widget with JQuery Modal form</title>
 
 	<link type="text/css" href="jquery-ui-1.8.2.css" rel="stylesheet" />
 	<script type="text/javascript" src="jquery.min-1.4.2.js"></script>
@@ -47,6 +47,8 @@
 			$('#dialogForm').dialog('open');
 		});
 		
+		$('#frequency').change(function(){setIntervalUnit();});
+		
 	});
 	
 	function enableRowForRepeatPatternEdition(currentObject){
@@ -63,9 +65,32 @@
 		var summary = "Repeat ";
 		var frequency = $('#frequency option:selected').text();
 		var interval = $('#interval option:selected').text();
-		var intervalUnit = $('#intervalUnit option:selected').text();
+		var intervalUnit = $('#intervalUnit').html();
 		summary += frequency + " every " + interval + " " + intervalUnit;
 		$('.configureRepeatOptionsEnabled').html(summary);
+	}
+	
+	function setIntervalUnit() {
+		var frequencyId = $('#frequency').val();
+		switch(frequencyId)
+		{
+		case '1':
+		  setIntervalUnitSpan('days');
+		  break;
+		case '2':
+		  setIntervalUnitSpan('weeks');
+		  break;
+		case '3':
+		  setIntervalUnitSpan('months');
+	      break;
+		case '4':
+		  setIntervalUnitSpan('years');
+		  break;
+		}
+	}
+	
+	function setIntervalUnitSpan(units) {
+		$('#intervalUnit').text(units);
 	}
 	</script>
 </head>
@@ -81,13 +106,10 @@
 		            <th>Repeats:</th>
 		            <td><select id="frequency" name="frequency">
 						<option value="" selected="selected">Select</option>
-		                <option value="0">Daily</option>
-		                <option value="1">Every weekday (Mon-Fri)</option>
-		                <option value="2">Every Mon., Wed., and Fri.</option>
-		                <option value="3">Every Tues., and Thurs.</option>
-		                <option value="4">Weekly</option>
-		                <option value="5">Monthly</option>
-		                <option value="6">Yearly</option>
+		                <option value="1">Daily</option>
+		                <option value="2">Weekly</option>
+		                <option value="3">Monthly</option>
+		                <option value="4">Yearly</option>
 		            </select></td>
 		        </tr>
 	
@@ -127,7 +149,7 @@
 		                <option value="29">29</option>
 		                <option value="30">30</option>
 		            </select>
-		 			<select id="intervalUnit" name="intervalUnit"><option value="" selected="selected">Select</option><option value="1">Days</option><option value="2">Hours</option><option value="3">Minutes</option></select>
+					<span id="intervalUnit"><span>
 					</td>
 		        </tr>
 		</table>
