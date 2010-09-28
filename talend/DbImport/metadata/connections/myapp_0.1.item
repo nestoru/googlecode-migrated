@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore" xmlns:relational="http://www.talend.org/cwm/resource/relational/2010">
+  <TalendMetadata:DatabaseConnection xmi:id="_8xxS4MpIEd-RO5lo6b1LvA" dataPackage="_8xxS4cpIEd-RO5lo6b1LvA" DatabaseType="MySQL" URL="jdbc:mysql://localhost:3306/myapp?noDatetimeStringSync=true" dbVersionString="MYSQL_5" Port="3306" Username="root" Password="root" ServerName="localhost" SID="myapp" SqlSynthax="SQL Syntax" DbmsId="mysql_id" ProductId="MYSQL" AdditionalParams="noDatetimeStringSync=true" StandardSQL="true" SQLMode="true" UiSchema=""/>
+  <orgomg.cwm.resource.relational:Schema xmi:id="_8xxS4cpIEd-RO5lo6b1LvA" name="" dataManager="_8xxS4MpIEd-RO5lo6b1LvA">
+    <ownedElement xsi:type="relational:TdTable" xmi:id="_8xxS4spIEd-RO5lo6b1LvA" name="office" id="_fKNwoMgCEd-tELTFu_x8ng" label="office" tableType="TABLE">
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS48pIEd-RO5lo6b1LvA" name="id" label="id" length="10" sourceType="INT" talendType="id_Integer" key="true" nullable="false">
+        <initialValue xmi:id="_8xxS5MpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS5cpIEd-RO5lo6b1LvA" name="version" label="version" length="10" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_8xxS5spIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS58pIEd-RO5lo6b1LvA" name="name" label="name" length="50" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_8xxS6MpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+    </ownedElement>
+    <ownedElement xsi:type="relational:TdTable" xmi:id="_8xxS6cpIEd-RO5lo6b1LvA" name="employee" id="_fK_MsMgCEd-tELTFu_x8ng" label="employee" tableType="TABLE">
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS6spIEd-RO5lo6b1LvA" name="id" label="id" length="10" sourceType="INT" talendType="id_Integer" key="true" nullable="false">
+        <initialValue xmi:id="_8xxS68pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS7MpIEd-RO5lo6b1LvA" name="version" label="version" length="10" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_8xxS7cpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS7spIEd-RO5lo6b1LvA" name="efax" label="efax" length="5" sourceType="SMALLINT" talendType="id_Short">
+        <initialValue xmi:id="_8xxS78pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS8MpIEd-RO5lo6b1LvA" name="email" label="email" length="50" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8xxS8cpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS8spIEd-RO5lo6b1LvA" name="first_name" label="first_name" length="50" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_8xxS88pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS9MpIEd-RO5lo6b1LvA" name="home_address1" label="home_address1" length="100" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8xxS9cpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS9spIEd-RO5lo6b1LvA" name="home_address2" label="home_address2" length="100" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8xxS98pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8xxS-MpIEd-RO5lo6b1LvA" name="home_city" label="home_city" length="100" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8xxS-cpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4noMpIEd-RO5lo6b1LvA" name="home_email" label="home_email" length="50" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4nocpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nospIEd-RO5lo6b1LvA" name="home_phone" label="home_phone" length="12" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4no8pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4npMpIEd-RO5lo6b1LvA" name="home_state" label="home_state" length="2" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4npcpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4npspIEd-RO5lo6b1LvA" name="home_zip" label="home_zip" length="10" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4np8pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nqMpIEd-RO5lo6b1LvA" name="last_name" label="last_name" length="50" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_8x4nqcpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nqspIEd-RO5lo6b1LvA" name="mobile_phone" label="mobile_phone" length="12" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4nq8pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nrMpIEd-RO5lo6b1LvA" name="number" label="number" length="10" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_8x4nrcpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nrspIEd-RO5lo6b1LvA" name="phone" label="phone" length="12" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4nr8pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nsMpIEd-RO5lo6b1LvA" name="phone_extension" label="phone_extension" length="5" sourceType="SMALLINT" talendType="id_Short">
+        <initialValue xmi:id="_8x4nscpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nsspIEd-RO5lo6b1LvA" name="user_name" label="user_name" length="50" sourceType="VARCHAR" talendType="id_String">
+        <initialValue xmi:id="_8x4ns8pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4ntMpIEd-RO5lo6b1LvA" name="department_id" label="department_id" length="10" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_8x4ntcpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4ntspIEd-RO5lo6b1LvA" name="office_id" label="office_id" length="10" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_8x4nt8pIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+    </ownedElement>
+    <ownedElement xsi:type="relational:TdTable" xmi:id="_8x4nuMpIEd-RO5lo6b1LvA" name="department" id="_fLEFMMgCEd-tELTFu_x8ng" label="department" tableType="TABLE">
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nucpIEd-RO5lo6b1LvA" name="id" label="id" length="10" sourceType="INT" talendType="id_Integer" key="true" nullable="false">
+        <initialValue xmi:id="_8x4nuspIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nu8pIEd-RO5lo6b1LvA" name="version" label="version" length="10" sourceType="INT" talendType="id_Integer">
+        <initialValue xmi:id="_8x4nvMpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="relational:TdColumn" xmi:id="_8x4nvcpIEd-RO5lo6b1LvA" name="name" label="name" length="50" sourceType="VARCHAR" talendType="id_String" nullable="false">
+        <initialValue xmi:id="_8x4nvspIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+    </ownedElement>
+  </orgomg.cwm.resource.relational:Schema>
+</xmi:XMI>
