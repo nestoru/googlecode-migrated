@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TalendMetadata:FileExcelConnection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendMetadata="http://www.talend.org" Server="Localhost 127.0.0.1" FilePath="/Users/nestor/Downloads/employees" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="Sheet1" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" selectAllSheets="true" sheetList="Sheet1:w&#xA;">
-  <tables id="_6WhtwMf-Ed-tELTFu_x8ng" label="employee">
-    <columns label="first_name" talendType="id_String" length="6" precision="0" pattern="&quot;dd-MM-yyyy&quot;"/>
-    <columns label="last_name" talendType="id_String" length="6" precision="0" pattern="&quot;dd-MM-yyyy&quot;"/>
-    <columns label="office_name" talendType="id_String" length="6" precision="0" pattern="&quot;dd-MM-yyyy&quot;"/>
-    <columns label="department_name" talendType="id_String" length="9" precision="0" pattern="&quot;dd-MM-yyyy&quot;"/>
-  </tables>
-  <sheetColumns>A</sheetColumns>
-  <sheetColumns>B</sheetColumns>
-  <sheetColumns>C</sheetColumns>
-  <sheetColumns>D</sheetColumns>
-</TalendMetadata:FileExcelConnection>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_-akcsMpIEd-RO5lo6b1LvA" dataPackage="_-akcscpIEd-RO5lo6b1LvA" Server="Localhost 127.0.0.1" FilePath="C:/projects/DbImport/employees.xls" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="Sheet1" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" selectAllSheets="true" sheetList="Sheet1:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_-akcscpIEd-RO5lo6b1LvA" dataManager="_-akcsMpIEd-RO5lo6b1LvA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_-akcsspIEd-RO5lo6b1LvA" id="_6WhtwMf-Ed-tELTFu_x8ng" label="employee">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_-akcs8pIEd-RO5lo6b1LvA" name="" label="first_name" length="6" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_-akctMpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_-akctcpIEd-RO5lo6b1LvA" name="" label="last_name" length="6" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_-akctspIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_-akct8pIEd-RO5lo6b1LvA" name="" label="office_name" length="6" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_-akcuMpIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_-akcucpIEd-RO5lo6b1LvA" name="" label="department_name" length="9" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_-akcuspIEd-RO5lo6b1LvA" body=""/>
+      </feature>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>
