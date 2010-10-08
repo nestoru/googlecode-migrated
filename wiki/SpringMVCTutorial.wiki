@@ -149,7 +149,7 @@ Try commenting out the below snippet from web.xml:
     <url-pattern>/*</url-pattern>		
   </filter-mapping>
 }}}
-And then you will see how the below URL shows XSS vulnerability.
+And then you will see how the below URLs show XSS vulnerability.
 {{{
 http://localhost:8080/coctutorial/spring/params/write?par=XssAttack%3CSCRIPT%3Ealert(String.fromCharCode(88,83,83))%3C/SCRIPT%3E
 http://localhost:8080/coctutorial/spring/params/write?<script >alert(document.cookie)</script>
