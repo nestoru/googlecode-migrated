@@ -1,17 +1,27 @@
  * [Introduction Introduction]
+ * MVC
+  * [MvcFrameworks MvcFrameworks]
  * Spring
   * [SpringMVCTutorial SpringMVCTutorial]
- * [LiferayTipsAndTricks  LiferayTipsAndTricks ]
- * [CustomizingLiferay   CustomizingLiferay  ]
- * [MavenizingLiferayExtensionImplementationJARFile  MavenizingLiferayExtensionImplementationJARFile ]
- * [DroolsDataTransformation  DroolsDataTransformation ]
- * [WindowsApache22ModJkTutorial WindowsApache22ModJkTutorial]
- * [SwfUploadFlashPluginForLiferayPlugins  SwfUploadFlashPluginForLiferayPlugins ]
- * [AxisDynamicBindingTutorial  AxisDynamicBindingTutorial ]
- * [MvcFrameworks MvcFrameworks]
- * [MavenTutorial MavenTutorial]
- * [AmazonFeedsParser AmazonFeedsParser]
- * [BuildingAndDeployingLiferayJspPortletsWithMaven  BuildingAndDeployingLiferayJspPortletsWithMaven ]
- * [GlassfishLiferayJPAHibernateTutorial   GlassfishLiferayJPAHibernateTutorial  ]
- * [BuildingAndDeployingSpringMVCPetPortalWithMaven  BuildingAndDeployingSpringMVCPetPortalWithMaven ]
- * [Axis2DynamicBindingTutorial Axis2DynamicBindingTutorial]
+  * [BuildingAndDeployingSpringMVCPetPortalWithMaven  BuildingAndDeployingSpringMVCPetPortalWithMaven ]
+ * Liferay
+  * [LiferayTipsAndTricks  LiferayTipsAndTricks ]
+  * [CustomizingLiferay   CustomizingLiferay  ]
+  * [MavenizingLiferayExtensionImplementationJARFile  MavenizingLiferayExtensionImplementationJARFile ]
+  * [BuildingAndDeployingLiferayJspPortletsWithMaven  BuildingAndDeployingLiferayJspPortletsWithMaven ]
+  * [GlassfishLiferayJPAHibernateTutorial   GlassfishLiferayJPAHibernateTutorial  ]
+  * [SwfUploadFlashPluginForLiferayPlugins  SwfUploadFlashPluginForLiferayPlugins ]
+ * Drools
+   * [DroolsDataTransformation  DroolsDataTransformation ]
+ * Environment Configuration
+   * [WindowsApache22ModJkTutorial WindowsApache22ModJkTutorial]
+ * Web Services
+  * [AxisDynamicBindingTutorial  AxisDynamicBindingTutorial ]
+  * [Axis2DynamicBindingTutorial Axis2DynamicBindingTutorial]
+ * XML Parsing
+  * [AmazonFeedsParser AmazonFeedsParser]
+ * Maven
+  * [MavenTutorial MavenTutorial]
+
+
+ 
