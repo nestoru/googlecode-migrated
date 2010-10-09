@@ -1,4 +1,5 @@
 #labels spring,mvc,tutorial,coc,convention,configuration,agile,development
+#sidebar TableOfContents
 = CoC or Convention over Configuration in Spring MVC Framework =
 There are currently four URL-to-controller mapping mechanisms supported in SpringMVC:
 {{{
