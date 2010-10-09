@@ -1,5 +1,6 @@
  * [Introduction Introduction]
- * [SpringMVCTutorial SpringMVCTutorial]
+ * Spring
+  * [SpringMVCTutorial SpringMVCTutorial]
  * [LiferayTipsAndTricks  LiferayTipsAndTricks ]
  * [CustomizingLiferay   CustomizingLiferay  ]
  * [MavenizingLiferayExtensionImplementationJARFile  MavenizingLiferayExtensionImplementationJARFile ]
