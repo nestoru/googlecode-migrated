@@ -1,7 +1,7 @@
+ * [Introduction Introduction]
  * [SpringMVCTutorial SpringMVCTutorial]
  * [LiferayTipsAndTricks  LiferayTipsAndTricks ]
  * [CustomizingLiferay   CustomizingLiferay  ]
- * [Index Index]
  * [MavenizingLiferayExtensionImplementationJARFile  MavenizingLiferayExtensionImplementationJARFile ]
  * [DroolsDataTransformation  DroolsDataTransformation ]
  * [WindowsApache22ModJkTutorial WindowsApache22ModJkTutorial]
