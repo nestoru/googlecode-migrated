@@ -1,3 +1,7 @@
 Navigating through [http://nestorurquiza.googlecode.com/svn/trunk/ SVN] you should get code that works. Reading this WIKi and my [http://thinkinginsoftware.blogspot.com Blog] should be enough to get a feeling of some of those projects I have been involved in and I am able to share.
 
-It is my hope that others while reading will share as well, not only commenting on the subjects here discussed but also pointing to code that works on their own blogs and WIKIs. 
+It is my hope that others while reading will share as well, not only commenting on the subjects here discussed but also pointing to code that works on their own blogs and WIKIs.
+
+Thanks!
+
+-Nestor
