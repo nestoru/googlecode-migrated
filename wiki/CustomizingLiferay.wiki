@@ -15,15 +15,11 @@ mkdir docroot/_diffs/css
 }}}
  1. Copy ncessary folders form an existing theme. Below I use the classic theme.
 {{{
-THEME=~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/html/themes/classic
-cp -r $THEME/css docroot/_diffs
-cp -r $THEME/javascript docroot/_diffs
-cp -r $THEME/images docroot/_diffs
-cp -r $THEME/templates docroot/_diffs
+cp -R /Users/nestor/liferay//src/portal-web/docroot/html/themes/classic/_diffs/* docroot/_diffs/
 }}}
  1. Make sure absolutely all changes are done in the _diffs directory
  1. Update custom.css to adapt to desired background and border colors (in this case 005E82)
- 1. Update navigation.css the same and in addition use a transparent 1px square png as images/dock/menu_bar.png 
+ 1. Update navigation.css the same and in addition use a transparent 1px square png as images/dock/my_places_private.png which will make the community icon to disappear 
  1. You can always compare current theming with the one you started it from:
  {{{
  diff ~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/html/themes/classic/css/ docroot/_diffs/css/
