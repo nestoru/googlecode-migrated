@@ -13,16 +13,16 @@ cd liferay-plugins-sdk-5.2.3
 cd  005E82-theme
 mkdir docroot/_diffs/css
 }}}
- 1. Copy ncessary folders form an existing theme. Below I use the classic theme.
+ 1. Copy necessary folders form an existing theme. Below I use the classic theme.
 {{{
-cp -R /Users/nestor/liferay//src/portal-web/docroot/html/themes/classic/_diffs/* docroot/_diffs/
+cp -R /Users/nestor/liferay/src/portal-web/docroot/html/themes/classic/_diffs/* docroot/_diffs/
 }}}
  1. Make sure absolutely all changes are done in the _diffs directory
  1. Update custom.css to adapt to desired background and border colors (in this case 005E82)
  1. Update navigation.css the same and in addition use a transparent 1px square png as images/dock/my_places_private.png which will make the community icon to disappear 
- 1. You can always compare current theming with the one you started it from:
+ 1. You can always compare current theme with the one you started it from:
  {{{
- diff ~/glassfishv3/glassfish/domains/liferay-domain/applications/liferay-portal-5.2.3/html/themes/classic/css/ docroot/_diffs/css/
+diff -r /Users/nestor/liferay//src/portal-web/docroot/html/themes/classic/_diffs/css docroot/_diffs/css
  }}}
  1. Take a look at my results below. I have changed the base color and eliminated some background images:
  {{{
