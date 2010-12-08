@@ -223,7 +223,11 @@ MailServiceUtil.sendEmail(message);
 #end
 }}}
 == Disabling cache in development environments ==
- 1. Take a look at liferay WAR or exploded directory WEB-INF/classes/portal-developer.properties file. It is convenient to get put the whole content of that file in ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties 
+ 1. Take a look at liferay WAR or exploded directory WEB-INF/classes/portal-developer.properties file. Do not copy that content in ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl/src/portal-ext.properties and if you do you must use a different file for production. Liferay has a better way to deal with it, in order to pull the properties from the developer file just use a special JVM system property. For example in tomcat:
+{{{
+JAVA_OPTS="-Dexternal-properties=portal-developer.properties $JAVA_OPTS"
+}}}
+ 1. If you insist on using the portal-ext.properties (read previous point) then here is a copy of the developer properties:
 {{{
 #
 # Eliminating Caching for development environment. Please put true in production systems
