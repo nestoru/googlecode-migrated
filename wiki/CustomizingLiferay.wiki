@@ -11,7 +11,6 @@ cp favicon.ico ~/liferay-components/liferay-plugins-sdk-5.2.3/themes/005E82-them
 cd liferay-plugins-sdk-5.2.3
 ./create.sh 005E82 "Predominant 005E82 r0g94b130"
 cd  005E82-theme
-mkdir docroot/_diffs/css
 }}}
  1. Copy necessary folders form an existing theme. Below I use the classic theme.
 {{{
