@@ -18,7 +18,8 @@ cp -R /Users/nestor/liferay/src/portal-web/docroot/html/themes/classic/_diffs/* 
 }}}
  1. Make sure absolutely all changes are done in the _diffs directory
  1. Update custom.css to adapt to desired background and border colors (in this case 005E82)
- 1. Update navigation.css the same and in addition use a transparent 1px square png as images/dock/my_places_private.png which will make the community icon to disappear 
+ 1. Update navigation.css to adjust the menu look and feel. For example you might want to get rid of the dock menu button image. For that matter you will need create a transparent 1px square png and drop it in _diffs/images/dock/menu_bar.png
+ 1. You for sure need a footer and the code for it can be inserted in _diffs/templates/portal_normal.vm
  1. You can always compare current theme with the one you started it from:
  {{{
 diff -r /Users/nestor/liferay//src/portal-web/docroot/html/themes/classic/_diffs/css docroot/_diffs/css
