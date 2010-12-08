@@ -244,7 +244,7 @@ velocity.engine.resource.manager.cache.enabled=false
 com.liferay.portal.servlet.filters.cache.CacheFilter=false
 com.liferay.portal.servlet.filters.theme.ThemePreviewFilter=true
 }}}
- 1. Deploy properties
+ 1. Only if you are actually changing the properties (again I suggest you use the system properties instead) you will need to deploy properties
 {{{
 cd ~/liferay-components/liferay-portal-ext-5.2.3/ext-impl
 ant deploy-properties
