@@ -208,7 +208,7 @@ public class SendEmailExample {
         //SerializedSecurityContextType s2SAuth = new SerializedSecurityContextType();
         
         CreateItemResponseType itemResponseType = new CreateItemResponseType();
-        Holder<CreateItemResponseType> itemResult = new Holder(itemResponseType);
+        Holder<CreateItemResponseType> itemResult = new Holder<CreateItemResponseType>(itemResponseType);
 
         //send email
         port.createItem(emailRequest,
