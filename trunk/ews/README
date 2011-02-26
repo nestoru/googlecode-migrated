@@ -1,0 +1,22 @@
+This code has resulted from several hours of research, try and error. It is not by any means a library but rather a proof of concept that just shows folder creation, getting info from Inbox and sending an email while saving it in a subfolder.
+
+Take a look at http://thinkinginsoftware.blogspot.com/2011/02/exchange-web-services-ews-from-java.html for more explanation
+
+You will notice how I attempted to use the abandoned EWS Java API published by Microsoft on  http://archive.msdn.microsoft.com/ewsjavaapi. The traces of that attempt are commented out in this project just for historical reasons 
+
+1. A copy of the wsdl and xsd files can be found in the main/resources directory
+2. Modify EwsSettings so you point to the path to a properties file in a local folder.
+3. The content of the properties file would be clear if you examine the class. Here is an example:
+#
+# EWS
+#
+
+# Path to Services.wsdl file. Both messages.xsd and types.xsd must be in the same folder together with Services.wsdl
+ews.wsdlPath=file:/Users/nestor/Downloads/Services.wsdl
+
+# Value of wsdl:service@name
+ews.serviceStubName=ExchangeService
+
+# Sensitive data]
+ews.userName=myuser@mycompany.microsoftonline.com
+ews.password=mypassword
