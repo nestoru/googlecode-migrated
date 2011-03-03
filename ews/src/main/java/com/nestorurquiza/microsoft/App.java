@@ -49,7 +49,7 @@ public class App {
         EmailMessage msg= new EmailMessage(service);
         msg.setSubject("From EWS"); 
         msg.setBody(MessageBody.getMessageBodyFromText("Using the Microsoft EWS Managed API"));
-        msg.getToRecipients().add("nestor.urquiza@gmail.com");
+        msg.getToRecipients().add("addressee@sample.com");
         msg.send();
 
     }
