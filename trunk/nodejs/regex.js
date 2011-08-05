@@ -1,47 +1,54 @@
-var authorizedEmails = ['ibelayev@krfs.com'];
-
-var ldif = '# jdeitrick@krfs.com, people, krfs  \n\
-dn: CN=jdeitrick@krfs.com,ou=people,o=krfs  \n\
+var authorizedEmails = ['jdoe2@foo.com'];
+var exclusionDomain = 'bar2.com';
+var pattern = /[^\s=,]*@[^\s=,]*/g
+var ldif = '# jdoe@foo.com, people, sample  \n\
+dn: CN=jdoe@foo.com,ou=people,o=sample  \n\
 uid: jd  \n\
-sn: Deitrick  \n\
-mail: jdeitrick@krfs.com  \n\
+sn: Doe  \n\
+mail: jdoe@foo.com  \n\
 forcePasswordChange: true  \n\
 objectClass: organizationalPerson  \n\
 objectClass: person  \n\
 objectClass: inetOrgPerson  \n\
 objectClass: top  \n\
-givenName: Justin  \n\
-CN: jdeitrick@krfs.com  \n\
+givenName: John  \n\
+CN: jdoe@foo.com  \n\
 userPassword:: e1NIQX1xVXFQNWN5eG02WWNUQWh6MDVIcGg1Z3Z1OU09 \n\
 \n\
-# ibelayev@krfs.com, people, krfs \n\
-dn: CN=ibelayev@krfs.com,ou=people,o=krfs \n\
-uid: ib \n\
-sn: Belayev \n\
-mail: ibelayev@krfs.com \n\
+# rroe@bar.com, people, sample \n\
+dn: CN=rroe@bar.com,ou=people,o=sample \n\
+uid: rr \n\
+sn: Roe \n\
+mail: rroe@bar.com \n\
 forcePasswordChange: false  \n\
 objectClass: organizationalPerson  \n\
 objectClass: person  \n\
 objectClass: inetOrgPerson  \n\
 objectClass: top  \n\
-givenName: Igor  \n\
-CN: ibelayev@krfs.com  \n\
-userPassword:: e1NIQX1mSnBSa1NOZmkrTlBLVzNiOURkNklWSzJEQk09  \n\
-ou: cn=99999000_KRFS Reviewer,ou=groups,o=krfs';
+givenName: Richard  \n\
+CN: rroe@bar.com  \n\
+userPassword:: e1NIQX1mSnBSa1NOZmkrTlBLVzNiOURkNklWSzJEQk09';
 
-//var matches = ldif.match(/[^\s=,]*@[^\s=,]*/g);
+taintLdifEmail();
+console.log(ldif);
 
-var pattern = /[^\s=,]*@[^\s=,]*/g
-var matches = ldif.match(pattern);
+function taintLdifEmail() {
+	var matches = ldif.match(pattern);
 
-for ( var matchIndex in matches ) {
-	var match = matches[matchIndex];
-	for ( var authorizedEmailIndex in authorizedEmails ) {
-		if( match == authorizedEmails[authorizedEmailIndex] ) {
-			//ldif = ldif.replac
+	for ( var matchIndex in matches ) {
+		var taint = true;
+		var match = matches[matchIndex];
+		if( match.indexOf(exclusionDomain) >= 0 ) continue;
+		for ( var authorizedEmailIndex in authorizedEmails ) {
+			var authorizedEmail = authorizedEmails[authorizedEmailIndex];
+			if( match == authorizedEmail ) {
+				taint = false;
+				continue;
+			}
+		}
+		if( taint ) {
+			ldif = ldif.replace(match, match.substring(0, match.indexOf('@')) + "@sample.com");
 		}
 	}
-	if(match )
-	console.log(match);
+	return ldif;
 }
-
