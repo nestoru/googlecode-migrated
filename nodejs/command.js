@@ -5,8 +5,9 @@ var child;
 child = exec("ldapsearch -x -v -H 'ldap://jkrfs:10389' -D 'uid=admin,ou=system' -w 'secret' -b 'o=krfs'", function (error, stdout, stderr) {
   //sys.print('stdout: ' + stdout);
   //sys.print('stderr: ' + stderr);
-  console.log(stdout);
+  //console.log(stdout);
   if (error !== null) {
     console.log('exec error: ' + error);
   }
 });
+console.log(child.stdout);
