@@ -1,6 +1,6 @@
 {
   "name": "Remove Cookies for Site",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Remove cookies for site.",
   "browser_action": {
     "default_icon": "broken-cookie128.png",
