@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" confirmationNeeded="false" name="Default">
+  <contextParameter comment="" name="url" prompt="url?" promptNeeded="false" type="id_String" value="&quot;http://query.yahooapis.com/v1/public/yql?format=json&amp;diagnostics=true&amp;env=http%3A%2F%2Fdatatables.org%2Falltables.env&amp;callback=&amp;q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20%3D%20&quot;"/>
+  <contextParameter comment="" name="symbol" prompt="symbol?" promptNeeded="false" type="id_String" value="&quot;AAPL&quot;"/>
+</talendfile:ContextType>
