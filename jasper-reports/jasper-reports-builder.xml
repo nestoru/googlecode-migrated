@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project name="jasper-reports-builder" default="compile" basedir=".">
+	<description>Jasper Reports Builder</description>
+	<property name="tempdir" value="./build/temp"/>
+	<path id="classpath">
+		<fileset dir="./lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${java.class.path}/"/>
+	</path>
+	<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">
+		<classpath refid="classpath"/>
+	</taskdef>
+	<target name="compile">
+		<mkdir dir="${tempdir}"/>
+		<jrc srcdir="${srcdir}" destdir="${srcdir}" tempdir="${tempdir}" keepjava="true" xmlvalidation="true">
+			<classpath refid="classpath"/>
+			<include name="**/*.jrxml"/>
+		</jrc>
+		<zip destfile="${destfile}" basedir="${srcdir}"/>
+	</target>
+	<target name="clean">
+		<delete>
+			<fileset dir="${srcdir}" includes="**/*.jasper"/>
+		</delete>
+		<delete dir="./build/temp"/>
+	</target>
+</project>
+
