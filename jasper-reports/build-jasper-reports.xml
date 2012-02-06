@@ -1,0 +1,33 @@
+<project name="krfs-report" default="compile" basedir=".">
+	<description>KRFS All In One Jasper build</description>
+
+  <path id="classpath">  
+    <fileset dir="./lib">
+        <include name="*.jar"/>
+    </fileset>
+    <pathelement path="${java.class.path}/"/>  
+  </path>
+	<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask"> 
+		<classpath refid="classpath"/>
+	</taskdef>
+	<target name="compile">
+  		<mkdir dir="./build/reports"/>
+  		<mkdir dir="./build/temp"/>
+		<jrc
+		    srcdir="${srcdir}"
+		    destdir="./build/reports"
+		    tempdir="./build/temp"
+		    keepjava="true"
+		    xmlvalidation="true">
+		   <classpath refid="classpath"/>
+		   <include name="**/*.jrxml"/>
+		</jrc>
+                <zip destfile="${destfile}" basedir="./build/reports" />
+
+	</target>
+        <target name="clean">
+                <delete dir="./build/reports"/>
+                <delete dir="./build/temp"/>
+        </target>
+
+</project>
