@@ -33,15 +33,10 @@ function runRemote {
   sshCmd="ssh"
   if [ $mode != "SYNC" ]
   then
-    sshCmd="ssh -f -n"
-    #command="($command) 2> /dev/null &"
-    #command="bash -c \"nohup $command > /dev/null 2>&1 &\""
-    ssh -f -n $user@$host "$command"
+    ssh -t -t -f -n $user@$host "$command"
   else
-    ssh $user@$host "$command"
+    ssh -t -t $user@$host "$command"
   fi
-  #echo "Running $command"
-  #eval "$command"
 }
 
 function moveFile () {
