@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.camelinaction</groupId>
+		<artifactId>chapter2</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>chapter2-cbr</artifactId>
+	<name>Camel in Action :: Chapter 2 :: Content-Based Router</name>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+	</dependencies>
+	<repositories>
+	  <repository>
+	    <id>rmannibucau</id>
+	    <url>http://rmannibucau.googlecode.com/hg/maven2</url>
+	  </repository>
+	</repositories>
+	<build>
+		<plugins>
+			<!-- Allows the example to be run via 'mvn compile exec:java' -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<includePluginDependencies>false</includePluginDependencies>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>fr.rmannibucau</groupId>
+				<artifactId>maven-diagram-generator-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>pack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>diagram</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<input>src/main/java/camelinaction</input>
+					<!-- or a qualified RouteBuilder name if you use java routes -->
+					<view>false</view>
+					<!-- default = false, true to show a window containing the diagram -->
+					<width>480</width>
+					<!-- default = 640  -->
+					<height>640</height>
+					<!-- default = 480 -->
+					<output>target/diagram</output>
+					<!-- default = target/diagram -->
+					<type>camel</type>
+					<!-- default = camel -->
+					<fileType>xml</fileType>
+					<!-- default = xml, other values = { java  }-->
+					<format>png</format>
+					<!-- default = png, you can set jpg ... -->
+					<adjust>true</adjust>
+					<!-- true allows to resize icons, false force to keep their original size; default: true -->
+				</configuration>
+				<dependencies>
+					<dependency>
+						<!-- to use camel generator -->
+						<groupId>fr.rmannibucau</groupId>
+						<artifactId>camel-loader</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+					<!-- route dependencies if needed -->
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
