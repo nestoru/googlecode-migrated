@@ -48,7 +48,7 @@
 			</plugin>
 			<plugin>
 				<groupId>fr.rmannibucau</groupId>
-				<artifactId>maven-diagram-generator-plugin</artifactId>
+				<artifactId>diagram-generator-maven-plugin</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<executions>
 					<execution>
@@ -60,24 +60,67 @@
 					</execution>
 				</executions>
 				<configuration>
-					<input>src/main/java/camelinaction</input>
 					<!-- or a qualified RouteBuilder name if you use java routes -->
-					<view>false</view>
+					<input>camelinaction.OrderRouteBuilder2</input>
 					<!-- default = false, true to show a window containing the diagram -->
-					<width>480</width>
+					<view>false</view>
 					<!-- default = 640  -->
-					<height>640</height>
+					<width>480</width>
 					<!-- default = 480 -->
-					<output>target/diagram</output>
+					<height>640</height>
 					<!-- default = target/diagram -->
-					<type>camel</type>
+					<output>target/diagram</output>
 					<!-- default = camel -->
-					<fileType>xml</fileType>
+					<type>camel</type>
 					<!-- default = xml, other values = { java  }-->
-					<format>png</format>
+					<fileType>java</fileType>
 					<!-- default = png, you can set jpg ... -->
-					<adjust>true</adjust>
+					<format>png</format>
 					<!-- true allows to resize icons, false force to keep their original size; default: true -->
+					<adjust>true</adjust>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<!-- to use camel generator -->
+						<groupId>fr.rmannibucau</groupId>
+						<artifactId>camel-loader</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+					<!-- route dependencies if needed -->
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>fr.rmannibucau</groupId>
+				<artifactId>diagram-generator-maven-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>pack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>diagram</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- or a qualified RouteBuilder name if you use java routes -->
+					<input>camelinaction.OrderRouteBuilder</input>
+					<!-- default = false, true to show a window containing the diagram -->
+					<view>false</view>
+					<!-- default = 640  -->
+					<width>480</width>
+					<!-- default = 480 -->
+					<height>640</height>
+					<!-- default = target/diagram -->
+					<output>target/diagram</output>
+					<!-- default = camel -->
+					<type>camel</type>
+					<!-- default = xml, other values = { java  }-->
+					<fileType>java</fileType>
+					<!-- default = png, you can set jpg ... -->
+					<format>png</format>
+					<!-- true allows to resize icons, false force to keep their original size; default: true -->
+					<adjust>true</adjust>
 				</configuration>
 				<dependencies>
 					<dependency>
