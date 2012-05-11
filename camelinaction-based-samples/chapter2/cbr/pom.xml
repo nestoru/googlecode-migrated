@@ -112,7 +112,7 @@
                             <!-- default = 480 -->
                             <height>640</height>
                             <!-- default = target/diagram -->
-                            <output>${basedir}/src/main/javadoc/com/krfs/orchestration/camel/route/doc-files</output>
+                            <output>${basedir}/src/main/javadoc/camelinaction/doc-files</output>
                             <!-- default = camel -->
                             <type>camel</type>
                             <!-- default = xml, other values = { java  }-->
