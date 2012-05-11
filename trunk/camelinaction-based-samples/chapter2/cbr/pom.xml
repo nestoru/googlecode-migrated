@@ -61,6 +61,7 @@
 				</executions>
 				<configuration>
 					<!-- or a qualified RouteBuilder name if you use java routes -->
+					<input>camelinaction.OrderRouteBuilder</input>
 					<input>camelinaction.OrderRouteBuilder2</input>
 					<!-- default = false, true to show a window containing the diagram -->
 					<view>false</view>
@@ -94,34 +95,35 @@
 				<artifactId>diagram-generator-maven-plugin</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<executions>
-					<execution>
-						<id>pack</id>
-						<phase>package</phase>
-						<goals>
-							<goal>diagram</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<!-- or a qualified RouteBuilder name if you use java routes -->
-					<input>camelinaction.OrderRouteBuilder</input>
-					<!-- default = false, true to show a window containing the diagram -->
-					<view>false</view>
-					<!-- default = 640  -->
-					<width>480</width>
-					<!-- default = 480 -->
-					<height>640</height>
-					<!-- default = target/diagram -->
-					<output>target/diagram</output>
-					<!-- default = camel -->
-					<type>camel</type>
-					<!-- default = xml, other values = { java  }-->
-					<fileType>java</fileType>
-					<!-- default = png, you can set jpg ... -->
-					<format>png</format>
-					<!-- true allows to resize icons, false force to keep their original size; default: true -->
-					<adjust>true</adjust>
-				</configuration>
+                    <execution>
+                        <id>route1</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>diagram</goal>
+                        </goals>
+                        <configuration>
+                            <!-- or a qualified RouteBuilder name if you use java routes -->
+                            <!-- <input>camelinaction.OrderRouteBuilder2</input> -->
+							<package>camelinaction</package>
+                            <!-- default = false, true to show a window containing the diagram -->
+                            <view>false</view>
+                            <!-- default = 640  -->
+                            <width>480</width>
+                            <!-- default = 480 -->
+                            <height>640</height>
+                            <!-- default = target/diagram -->
+                            <output>${basedir}/src/main/javadoc/com/krfs/orchestration/camel/route/doc-files</output>
+                            <!-- default = camel -->
+                            <type>camel</type>
+                            <!-- default = xml, other values = { java  }-->
+                            <fileType>java</fileType>
+                            <!-- default = png, you can set jpg ... -->
+                            <format>png</format>
+                            <!-- true allows to resize icons, false force to keep their original size; default: true -->
+                            <adjust>true</adjust>
+                        </configuration>
+                    </execution>
+                </executions>
 				<dependencies>
 					<dependency>
 						<!-- to use camel generator -->
