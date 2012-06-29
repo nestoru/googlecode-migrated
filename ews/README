@@ -1,4 +1,8 @@
-This code has resulted from several hours of research, try and error. It is not by any means a library but rather a proof of concept that just shows folder creation, getting info from Inbox and sending an email while saving it in a subfolder.
+This project is a proof of concept showing how to interact with Exchange Web Services from Java. There are two ways to achieve that goal: Managed and Unmanaged code.
+
+The code related to the managed API is just a main Java class illustrating the use of the Microsoft ewsjavaapi package.
+
+The code related to EWS through Web Services (Unmanaged API) has resulted from several hours of research, try and error. It is not by any means a library but rather a proof of concept that just shows folder creation, getting info from Inbox and sending an email while saving it in a subfolder.
 
 Take a look at http://thinkinginsoftware.blogspot.com/2011/02/exchange-web-services-ews-from-java.html for more explanation
 
