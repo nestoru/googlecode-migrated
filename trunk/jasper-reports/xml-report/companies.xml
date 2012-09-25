@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<companies>
+  <company>
+    <name>XYZ Investments</name>
+    <employees>
+      <employee>
+        <name>John</name>
+        <phone>305-111-1111</phone>
+        <contacts>
+          <contact>
+            <name>Mark</name>
+            <phone>305-111-1112</phone>
+          </contact>
+          <contact>
+            <name>Robert</name>
+            <phone>305-111-1113</phone>
+          </contact>
+          <contact>
+            <name>Frank</name>
+            <phone>305-111-1114</phone>
+          </contact>
+        </contacts>
+      </employee>
+      <employee>
+        <name>Paul</name>
+        <phone>786-111-1111</phone>
+        <contacts>
+          <contact>
+            <name>Freddy</name>
+            <phone>786-111-1112</phone>
+          </contact>
+          <contact>
+            <name>James</name>
+            <phone>786-111-1113</phone>
+          </contact>
+          <contact>
+            <name>Kirk</name>
+            <phone>786-111-1114</phone>
+          </contact>
+        </contacts>
+      </employee>
+    </employees>
+  </company>
+</companies>
