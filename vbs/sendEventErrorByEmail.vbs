@@ -70,7 +70,7 @@ If exclusionFileExists = True Then
       Do While not eventLogsExclusionsFile.AtEndOfStream 
         Redim Preserve arrFileLines(i)
         line =  eventLogsExclusionsFile.ReadLine()
-        Wscript.Echo "exclusion Line: " & line
+        'Wscript.Echo "exclusion Line: " & line
         arrFileLines(i) = line
       loop    
 End If
