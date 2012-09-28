@@ -7,14 +7,14 @@
 '
 '
 ' @Description: Alerts a Windows Admin there are errors in Event Viewer. To be used together with eventtriggers
-'               Use as below to report any errors from Event Viewer:
+'Use as below to report any errors from Event Viewer:
 '
-'               eventtriggers /create /ru windowsUser /l "APPLICATION" /tr "Application Errors" /t error /tk "C:\scripts\events\sendEventErrorByEmail.vbs\"
+' eventtriggers /create /ru windowsUser /l "APPLICATION" /tr "Application Errors" /t error /tk "C:\scripts\events\sendEventErrorByEmail.vbs\"
 '
 '
 ' @Parameters
 ' 1. A prefix body message in case specific errors are to be sent 
-'    (a combination of batch and eventtriggers will do the trick)
+'   (a combination of batch and eventtriggers will do the trick)
 '
 '
 ' @Filters: I am filtering only "Application" events. Change the SQL query if you want to apply a different filter or not filter at all
@@ -123,4 +123,4 @@ If (Not IsNull(details) And details <> "") Then
 
     'Send it
     objEmail.Send
-End If 
+End If
