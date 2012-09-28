@@ -14,7 +14,7 @@
 '
 ' @Parameters
 ' 1. A prefix body message in case specific errors are to be sent 
-'   (a combination of batch and eventtriggers will do the trick)
+' (a combination of batch and eventtriggers will do the trick)
 '
 '
 ' @Filters: I am filtering only "Application" events. Change the SQL query if you want to apply a different filter or not filter at all
