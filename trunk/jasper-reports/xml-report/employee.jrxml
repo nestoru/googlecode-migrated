@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_contacts" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_contacts" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd3eac8f-eeb0-45d3-bf25-d0612942b7a6">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -12,25 +12,55 @@
 	<field name="phone" class="java.lang.String">
 		<fieldDescription><![CDATA[phone]]></fieldDescription>
 	</field>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement uuid="3f4cd53c-3937-4718-b132-4fd771c22858" x="391" y="10" width="60" height="30"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e21f8453-6ebd-4e95-a637-ef2caf5e212a" x="100" y="10" width="291" height="30"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Information about the employees and the related contacts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="07663fc4-9f2d-43f9-b493-bbc947d2d35a" x="10" y="10" width="90" height="30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Contacts]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="e185f666-6416-47da-a1ba-42f5d9c1e38b" x="451" y="10" width="28" height="30"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
 	<columnHeader>
 		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="277" height="20"/>
+				<reportElement uuid="90129440-72ff-4f73-9a7c-62ac5e975056" x="0" y="0" width="277" height="20"/>
 				<textElement/>
 				<text><![CDATA[name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="0" width="277" height="20"/>
+				<reportElement uuid="feb4438b-a13c-4117-9828-1c5f1baf4008" x="277" y="0" width="277" height="20"/>
 				<textElement/>
 				<text><![CDATA[phone]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="277" height="20"/>
+				<reportElement uuid="4cbdee17-5062-40e9-898c-e19c8392c7f0" x="0" y="0" width="277" height="20"/>
 				<textElement/>
 				<text><![CDATA[name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="277" y="0" width="277" height="20"/>
+				<reportElement uuid="00d6ffd8-3ee2-4895-81e9-bffb17dad1d3" x="277" y="0" width="277" height="20"/>
 				<textElement/>
 				<text><![CDATA[phone]]></text>
 			</staticText>
@@ -39,27 +69,27 @@
 	<detail>
 		<band height="122" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="277" height="20"/>
+				<reportElement uuid="85ad6d5d-b839-43c7-9f93-d12b8b76213d" x="0" y="0" width="277" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="277" y="0" width="277" height="20"/>
+				<reportElement uuid="12185e11-73d8-4052-bff6-543a44bd7cf4" x="277" y="0" width="277" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="277" height="20"/>
+				<reportElement uuid="765a9f25-7323-46bd-bc2f-704779c20d6a" x="0" y="0" width="277" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="277" y="0" width="277" height="20"/>
+				<reportElement uuid="968419a0-57a5-4f7c-9174-29a27da07e40" x="277" y="0" width="277" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="77" y="20" width="200" height="100"/>
+				<reportElement uuid="576dc1d3-c7aa-4962-85f0-aa60c032e22a" x="77" y="20" width="200" height="100"/>
 				<subreportParameter name="XML_DATA_DOCUMENT">
 					<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
 				</subreportParameter>
