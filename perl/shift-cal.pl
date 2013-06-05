@@ -1,7 +1,12 @@
 #!/usr/bin/perl -w
 # shift-cal.pl
+#
+# @usage: ./shift-cal.pl <MM> <yyyy> <initialsFile>
+# @example: ./shift-cal.pl 12 2013 initials.txt
 # @author: Nestor Urquiza
-# Adaptation of the original example of the linux cal command written by the creator of the Calendar:Simple perl module.
+# @credits: Adaptation of the original example of the linux cal command written by the creator of the Calendar:Simple perl module.
+#
+#################################################################################################################################
   use strict;
   use Calendar::Simple;
 
