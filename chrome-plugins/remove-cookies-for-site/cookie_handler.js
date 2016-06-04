@@ -3,7 +3,7 @@ this.cookies_ = {};
 function addCookie(cookie) {
    	var key = cookie.name+cookie.domain+cookie.hostOnly+cookie.path+cookie.secure+cookie.httpOnly+cookie.session+cookie.storeId;
 	console.log(key);
-  	this.cookies_[key] = cookie;	
+  	this.cookies_[key] = cookie;
 }
 
 function listener(info) {
@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
 	});
 });
 
-function runProcess(tab) {	
+function runProcess(tab) {
 	var domain = extractDomain(tab.url);
 	for (var i in this.cookies_) {
 	   	var cookie = this.cookies_[i];
@@ -44,7 +44,14 @@ function runProcess(tab) {
 			  url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
 			  chrome.cookies.remove({"url": url, "name": cookie.name});
 		}
-    }
+  }
+  setTimeout(function(){
+    chrome.browserAction.setBadgeText({'text':'done'});
+    setTimeout(function(){
+      chrome.browserAction.setBadgeText({'text':''});
+    }, 1000);
+  }, 0);
+
 }
 
 function extractDomain(url) {
